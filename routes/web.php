@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SignupController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +16,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route('loginView'));
 });
 
 
 Route::get('login', [LoginController::class , 'loginView'])->name('loginView');
 Route::post('login', [LoginController::class , 'loginProcessing'])->name('loginProcessing');
+
+Route::get('signup', [SignupController::class , 'loginView'])->name('signupView');
+Route::post('signup', [SignupController::class , 'loginProcessing'])->name('signupProcessing');
