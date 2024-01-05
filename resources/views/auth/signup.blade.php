@@ -83,7 +83,7 @@
                 <img src="{{ asset('images/logo.png') }}" alt="" srcset="" class="w-[200px]">
                 <h2 class="text-[30px]">Sign Up to Quiz.com</h2>
             </div>
-            <form action="{{ route('loginProcessing') }}" method="post" class="flex flex-col items-center gap-3">
+            <form action="{{ route('signupProcessing') }}" method="post" class="flex flex-col items-center gap-3">
                 @csrf
 
                 {{-- Full name --}}
@@ -104,7 +104,7 @@
                 {{-- userName --}}
 
                 <input type="text" placeholder="Username" name="userName" id="userName" @error('userName') style="border: solid 1px red" @enderror>
-                <input type="date" placeholder="Birth Date" name="brithDay"  @error('brithDay') style="border: solid 1px red" @enderror>
+                <input type="date" placeholder="Birth Date" name="birthDay"  @error('birthDay') style="border: solid 1px red" @enderror>
 
 
 
@@ -136,7 +136,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="bg-[#03b3b0] btn py-2 px-4 rounded-lg mt-3 w-36">sign up</button>
+                <button type="submit" class="bg-[#03b3b0] btn py-2 px-4 rounded-lg mt-3 w-full">register</button>
             </form>
             <div class="oauth flex flex-col content-center items-center gap-3">
                 <p class="">or you can sign up with : </p>
@@ -152,7 +152,7 @@
                 <img class="w-[400px]" src="{{ asset('images/online-test.png') }}" alt="online-test-vector">
                 <h1 class="text-white text-[30px] text-center"> Unleash Your Knowledge, <span
                         class="text-[#000]">Embrace the Challenge !</span></h1>
-                <a href="{{ route('loginView') }}" class=" bg-[#03b3b0] btn py-2 px-4 rounded-lg">Sign in</a>
+                <a href="{{ route('loginView') }}" class=" bg-[#03b3b0] btn py-2 px-4 rounded-lg">login</a>
             </div>
         </div>
     </div>

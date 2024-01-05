@@ -79,7 +79,7 @@
                 <img class="w-[400px]" src="{{ asset('images/online-test.png') }}" alt="online-test-vector">
                 <h1 class="text-white text-[30px] text-center"> Unleash Your Knowledge, <span
                         class="text-[#000]">Embrace the Challenge !</span></h1>
-                <a href="{{ route('signupView') }}" class=" bg-[#03b3b0] btn py-2 px-4 rounded-lg">Sign up</a>
+                <a href="{{ route('signupView') }}" class=" bg-[#03b3b0] btn py-2 px-4 rounded-lg">register</a>
             </div>
         </div>
         <div class="form p-6 flex flex-col justify-center items-center gap-6">
@@ -90,9 +90,9 @@
             </div>
             <form action="{{ route('loginProcessing') }}" method="post" class="flex flex-col gap-3">
                 @csrf
-                <input type="text" placeholder="email or username" name="email" id="userNameORemail">
+                <input type="text" placeholder="email or username" name="" id="userNameORemail" @error('email') style="border: solid 1px red" @enderror @error('userName') style="border: solid 1px red" @enderror>
                 <div>
-                    <input type="password" placeholder="password" name="password" id="password">
+                    <input type="password" placeholder="password" name="password" id="password" @error('password') style="border: solid 1px red" @enderror>
                     <i class="fa-solid fa-eye"></i>
                 </div>
                 <button type="submit" class="bg-[#03b3b0] btn py-2 px-4 rounded-lg mt-3">login</button>

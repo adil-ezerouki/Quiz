@@ -23,5 +23,5 @@ Route::get('/', function () {
 Route::get('login', [LoginController::class , 'loginView'])->name('loginView');
 Route::post('login', [LoginController::class , 'loginProcessing'])->name('loginProcessing');
 
-Route::get('signup', [SignupController::class , 'loginView'])->name('signupView');
-Route::post('signup', [SignupController::class , 'loginProcessing'])->name('signupProcessing');
+Route::get('signup', [SignupController::class , 'signUpView'])->name('signupView');
+Route::post('signup', [SignupController::class , 'signUpProcessing'])->name('signupProcessing');

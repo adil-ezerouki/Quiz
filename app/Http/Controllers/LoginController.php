@@ -14,7 +14,7 @@ class LoginController extends Controller
 
     public function loginProcessing(Request $request)
     {
-        $credentials = $request->except(['_token']);
+        $credentials = $request->all();
 
 
         if (array_key_exists('userName', $credentials)) {
