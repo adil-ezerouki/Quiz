@@ -8,6 +8,7 @@
     <title>Login</title>
     <link rel="shortcut icon" href="{{ asset('images/logo.png') }}">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ asset('js/login-signup/animation.css') }}">
     <style>
         :root {
             --primary-color: #03b3b0;
@@ -63,56 +64,9 @@
             font-size: 18px;
         }
 
-        .error {
-            color: red;
-            animation: FadeIn s;
-        }
-
-        @keyframes FadeIn {
-            from {
-                opacity: 0
-            }
-
-            ;
-
-            to {
-                opacity: 1
-            }
-        }
-
         @media only screen and (max-width: 640px) {
             .form {
                 width: 100%;
-            }
-        }
-
-        .errors {
-
-            animation: appear 0.5s ease-out;
-            background-color: rgba(0, 0, 0, 0.493)
-        }
-
-        @keyframes disappear {
-            0% {
-                opacity: 1;
-                transform: scale(1)
-            }
-
-            100% {
-                opacity: 0;
-                transform: scale(0.8)
-            }
-        }
-
-        @keyframes appear {
-            0% {
-                opacity: 0;
-                transform: scale(0.8)
-            }
-
-            100% {
-                opacity: 1;
-                transform: scale(1)
             }
         }
     </style>
@@ -136,22 +90,11 @@
             </div>
             <form action="{{ route('loginProcessing') }}" method="post" class="flex flex-col gap-3">
                 @csrf
-                {{-- <label for="userNameORemail">UserName or Email :</label> --}}
                 <input type="text" placeholder="email or username" name="email" id="userNameORemail">
-                @error('email')
-                    <div class="error">{{ $message }}</div>
-                @enderror
-                @error('userName')
-                    <div class="error">{{ $message }}</div>
-                @enderror
-                {{-- <label for="password">Password :</label> --}}
                 <div>
                     <input type="password" placeholder="password" name="password" id="password">
                     <i class="fa-solid fa-eye"></i>
                 </div>
-                @error('password')
-                    <div class="error">{{ $message }}</div>
-                @enderror
                 <button type="submit" class="bg-[#03b3b0] btn py-2 px-4 rounded-lg mt-3">login</button>
             </form>
             <div class="oauth flex flex-col content-center items-center gap-3">
@@ -164,28 +107,33 @@
             </div>
         </div>
     </div>
-    {{-- @if ($errors->any()) --}}
-    <div class="errors h-[100vh] w-full flex justify-center items-center absolute top-0">
-        <div class=" bg-[#ED5A2F] flex flex-col rounded">
-            <h1>Please</h1>
-            {{-- <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach --}}
+    @if ($errors->any())
+        <div class="errors h-[100vh] w-full flex justify-center items-center absolute top-0">
+            <div class="popup-errors flex flex-col rounded-lg bg-white w-[300px]">
+                <div
+                    class="emoji bg-[#ED5A2F] flex flex-col gap-3 justify-center items-center p-4 text-white rounded-t-lg ">
+                    <i class="fa-regular fa-face-frown text-8xl"></i>
+                    <p class="text-2xl">Ooops !</p>
+                </div>
 
-            <ul>
-                <li>The user name field is required.</li>
-                <li> The password field is required.</li>
-            </ul>
+                <div class="p-4 pb-0">
 
+                    <ul class="list-disc ml-4">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
 
-            {{-- </ul> --}}
+                </div>
+                <div class="flex justify-center items-center p-4 text-white ">
+                    <button class="bg-[#ED5A2F] rounded-full w-[90px] py-2 px-4 hover:scale-110 transition-all"
+                        id="okBTN">ok</button>
+                </div>
 
-            <button id="okBTN">Ok</button>
+            </div>
         </div>
-    </div>
-    {{-- @endif --}}
-    <script src="{{ asset('js/login.js') }}"></script>
+    @endif
+    <script src="{{ asset('js/login-signup/index.js') }}"></script>
 </body>
 
 </html>

@@ -8,6 +8,10 @@
     <title>Login</title>
     <link rel="shortcut icon" href="{{ asset('images/logo.png') }}">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ asset('js/login-signup/animation.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         :root {
             --primary-color: #03b3b0;
@@ -63,57 +67,10 @@
             font-size: 18px;
         }
 
-        .error {
-            color: red;
-            animation: FadeIn s;
-        }
-
-        @keyframes FadeIn {
-            from {
-                opacity: 0
-            }
-
-            ;
-
-            to {
-                opacity: 1
-            }
-        }
 
         @media only screen and (max-width: 640px) {
             .form {
                 width: 100%;
-            }
-        }
-
-        .errors {
-
-            animation: appear 0.5s ease-out;
-            background-color: rgba(0, 0, 0, 0.493)
-        }
-
-        @keyframes disappear {
-            0% {
-                opacity: 1;
-                transform: scale(1)
-            }
-
-            100% {
-                opacity: 0;
-                transform: scale(0.8)
-            }
-        }
-
-        @keyframes appear {
-            0% {
-                opacity: 0;
-                transform: scale(0.8)
-            }
-
-            100% {
-                opacity: 1;
-                transform: scale(1)
-
             }
         }
     </style>
@@ -131,23 +88,23 @@
 
                 {{-- Full name --}}
                 <div class="flex gap-3">
-                    <input type="text" placeholder="First Name" name="email" id="userNameORemail">
+                    <input type="text" placeholder="First Name" name="firstName"  @error('firstName') style="border: solid 1px red" @enderror>
 
-                    <input type="text" placeholder="First Name" name="email" id="userNameORemail">
+                    <input type="text" placeholder="First Name" name="lastName" @error('lastName') style="border: solid 1px red" @enderror>
 
                 </div>
 
                 {{-- email --}}
 
-                <input type="email" placeholder="Adress Email" name="email" id="email">
+                <input type="email" placeholder="Adress Email" name="email" id="email" @error('email') style="border: solid 1px red" @enderror>
                 <i class="fa-solid fa-eye"></i>
 
 
 
                 {{-- userName --}}
 
-                <input type="text" placeholder="Username" name="userName" id="userName">
-                <i class="fa-solid fa-eye"></i>
+                <input type="text" placeholder="Username" name="userName" id="userName" @error('userName') style="border: solid 1px red" @enderror>
+                <input type="date" placeholder="Birth Date" name="brithDay"  @error('brithDay') style="border: solid 1px red" @enderror>
 
 
 
@@ -158,7 +115,7 @@
 
                     <div>
 
-                        <input type="password" placeholder="password" name="password" id="password">
+                        <input type="password" placeholder="password" name="password" id="password" @error('password') style="border: solid 1px red" @enderror>
                         <i class="fa-solid fa-eye"></i>
 
 
@@ -169,7 +126,7 @@
 
                     <div>
 
-                        <input type="password" placeholder="confirm password" name="password" id="password">
+                        <input type="password" placeholder="confirm password" name="password" id="password" @error('password') style="border: solid 1px red" @enderror>
                         <i class="fa-solid fa-eye"></i>
 
 
@@ -199,28 +156,36 @@
             </div>
         </div>
     </div>
-    {{-- @if ($errors->any()) --}}
+    @if ($errors->any())
         <div class="errors h-[100vh] w-full flex justify-center items-center absolute top-0">
-            <div class=" bg-[#ED5A2F] flex flex-col rounded">
-                <h1>Please</h1>
-                {{-- <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach --}}
+            <div class="popup-errors flex flex-col rounded-lg bg-white w-[300px]">
+                <div
+                    class="emoji bg-[#ED5A2F] flex flex-col gap-3 justify-center items-center p-4 text-white rounded-t-lg ">
+                    <i class="fa-regular fa-face-frown text-8xl"></i>
+                    <p class="text-2xl">Ooops !</p>
+                </div>
 
-                    <ul>
-                    <li>The user name field is required.</li>
-                    <li> The password field is required.</li>
-                </ul>
+                <div class="p-4 pb-0">
 
+                    <ul class="list-disc ml-4">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
 
-                {{-- </ul> --}}
+                </div>
+                <div class="flex justify-center items-center p-4 text-white ">
+                    <button class="bg-[#ED5A2F] rounded-full w-[90px] py-2 px-4 hover:scale-110 transition-all"
+                        id="okBTN">ok</button>
+                </div>
 
-                <button id="okBTN">Ok</button>
             </div>
         </div>
-    {{-- @endif --}}
-    <script src="{{ asset('js/signup.js') }}"></script>
+
+
+    @endif
+
+    <script src="{{ asset('js/login-signup/index.js') }}"></script>
 </body>
 
 </html>
