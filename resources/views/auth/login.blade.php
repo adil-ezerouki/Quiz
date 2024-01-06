@@ -9,6 +9,9 @@
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ asset('js/login-signup/animation.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         :root {
             --primary-color: #03b3b0;
@@ -40,7 +43,7 @@
 
         .form form input {
             border: 1px solid #bfbfbf;
-            padding: 7px 20px;
+            padding: 7px 40px 7px 20px ;
             border-radius: 8px;
             width: 325px;
         }
@@ -55,13 +58,6 @@
 
         .oauth img {
             width: 30px;
-        }
-
-        form i {
-            position: absolute;
-            top: 373px;
-            right: 200px;
-            font-size: 18px;
         }
 
         @media only screen and (max-width: 640px) {
@@ -92,9 +88,11 @@
 
             <div class="oauth flex flex-col content-center items-center gap-3">
                 <div class="flex items-center content-center gap-3 ">
-                    <a href="#" class="bg-[#3A5897] w-[155px] text-white flex items-center justify-center px-4 py-2 rounded-lg gap-4"><img
-                             src="{{ asset('images/facebook.png') }}" alt="google icon"> Facebook</a>
-                    <a href="#" class=" w-[155px]  shadow-inner bg-[#dddddd] flex items-center justify-center px-4 py-2 rounded-lg gap-4"><img
+                    <a href="#"
+                        class="bg-[#3A5897] w-[155px] text-white flex items-center justify-center px-4 py-2 rounded-lg gap-4"><img
+                            src="{{ asset('images/facebook.png') }}" alt="google icon"> Facebook</a>
+                    <a href="#"
+                        class=" w-[155px]  shadow-inner bg-[#dddddd] flex items-center justify-center px-4 py-2 rounded-lg gap-4"><img
                             src="{{ asset('images/google.png') }}" alt="facebook icon">Google</a>
                 </div>
                 <p class="">or with : </p>
@@ -105,10 +103,11 @@
                 <input type="text" placeholder="email or username" name="" id="userNameORemail"
                     @error('email') style="border: solid 1px red" @enderror
                     @error('userName') style="border: solid 1px red" @enderror>
-                <div>
-                    <input type="password" placeholder="password" name="password" id="password"
+                <div class="relative">
+                    <input type="password"  class="password" placeholder="password" name="password" id="password"
                         @error('password') style="border: solid 1px red" @enderror>
-                    <i class="fa-solid fa-eye"></i>
+                    <i
+                        class="login-icon fa-solid  fa-eye absolute right-[17px] top-3 active:scale-110 transition-all duration-50"></i>
                 </div>
                 <button type="submit" class="bg-[#03b3b0] btn py-2 px-4 rounded-lg mt-3">login</button>
             </form>

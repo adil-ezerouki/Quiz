@@ -43,7 +43,7 @@
 
         .form form input {
             border: 1px solid #bfbfbf;
-            padding: 7px 20px;
+            padding: 7px 40px 7px 20px ;
             border-radius: 8px;
             width: 100%;
         }
@@ -61,29 +61,33 @@
         }
 
 
-        @media only screen and (max-width: 640px) {
+        @media only screen and (max-width: 900px) {
             .form {
                 width: 100%;
+            }
+
+            .signup {
+                display: none;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class=" w-full h-full flex">
-        <div class="form p-6 flex flex-col items-center gap-6">
+    <div class=" w-full h-full flex md:items-stretch items-center">
+        <div class="form p-6 flex flex-col items-center  gap-6">
             <div class="flex flex-col content-center items-center gap-2">
                 <img src="{{ asset('images/logo.png') }}" alt="" srcset="" class="w-[200px]">
                 <h2 class="text-[30px]">Sign Up to Quiz.com</h2>
                 <p>you can sign up with :</p>
             </div>
             <div class="oauth flex flex-col content-center items-center gap-3 w-full">
-                <div class="flex items-center justify-center gap-3 ">
+                <div class="flex items-center justify-center gap-3 w-full">
                     <a href="#"
-                        class="bg-[#3A5897] w-[220px] text-white flex items-center justify-center px-4 py-2 rounded-lg gap-4"><img
+                        class="bg-[#3A5897] md:w-[240px] w-full text-white flex items-center justify-center px-4 py-2 rounded-lg gap-4"><img
                             src="{{ asset('images/facebook.png') }}" alt="google icon"> Facebook</a>
                     <a href="#"
-                        class=" w-[220px]  shadow-inner bg-[#dddddd] flex items-center justify-center px-4 py-2 rounded-lg gap-4"><img
+                        class=" md:w-[240px] w-full  shadow-inner bg-[#dddddd] flex items-center justify-center px-4 py-2 rounded-lg gap-4"><img
                             src="{{ asset('images/google.png') }}" alt="facebook icon">Google</a>
                 </div>
                 <p class="">or with : </p>
@@ -126,11 +130,11 @@
 
                 <div class="flex gap-3">
 
-                    <div>
+                    <div class="relative">
 
-                        <input type="password" placeholder="password" name="password" id="password"
+                        <input type="password" class="password pass" placeholder="password" name="password"
                             @error('password') style="border: solid 1px red" @enderror>
-                        {{-- <i class="fa-solid fa-eye"></i> --}}
+                        <i class="register-icon fa-solid fa-eye absolute lg:left-[210px] left-[130px] top-3 active:scale-110 transition-all duration-50"></i>
 
 
 
@@ -138,10 +142,11 @@
 
                     {{-- confirm password --}}
 
-                    <div>
+                    <div class="relative">
 
-                        <input type="password" placeholder="confirm password" name="password" id="password"
+                        <input type="password"  class="password Cpass" placeholder="confirm password" name="password"
                             @error('password') style="border: solid 1px red" @enderror>
+                            <i class="register-icon fa-solid fa-eye absolute lg:left-[210px] left-[130px] top-3 active:scale-110 transition-all duration-50"></i>
 
 
 
@@ -153,7 +158,7 @@
                 <button type="submit" class="bg-[#03b3b0] btn py-2 px-4 rounded-lg mt-3 w-full">register</button>
             </form>
         </div>
-        <div class="signup sm:flex hidden  justify-center items-center">
+        <div class="signup  justify-center items-center">
             <div class=' flex flex-col content-center items-center w-full p-6 gap-9'>
                 <img class="w-[400px]" src="{{ asset('images/online-test.png') }}" alt="online-test-vector">
                 <h1 class="text-white text-[30px] text-center"> Unleash Your Knowledge, <span
