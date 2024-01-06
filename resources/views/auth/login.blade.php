@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
-    <link rel="shortcut icon" href="{{ asset('images/logo.png') }}">
+    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ asset('js/login-signup/animation.css') }}">
     <style>
@@ -54,7 +54,7 @@
         }
 
         .oauth img {
-            width: 50px;
+            width: 30px;
         }
 
         form i {
@@ -82,29 +82,36 @@
                 <a href="{{ route('signupView') }}" class=" bg-[#03b3b0] btn py-2 px-4 rounded-lg">register</a>
             </div>
         </div>
+
         <div class="form p-6 flex flex-col justify-center items-center gap-6">
             <div class="flex flex-col content-center items-center gap-2">
                 <img src="{{ asset('images/logo.png') }}" alt="" srcset="" class="w-[200px]">
                 <h2 class="text-[30px]">Sign In to Quiz.com</h2>
-                <p>Enter your email address and password below</p>
+                <p>you can sign in with :</p>
             </div>
+
+            <div class="oauth flex flex-col content-center items-center gap-3">
+                <div class="flex items-center content-center gap-3 ">
+                    <a href="#" class="bg-[#3A5897] w-[155px] text-white flex items-center justify-center px-4 py-2 rounded-lg gap-4"><img
+                             src="{{ asset('images/facebook.png') }}" alt="google icon"> Facebook</a>
+                    <a href="#" class=" w-[155px]  shadow-inner bg-[#dddddd] flex items-center justify-center px-4 py-2 rounded-lg gap-4"><img
+                            src="{{ asset('images/google.png') }}" alt="facebook icon">Google</a>
+                </div>
+                <p class="">or with : </p>
+            </div>
+
             <form action="{{ route('loginProcessing') }}" method="post" class="flex flex-col gap-3">
                 @csrf
-                <input type="text" placeholder="email or username" name="" id="userNameORemail" @error('email') style="border: solid 1px red" @enderror @error('userName') style="border: solid 1px red" @enderror>
+                <input type="text" placeholder="email or username" name="" id="userNameORemail"
+                    @error('email') style="border: solid 1px red" @enderror
+                    @error('userName') style="border: solid 1px red" @enderror>
                 <div>
-                    <input type="password" placeholder="password" name="password" id="password" @error('password') style="border: solid 1px red" @enderror>
+                    <input type="password" placeholder="password" name="password" id="password"
+                        @error('password') style="border: solid 1px red" @enderror>
                     <i class="fa-solid fa-eye"></i>
                 </div>
                 <button type="submit" class="bg-[#03b3b0] btn py-2 px-4 rounded-lg mt-3">login</button>
             </form>
-            <div class="oauth flex flex-col content-center items-center gap-3">
-                <p class="">or you can sign in with : </p>
-                <div class="flex content-center gap-3">
-                    <a href="#"><img src="{{ asset('images/google.png') }}" alt="google icon"></a>
-                    <span class="self-center">Or</span>
-                    <a href="#"><img src="{{ asset('images/facebook.png') }}" alt="facebook icon"></a>
-                </div>
-            </div>
         </div>
     </div>
     @if ($errors->any())

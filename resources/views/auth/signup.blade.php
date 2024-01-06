@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login</title>
-    <link rel="shortcut icon" href="{{ asset('images/logo.png') }}">
+    <title>register</title>
+    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ asset('js/login-signup/animation.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -57,14 +57,7 @@
         }
 
         .oauth img {
-            width: 50px;
-        }
-
-        form i {
-            position: absolute;
-            top: 373px;
-            right: 200px;
-            font-size: 18px;
+            width: 30px;
         }
 
 
@@ -77,34 +70,54 @@
 </head>
 
 <body>
-    <div class="h-full w-full flex">
-        <div class="form p-6 flex flex-col justify-center items-center gap-6">
+    <div class=" w-full h-full flex">
+        <div class="form p-6 flex flex-col items-center gap-6">
             <div class="flex flex-col content-center items-center gap-2">
                 <img src="{{ asset('images/logo.png') }}" alt="" srcset="" class="w-[200px]">
                 <h2 class="text-[30px]">Sign Up to Quiz.com</h2>
+                <p>you can sign up with :</p>
+            </div>
+            <div class="oauth flex flex-col content-center items-center gap-3 w-full">
+                <div class="flex items-center justify-center gap-3 ">
+                    <a href="#"
+                        class="bg-[#3A5897] w-[220px] text-white flex items-center justify-center px-4 py-2 rounded-lg gap-4"><img
+                            src="{{ asset('images/facebook.png') }}" alt="google icon"> Facebook</a>
+                    <a href="#"
+                        class=" w-[220px]  shadow-inner bg-[#dddddd] flex items-center justify-center px-4 py-2 rounded-lg gap-4"><img
+                            src="{{ asset('images/google.png') }}" alt="facebook icon">Google</a>
+                </div>
+                <p class="">or with : </p>
             </div>
             <form action="{{ route('signupProcessing') }}" method="post" class="flex flex-col items-center gap-3">
                 @csrf
 
                 {{-- Full name --}}
                 <div class="flex gap-3">
-                    <input type="text" placeholder="First Name" name="firstName"  @error('firstName') style="border: solid 1px red" @enderror>
+                    <input type="text" placeholder="First Name" name="firstName"
+                        @error('firstName') style="border: solid 1px red" @enderror>
 
-                    <input type="text" placeholder="First Name" name="lastName" @error('lastName') style="border: solid 1px red" @enderror>
+                    <input type="text" placeholder="First Name" name="lastName"
+                        @error('lastName') style="border: solid 1px red" @enderror>
 
                 </div>
 
                 {{-- email --}}
 
-                <input type="email" placeholder="Adress Email" name="email" id="email" @error('email') style="border: solid 1px red" @enderror>
-                <i class="fa-solid fa-eye"></i>
+                <input type="email" placeholder="Adress Email" name="email" id="email"
+                    @error('email') style="border: solid 1px red" @enderror>
 
 
 
                 {{-- userName --}}
 
-                <input type="text" placeholder="Username" name="userName" id="userName" @error('userName') style="border: solid 1px red" @enderror>
-                <input type="date" placeholder="Birth Date" name="birthDay"  @error('birthDay') style="border: solid 1px red" @enderror>
+                <div class="flex gap-3 w-full">
+
+                    <input type="text" placeholder="Username" name="userName" id="userName"
+                        @error('userName') style="border: solid 1px red" @enderror>
+                    <input type="date" placeholder="Birth Date" name="birthDay"
+                        @error('birthDay') style="border: solid 1px red" @enderror>
+
+                </div>
 
 
 
@@ -115,8 +128,9 @@
 
                     <div>
 
-                        <input type="password" placeholder="password" name="password" id="password" @error('password') style="border: solid 1px red" @enderror>
-                        <i class="fa-solid fa-eye"></i>
+                        <input type="password" placeholder="password" name="password" id="password"
+                            @error('password') style="border: solid 1px red" @enderror>
+                        {{-- <i class="fa-solid fa-eye"></i> --}}
 
 
 
@@ -126,8 +140,8 @@
 
                     <div>
 
-                        <input type="password" placeholder="confirm password" name="password" id="password" @error('password') style="border: solid 1px red" @enderror>
-                        <i class="fa-solid fa-eye"></i>
+                        <input type="password" placeholder="confirm password" name="password" id="password"
+                            @error('password') style="border: solid 1px red" @enderror>
 
 
 
@@ -138,14 +152,6 @@
 
                 <button type="submit" class="bg-[#03b3b0] btn py-2 px-4 rounded-lg mt-3 w-full">register</button>
             </form>
-            <div class="oauth flex flex-col content-center items-center gap-3">
-                <p class="">or you can sign up with : </p>
-                <div class="flex content-center gap-3">
-                    <a href="#"><img src="{{ asset('images/google.png') }}" alt="google icon"></a>
-                    <span class="self-center">Or</span>
-                    <a href="#"><img src="{{ asset('images/facebook.png') }}" alt="facebook icon"></a>
-                </div>
-            </div>
         </div>
         <div class="signup sm:flex hidden  justify-center items-center">
             <div class=' flex flex-col content-center items-center w-full p-6 gap-9'>
