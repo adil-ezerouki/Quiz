@@ -33,7 +33,7 @@ class LoginController extends Controller
 
 
         if (Auth::attempt($validatedCredentials)) {
-            return 'good';
+            return redirect(route('getDashboard'));
         } else {
             return 'no';
         }

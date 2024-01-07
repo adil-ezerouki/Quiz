@@ -43,7 +43,7 @@
 
         .form form input {
             border: 1px solid #bfbfbf;
-            padding: 7px 40px 7px 20px ;
+            padding: 7px 40px 7px 20px;
             border-radius: 8px;
             width: 100%;
         }
@@ -134,7 +134,8 @@
 
                         <input type="password" class="password pass" placeholder="password" name="password"
                             @error('password') style="border: solid 1px red" @enderror>
-                        <i class="register-icon fa-solid fa-eye absolute lg:left-[210px] left-[130px] top-3 active:scale-110 transition-all duration-50"></i>
+                        <i
+                            class="register-icon fa-solid fa-eye absolute lg:left-[210px] left-[130px] top-3 active:scale-110 transition-all duration-50"></i>
 
 
 
@@ -144,9 +145,10 @@
 
                     <div class="relative">
 
-                        <input type="password"  class="password Cpass" placeholder="confirm password" name="password"
+                        <input type="password" class="password Cpass" placeholder="confirm password" name="password"
                             @error('password') style="border: solid 1px red" @enderror>
-                            <i class="register-icon fa-solid fa-eye absolute lg:left-[210px] left-[130px] top-3 active:scale-110 transition-all duration-50"></i>
+                        <i
+                            class="register-icon fa-solid fa-eye absolute lg:left-[210px] left-[130px] top-3 active:scale-110 transition-all duration-50"></i>
 
 
 
