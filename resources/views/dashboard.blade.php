@@ -8,4 +8,9 @@
 </div>
 
 <a href="{{route('logout')}}">logout</a>
+
+<x-alert-error>
+    hhhhhh
+</x-alert-error>
+
 @endsection

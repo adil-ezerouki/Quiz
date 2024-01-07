@@ -43,7 +43,7 @@
 
         .form form input:not(input[type='checkbox']) {
             border: 1px solid #bfbfbf;
-            padding: 7px 40px 7px 20px ;
+            padding: 7px 40px 7px 20px;
             border-radius: 8px;
             width: 325px;
         }
@@ -100,11 +100,12 @@
 
             <form action="{{ route('loginProcessing') }}" method="post" class="flex flex-col gap-3">
                 @csrf
-                <input type="email" placeholder="email or username" name="email" value="{{ old('email') }}" class="credetials" id="userNameORemail"
-                    @error('email') style="border: solid 1px red" @enderror
+                <input type="email" placeholder="email or username" name="email" value="{{ old('email') }}"
+                    class="credetials" id="userNameORemail" @error('email') style="border: solid 1px red" @enderror
                     @error('userName') style="border: solid 1px red" @enderror>
                 <div class="relative">
-                    <input type="password"  class="password credetials" placeholder="password" value="{{ old('password') }}"  name="password" id="password"
+                    <input type="password" class="password credetials" placeholder="password"
+                        value="{{ old('password') }}" name="password" id="password"
                         @error('password') style="border: solid 1px red" @enderror>
                     <i
                         class="login-icon fa-solid  fa-eye absolute right-[17px] top-3 active:scale-110 transition-all duration-50"></i>
@@ -119,83 +120,35 @@
         </div>
     </div>
     @if ($errors->any())
-        <div class="errors h-[100vh] w-full flex justify-center items-center absolute top-0">
-            <div class="popup-errors flex flex-col rounded-lg bg-white w-[300px]">
-                <div
-                    class="emoji bg-[#ED5A2F] flex flex-col gap-3 justify-center items-center p-4 text-white rounded-t-lg ">
-                    <i class="fa-regular fa-face-frown text-8xl"></i>
-                    <p class="text-2xl">Ooops !</p>
-                </div>
 
-                <div class="p-4 pb-0">
+        <x-alert-error>
+            <ul class="list-disc ml-4">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </x-alert-error>
 
-                    <ul class="list-disc ml-4">
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-
-                </div>
-                <div class="flex justify-center items-center p-4 text-white ">
-                    <button class="bg-[#ED5A2F] rounded-full w-[90px] py-2 px-4 hover:scale-110 transition-all"
-                        id="okBTN">ok</button>
-                </div>
-
-            </div>
-        </div>
     @endif
 
     @if (session('login_msg'))
-    <div class="errors h-[100vh] w-full flex justify-center items-center absolute top-0">
-        <div class="popup-errors flex flex-col rounded-lg bg-white w-[300px]">
-            <div
-                class="emoji bg-[#ED5A2F] flex flex-col gap-3 justify-center items-center p-4 text-white rounded-t-lg ">
-                <i class="fa-regular fa-face-frown text-8xl"></i>
-                <p class="text-2xl">Ooops !</p>
-            </div>
-
-            <div class="p-4 pb-0">
-
-                <P class="text-center">
-                    {{ session('login_msg') }}
-                </P>
-
-            </div>
-            <div class="flex justify-center items-center p-4 text-white ">
-                <button class="bg-[#ED5A2F] rounded-full w-[90px] py-2 px-4 hover:scale-110 transition-all"
-                    id="okBTN">ok</button>
-            </div>
-
-        </div>
-    </div>
-@endif
+        <x-alert-error>
+            <P class="text-center">
+                {{ session('login_msg') }}
+            </P>
+        </x-alert-error>
+    @endif
 
     @if (session('wrongCredeMsg'))
-    <div class="errors h-[100vh] w-full flex justify-center items-center absolute top-0">
-        <div class="popup-errors flex flex-col rounded-lg bg-white">
-            <div
-                class="emoji bg-[#ED5A2F] flex flex-col gap-3 justify-center items-center p-4 text-white rounded-t-lg ">
-                <i class="fa-regular fa-face-frown text-8xl"></i>
-                <p class="text-2xl">Ooops !</p>
-            </div>
-
-            <div class="p-4 pb-0">
-
-                <P class="text-center">
-                    {{ session('wrongCredeMsg') }}
-                </P>
-
-            </div>
-            <div class="flex justify-center items-center p-4 text-white ">
-                <button class="bg-[#ED5A2F] rounded-full w-[90px] py-2 px-4 hover:scale-110 transition-all"
-                    id="okBTN">ok</button>
-            </div>
-
-        </div>
-    </div>
-@endif
+        <x-alert-error>
+            <P class="text-center">
+                {{ session('wrongCredeMsg') }}
+            </P>
+        </x-alert-error>
+    @endif
 
     <script src="{{ asset('js/login-signup/index.js') }}"></script>
+    <script src="{{ asset('js/errAlert/errAlert.js') }}"></script>
 </body>
 
 </html>
