@@ -41,7 +41,7 @@
 
         .form form label {}
 
-        .form form input {
+        .form form input:not(input[type='checkbox']) {
             border: 1px solid #bfbfbf;
             padding: 7px 40px 7px 20px ;
             border-radius: 8px;
@@ -100,14 +100,19 @@
 
             <form action="{{ route('loginProcessing') }}" method="post" class="flex flex-col gap-3">
                 @csrf
-                <input type="text" placeholder="email or username" name="" id="userNameORemail"
+                <input type="email" placeholder="email or username" name="email" class="credetials" id="userNameORemail"
                     @error('email') style="border: solid 1px red" @enderror
                     @error('userName') style="border: solid 1px red" @enderror>
                 <div class="relative">
-                    <input type="password"  class="password" placeholder="password" name="password" id="password"
+                    <input type="password"  class="password credetials" placeholder="password"  name="password" id="password"
                         @error('password') style="border: solid 1px red" @enderror>
                     <i
                         class="login-icon fa-solid  fa-eye absolute right-[17px] top-3 active:scale-110 transition-all duration-50"></i>
+                </div>
+
+                <div class="flex gap-3 items-center">
+                    <input class="" type="checkbox" name="" id="rememberMe">
+                    <span>remember me</span>
                 </div>
                 <button type="submit" class="bg-[#03b3b0] btn py-2 px-4 rounded-lg mt-3">login</button>
             </form>

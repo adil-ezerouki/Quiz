@@ -58,6 +58,8 @@ show_hide_text_register ?
 // for login page
 
 const userNameORemail = document.getElementById('userNameORemail');
+const rememberMe = document.getElementById('rememberMe')
+const credetials = Array.from(document.querySelectorAll(' .credetials'))
 
 userNameORemail ? userNameORemail.addEventListener("input", (e) => {
     let inputData = userNameORemail.value;
@@ -77,6 +79,46 @@ show_hide_text_login ?
         isDisplayed ? tragetedInput.type = 'text' : tragetedInput.type = "password"
     }) : ""
 
+
+rememberMe.addEventListener('change', (event) => {
+    credetials.forEach((input) => {
+        if (input.value != '' || !event.target.checked ) {
+            if (event.target.checked) {
+                let credetialsData = {
+                    "email": credetials[0].value,
+                    "password": credetials[1].value
+                }
+
+                localStorage.setItem('credetials', JSON.stringify(credetialsData))
+
+            } else {
+                localStorage.removeItem('credetials')
+            }
+        } else {
+            alert('enter your credetials first !')
+            event.target.checked = false
+        }
+    })
+
+})
+
+rememberMe.checked = localStorage.getItem('credetials') ? true : false;
+
+credetials.forEach((input) => {
+    let credetialsDataFromLocal = JSON.parse(localStorage.getItem('credetials'))
+
+    if (credetialsDataFromLocal) {
+
+        if (input.type == 'email') {
+            input.value = credetialsDataFromLocal.email;
+        }
+
+        if (input.type == 'password') {
+            input.value = credetialsDataFromLocal.password;
+        }
+
+    }
+})
 
 
 
