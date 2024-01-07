@@ -88,10 +88,10 @@
 
             <div class="oauth flex flex-col content-center items-center gap-3">
                 <div class="flex items-center content-center gap-3 ">
-                    <a href="#"
+                    <a href="{{route('redirectToFacebook')}}"
                         class="bg-[#3A5897] w-[155px] text-white flex items-center justify-center px-4 py-2 rounded-lg gap-4"><img
                             src="{{ asset('images/facebook.png') }}" alt="google icon"> Facebook</a>
-                    <a href="#"
+                    <a href="{{route('redirectToGoogle')}}"
                         class=" w-[155px]  shadow-inner bg-[#dddddd] flex items-center justify-center px-4 py-2 rounded-lg gap-4"><img
                             src="{{ asset('images/google.png') }}" alt="facebook icon">Google</a>
                 </div>
