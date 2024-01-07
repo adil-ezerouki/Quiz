@@ -30,4 +30,5 @@ Route::post('signup', [SignupController::class, 'signUpProcessing'])->name('sign
 
 Route::middleware('auth')->group(function () {
     Route::get('dashboard', [DashboardController::class, 'getDashboard'])->name('getDashboard');
+    Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 });
