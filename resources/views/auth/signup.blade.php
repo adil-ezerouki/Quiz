@@ -97,17 +97,17 @@
 
                 {{-- Full name --}}
                 <div class="flex gap-3">
-                    <input type="text" placeholder="First Name" name="firstName"
+                    <input type="text" placeholder="First Name" name="firstName" value="Adil"
                         @error('firstName') style="border: solid 1px red" @enderror>
 
-                    <input type="text" placeholder="First Name" name="lastName"
+                    <input type="text" placeholder="First Name" name="lastName" value="Ez"
                         @error('lastName') style="border: solid 1px red" @enderror>
 
                 </div>
 
                 {{-- email --}}
 
-                <input type="email" placeholder="Adress Email" name="email" id="email"
+                <input type="email" placeholder="Adress Email" name="email" id="email" value="adil@gmail.com"
                     @error('email') style="border: solid 1px red" @enderror>
 
 
@@ -116,9 +116,9 @@
 
                 <div class="flex gap-3 w-full">
 
-                    <input type="text" placeholder="Username" name="userName" id="userName"
+                    <input type="text" placeholder="Username" name="userName" id="userName" value="Adil_Ez"
                         @error('userName') style="border: solid 1px red" @enderror>
-                    <input type="date" placeholder="Birth Date" name="birthDay"
+                    <input type="date" placeholder="Birth Date" name="birthDay" value="09/02/2024"
                         @error('birthDay') style="border: solid 1px red" @enderror>
 
                 </div>
@@ -132,7 +132,7 @@
 
                     <div class="relative">
 
-                        <input type="password" class="password pass" placeholder="password" name="password"
+                        <input type="password" class="password pass" placeholder="password" name="password" value="12345678"
                             @error('password') style="border: solid 1px red" @enderror>
                         <i
                             class="register-icon fa-solid fa-eye absolute lg:left-[210px] left-[130px] top-3 active:scale-110 transition-all duration-50"></i>
@@ -145,7 +145,7 @@
 
                     <div class="relative">
 
-                        <input type="password" class="password Cpass" placeholder="confirm password" name="password"
+                        <input type="password" class="password Cpass" placeholder="confirm password" name="password" value="12345678"
                             @error('password') style="border: solid 1px red" @enderror>
                         <i
                             class="register-icon fa-solid fa-eye absolute lg:left-[210px] left-[130px] top-3 active:scale-110 transition-all duration-50"></i>

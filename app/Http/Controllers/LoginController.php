@@ -54,6 +54,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($validatedCredentials)) {
             $isEmailvalid =  $isPassvalid = true;
+            Session::flash('welcoming_message', 'welcome mr ' . Auth::user()["firstName"] . " !");
             return redirect(route('getDashboard'));
         } else {
 

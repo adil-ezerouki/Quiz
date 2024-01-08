@@ -39,7 +39,7 @@ class OauthController extends Controller
                 $newUser->email = $user->getEmail();
                 $newUser->userName = 'Adil Ez';
                 $newUser->birthDay = 'hh';
-                $newUser->password = '1231';
+                $newUser->password = Hash::make('12345678');
                 $newUser->social_id = $user->id;
                 $newUser->social_type = 'google';
 

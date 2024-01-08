@@ -1,0 +1,51 @@
+/* Dashboard */
+
+@keyframes closeSideBar {
+    from {
+        width: 18%;
+    }
+
+    to {
+        width: 73px;
+    }
+}
+
+@keyframes openSideBar {
+    from {
+        width: 73px;
+    }
+
+    to {
+        width:  18%;
+    }
+}
+
+
+
+/* @keyframes displayLinks {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes hideLinks {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 0;
+    }
+} */

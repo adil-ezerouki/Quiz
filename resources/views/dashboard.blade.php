@@ -1,16 +1,18 @@
 @extends('layouts.app')
 
-@section('title','dashboard')
+@section('title', 'dashboard')
 
 @section('content')
-<div>
-    welcome here in dashboard
-</div>
+    <div>
+        welcome here in dashboard
+    </div>
 
-<a href="{{route('logout')}}">logout</a>
+    @if (session('welcoming_message'))
+        <x-alert-error>
 
-<x-alert-error>
-    hhhhhh
-</x-alert-error>
+            {{ session('welcoming_message') }}
+
+        </x-alert-error>
+    @endif
 
 @endsection

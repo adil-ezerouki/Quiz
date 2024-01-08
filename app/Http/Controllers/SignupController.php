@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class SignupController extends Controller
 {
@@ -35,6 +36,13 @@ class SignupController extends Controller
 
 
         $newUser->save();
+
+
+
+        Auth::login($newUser);
+
+        Session::flash('welcoming message', 'welcome mr '.Auth::user()["firstName"] . " !");
+        return redirect(route('getDashboard'));
 
     }
 }

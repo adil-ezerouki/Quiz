@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OauthController;
 use App\Http\Controllers\SignupController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,3 +42,9 @@ Route::get('auth/google/callback',[OauthController::class, 'handleGoogleCallback
 
 Route::get('auth/facebook',[OauthController::class, 'redirectToFacebook'])->name('redirectToFacebook');
 Route::get('auth/facebook/callback',[OauthController::class, 'handleFacebookCallback'])->name('handleFacebookCallback');
+
+
+Route::get('test', function () {
+    $user = Auth::user();
+    return ;
+});
