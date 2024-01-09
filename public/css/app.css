@@ -10,31 +10,6 @@ body {
     font-family: 'Tektur', sans-serif;
 }
 
-
-
-
-/* Dashboard */
-
-@keyframes closeSideBar {
-    from {
-        width: 20%;
-    }
-
-    to {
-        width: 73px;
-    }
-}
-
-@keyframes openSideBar {
-    from {
-        width: 73px;
-    }
-
-    to {
-        width: 20%;
-    }
-}
-
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -52,6 +27,31 @@ body {
 
     to {
         opacity: 0;
+    }
+}
+
+
+
+
+/* Dashboard */
+
+@keyframes closeSideBar {
+    from {
+        width: 280px;
+    }
+
+    to {
+        width: 73px;
+    }
+}
+
+@keyframes openSideBar {
+    from {
+        width: 73px;
+    }
+
+    to {
+        width: 280px;
     }
 }
 
@@ -75,6 +75,34 @@ body {
         width: 56px;
     }
 }
+
+/* navbar */
+
+@keyframes resultDivShrink {
+    from {
+        height: 358px;
+        opacity: 1;
+    }
+
+    to {
+        height: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes resultDivEnlarge {
+    from {
+        height: 0;
+        opacity: 0;
+    }
+
+    to {
+        height: 358px;
+        opacity: 1;
+    }
+}
+
+
 
 
 

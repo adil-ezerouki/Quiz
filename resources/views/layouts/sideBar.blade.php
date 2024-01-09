@@ -1,4 +1,4 @@
-<div class="sideBar flex flex-col gap-7  relative bg-white shadow-xl h-full p-2 w-[20%]">
+<div class="sideBar flex flex-col gap-7  relative bg-white shadow-xl h-full p-2 w-[280px]">
     <i
         class="fa-solid fa-xmark absolute top-2 right-[-13px]  text-center bg-black text-white rounded-full p-2 w-[28px] text-[12px] active:scale-105 transition-all cursor-pointer"></i>
     <div class="logo flex pt-4 items-center gap-5">
@@ -27,7 +27,7 @@
     </div>
 
     <div class=" flex justify-center">
-        <x-button background="bg-[#EF592E]" text="text-white">
+        <x-button background="bg-[#EF592E]" text="text-white" width=''>
             <div class="flex gap-3 justify-center">
                 <span>create</span>
                 <i class="fa-solid fa-plus self-center"></i>

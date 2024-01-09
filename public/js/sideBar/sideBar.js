@@ -18,7 +18,7 @@ openOrClose.addEventListener('click', (e) => {
     sideBar.style.animation = `${isOpen ? 'openSideBar' : "closeSideBar"} 0.5s`;
 
     // sideBar.style.width = isOpen ? '' : '80px';
-    sideBar.style.width = isOpen ? '20%' : '73px';
+    sideBar.style.width = isOpen ? '280px' : '73px';
 
     Links.forEach(link => {
         link.style.display = `${ isOpen ? 'inline' : "none" }`
