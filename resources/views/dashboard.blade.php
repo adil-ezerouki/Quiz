@@ -7,12 +7,4 @@
         welcome here in dashboard
     </div>
 
-    @if (session('welcoming_message'))
-        <x-alert-error>
-
-            {{ session('welcoming_message') }}
-
-        </x-alert-error>
-    @endif
-
 @endsection

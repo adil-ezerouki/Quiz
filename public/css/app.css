@@ -1,8 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@300&family=Noto+Sans:ital,wght@0,400;0,700;1,300&family=Roboto&family=Rubik&family=Tektur:wght@600&display=swap');
+
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-family: 'Kanit', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Rubik', sans-serif;
+    font-family: 'Tektur', sans-serif;
+}
+
+
+
+
 /* Dashboard */
 
 @keyframes closeSideBar {
     from {
-        width: 18%;
+        width: 20%;
     }
 
     to {
@@ -16,9 +31,51 @@
     }
 
     to {
-        width:  18%;
+        width: 20%;
     }
 }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+
+@keyframes imgShrink {
+    from {
+        width: 56px;
+    }
+
+    to {
+        width: 37.17px;
+    }
+}
+
+@keyframes imgEnlarge {
+    from {
+        width: 37.17px;
+    }
+
+    to {
+        width: 56px;
+    }
+}
+
 
 
 

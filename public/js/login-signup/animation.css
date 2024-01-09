@@ -1,4 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@300&family=Noto+Sans:ital,wght@0,400;0,700;1,300&family=Roboto&family=Rubik&family=Tektur:wght@600&display=swap');
+
+
+
+
 body {
+    font-family: 'Inter', sans-serif;
+    font-family: 'Kanit', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Rubik', sans-serif;
+    font-family: 'Tektur', sans-serif;
     animation: apppearErrDiv 0.5s ease-out;
 }
 

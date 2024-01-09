@@ -1,4 +1,4 @@
-<div class="sideBar flex flex-col  justify-between  relative bg-slate-700 text-white h-full p-2 w-[20%]">
+<div class="sideBar flex flex-col gap-7  relative bg-white shadow-xl h-full p-2 w-[20%]">
     <i
         class="fa-solid fa-xmark absolute top-2 right-[-13px]  text-center bg-black text-white rounded-full p-2 w-[28px] text-[12px] active:scale-105 transition-all cursor-pointer"></i>
     <div class="logo flex pt-4 items-center gap-5">
@@ -6,66 +6,87 @@
         <p class="websiteName text-3xl">Quiz.com</p>
 
     </div>
+
+    <div class=" p-2  flex gap-16 rounded-lg ">
+        <div class="flex gap-4">
+            <img src="{{ asset('images/profilePic.png') }}" id="profilePic" class=" w-14 h-14 object-cover rounded-lg" alt="Profile Pic"
+                srcset="">
+            <div class=" text-lg flex flex-col justify-center text-center ">
+
+                <div class="name flex gap-2">
+                    <span>Adil</span>
+                    <span>Ezerouki</span>
+                </div>
+
+                <div class="role text-[14px] bg-slate-300 rounded">
+                    <span>Teacher</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class=" flex justify-center">
+        <x-button background="bg-[#EF592E]" text="text-white">
+            <div class="flex gap-3 justify-center">
+                <span>create</span>
+                <i class="fa-solid fa-plus self-center"></i>
+            </div>
+        </x-button>
+    </div>
+
+
     <nav class="w-full flex flex-col gap-10">
         <ul class="flex flex-col gap-5 w-full text-lg">
-            <li class="w-full flex flex-col gap-4 p-2 pl-2 hover:bg-slate-500 rounded-lg transition-all">
+            <li class="w-full flex flex-col gap-4 p-2 pl-2 hover:bg-slate-300 rounded-lg transition-all">
 
                 <a href="#" class="flex gap-7  link">
                     <i class="fa-solid fa-house self-center text-2xl"></i>
-                    <span>Dashboard</span>
+                    <span class="self-center">Dashboard</span>
                 </a>
 
             </li>
 
-            <li class="w-full flex flex-col gap-4 p-2 pl-2 hover:bg-slate-500 rounded-lg transition-all">
+            <li class="w-full flex flex-col gap-4 p-2 pl-2 hover:bg-slate-300 rounded-lg transition-all">
 
                 <a href="#" class="flex gap-7 link">
-                    <i class="fa-solid fa-house self-center text-2xl"></i>
-                    <span>Porfile</span>
+                    <i class="fa-solid fa-user self-center text-2xl"></i>
+                    <span class="self-center">Porfile</span>
                 </a>
 
             </li>
 
-            <li class="w-full flex flex-col gap-4 p-2 pl-2 hover:bg-slate-500 rounded-lg transition-all">
+            <li class="w-full flex flex-col gap-4 p-2 pl-2 hover:bg-slate-300 rounded-lg transition-all">
 
                 <a href="#" class="flex gap-7 link">
-                    <i class="fa-solid fa-house self-center text-2xl"></i>
-                    <span>Dashboard</span>
+                    <i class="fa-solid fa-gear self-center text-2xl"></i>
+                    <span class="self-center">Settings</span>
                 </a>
 
             </li>
 
-            <li class="w-full flex flex-col gap-4 p-2 pl-2 hover:bg-slate-500 rounded-lg transition-all">
+            <li class="w-full flex flex-col gap-4 p-2 pl-2 hover:bg-slate-300 rounded-lg transition-all">
 
                 <a href="#" class="flex gap-7 link">
-                    <i class="fa-solid fa-house self-center text-2xl"></i>
-                    <span>Dashboard</span>
+                    <i class="fa-solid fa-sun self-center text-2xl"></i>
+                    <span class="self-center flex gap-1">
+                        <span>Light</span>
+                        {{-- <span>Mode</span> --}}
+                    </span>
                 </a>
-
             </li>
 
-            <li class="w-full flex flex-col gap-4 p-2 pl-2 hover:bg-slate-500 rounded-lg transition-all">
+            <li class="w-full flex flex-col gap-4 p-2 pl-2 hover:bg-slate-300 rounded-lg transition-all">
 
-                <a href="#" class="flex gap-7 link">
-                    <i class="fa-solid fa-house self-center text-2xl"></i>
-                    <span>Dashboard</span>
+                <a href="{{ route('logout') }}" class="flex gap-7 link">
+                    <i class="fa-solid fa-right-from-bracket self-center text-2xl"></i>
+                    <span class="self-center">Logout</span>
                 </a>
+
             </li>
 
         </ul>
     </nav>
-    <div class=" p-2 mb-4  flex gap-16 bg-slate-500 rounded-lg ">
-        <div class="flex gap-6">
-            <img src="{{ asset('images/profilePic.png') }}" class="w-12 object-cover rounded-xl" alt="Profile Pic"
-                srcset="">
-            <div class="name flex flex-col ">
-                <span>Adil</span>
-                <span>Ezerouki</span>
-            </div>
-        </div>
-        <span class="self-center">  <a href="{{ route('logout') }}"><i class="fa-solid fa-right-from-bracket text-2xl"></a></i>
-        </span>
-    </div>
 </div>
 
-<script src="{{ asset('js/dashboard/dashboard.js') }}"></script>
+<script src="{{ asset('js/sideBar/sideBar.js') }}"></script>

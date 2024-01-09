@@ -23,13 +23,23 @@
         @include('layouts.sideBar')
 
 
-        <div>
-
+        <div class="flex flex-col w-full">
             @include('layouts.header')
-            @yield('content')
+
+            <div class="bg-[#F2F2F2] h-full">
+                @yield('content')
+            </div>
         </div>
 
     </div>
+
+    @if (session('welcoming_message'))
+        <x-alert-error>
+
+            {{ session('welcoming_message') }}
+
+        </x-alert-error>
+    @endif
 
     <script src="{{ asset('js/errAlert/errAlert.js') }}"></script>
 </body>
