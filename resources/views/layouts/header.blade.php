@@ -13,11 +13,17 @@
             </select>
         </div>
 
-        <div class="results absolute bg-slate-600 top-[47px] w-full p-7 rounded-b" style="display: none">
+        <div class="results absolute bg-slate-300 top-[47px] w-full h-[358px] p-7 rounded-b flex justify-center items-center"
+            style="display: none">
 
-            <div class="flex flex-col  justify-center items-center gap-2">
+            <div searchPic class="beforeSearchDiv flex flex-col  justify-center items-center gap-6">
                 <img class="w-[400px]" src="{{ asset('images/beforeSearch.png') }}" alt="">
-                <p class="text-2xl">make your search !</p>
+                <p class="text-2xl text-[#425885]">Make Your Search !</p>
+            </div>
+
+            <div searchPic class="NothingFound flex flex-col  justify-center items-center gap-6" style="display: none">
+                <img class="w-[340px]" src="{{ asset('images/notFound.png') }}" alt="">
+                <p class="text-2xl text-[#425885]">No Result Found !</p>
             </div>
         </div>
     </div>
@@ -27,6 +33,11 @@
         <x-button background="bg-[#05B2B0]" text="text-white" width="w-full">
             <span class="">Enter Code</span>
         </x-button>
+
+        <div class="roomDiv absolute bg-slate-300 top-[47px] w-full h-[358px] p-7 rounded-b flex justify-center items-center"
+            style="display: none">
+
+        </div>
     </div>
 
     <div class="">
