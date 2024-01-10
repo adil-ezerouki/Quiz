@@ -71,9 +71,27 @@ enterCodebtn.addEventListener('click', () => {
     console.log(roomDivIsOpen)
 })
 
-// enterCodeInput.removeEventListener('click',()=> {
-//     console.log('dnadmfnmdf')
-// });
 
+
+// notificationIcon
+
+const notificationIcon = document.getElementById('notificationIcon')
+const notificationDiv = document.getElementById('notificationDiv')
+let notifiDivIsOpen = false;
+
+
+
+notificationIcon.addEventListener('click',()=> {
+
+    notifiDivIsOpen = !notifiDivIsOpen
+
+    notificationIcon.className = `${ notifiDivIsOpen ? 'bg-slate-400 text-white' : 'bg-slate-200 text-black' } fa-regular fa-bell flex justify-center items-center text-2xl rounded-full w-12 h-12 cursor-pointer`
+
+    notificationDiv.style.animation = `${notifiDivIsOpen ? 'notifiDivEnlarge' : 'notifiDivShrink'} 1s`;
+    setTimeout(() => {
+        notificationDiv.style.display = notifiDivIsOpen ? 'flex' : 'none';
+    }, 200);
+
+})
 
 

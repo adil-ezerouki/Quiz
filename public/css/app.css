@@ -140,6 +140,32 @@ body {
 
 
 
+@keyframes notifiDivShrink {
+    from {
+        height: 394px;
+        opacity: 1;
+    }
+
+    to {
+        height: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes notifiDivEnlarge {
+    from {
+        height: 0;
+        opacity: 0;
+    }
+
+    to {
+        height: 394px;
+        opacity: 1;
+    }
+}
+
+
+
 
 
 
