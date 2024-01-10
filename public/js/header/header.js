@@ -54,7 +54,7 @@ searchBar.addEventListener('input', () => {
 const enterCodebtn = document.getElementById('enterCodebtn')
 const roomDiv = document.querySelector(' .roomDiv')
 const enterCodeInput = document.querySelector(' .enterCodeInput')
-const arrowBTN = document.querySelector(' .fa-arrow-down')
+const arrowBTN = document.querySelector(' .fa-arrow-up')
 let roomDivIsOpen = false;
 
 enterCodebtn.addEventListener('click', () => {
@@ -62,7 +62,7 @@ enterCodebtn.addEventListener('click', () => {
     roomDivIsOpen = !roomDivIsOpen;
 
     roomDiv.style.animation = `${roomDivIsOpen ? 'roomDivEnlarge' : 'roomDivShrink'} 1s`;
-    arrowBTN.className = `${roomDivIsOpen ? 'fa-solid fa-arrow-down self-center' : 'fa-solid fa-arrow-up self-center'} 1s`;
+    arrowBTN.className = `${roomDivIsOpen ? 'fa-solid fa-arrow-down' : 'fa-solid fa-arrow-up '} 1s self-center`;
     arrowBTN.style.animation = `${roomDivIsOpen ? 'fadeIn' : 'fadeIn1'} 1s`;
     setTimeout(() => {
         roomDiv.style.display = roomDivIsOpen ? 'flex' : 'none';
@@ -94,4 +94,25 @@ notificationIcon.addEventListener('click',()=> {
 
 })
 
+
+// profile
+
+const profileDiv = document.getElementById('profileDiv')
+const profilcPic = document.getElementById('profilcPic')
+let profileDivIsOpen = false;
+
+
+
+profilcPic.addEventListener('click',()=> {
+
+    profileDivIsOpen = !profileDivIsOpen
+    console.log(profileDivIsOpen)
+    profilcPic.style.border = `${profileDivIsOpen ? '1px solid #000' : 'none'}`
+
+    profileDiv.style.animation = `${profileDivIsOpen ? 'profileDivEnlarge' : 'profileDivShrink'} 1s`;
+    setTimeout(() => {
+        profileDiv.style.display = profileDivIsOpen ? 'flex' : 'none';
+    }, 200);
+
+})
 

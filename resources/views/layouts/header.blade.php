@@ -33,7 +33,7 @@
         <x-button background="bg-[#05B2B0]" text="text-white" width="w-full h-full">
             <span class="flex gap-3 justify-center" id="enterCodebtn">
                 <span class="">Join Room</span>
-                <i class="fa-solid fa-arrow-down self-center"></i>
+                <i class="fa-solid fa-arrow-up self-center"></i>
             </span>
         </x-button>
 
@@ -55,7 +55,8 @@
         <i id="notificationIcon"
             class=" fa-regular fa-bell flex justify-center items-center text-2xl bg-slate-200 rounded-full w-12 h-12 cursor-pointer"></i>
         <div id="notificationDiv"
-            class=" absolute bg-slate-300 right-[0] top-[60px] w-[300px] p-7 rounded flex flex-col justify-center items-center gap-3" style="display: none">
+            class=" absolute bg-slate-300 right-[0] top-[60px] w-[300px] p-7 rounded flex flex-col justify-center items-center gap-3"
+            style="display: none">
             <img class="w-[190px]" src="{{ asset('images/noNotofication.png') }}" alt="noNotofication pic">
             <span class="text-2xl text-[#425885]">No Notification Yet !</span>
             <p class="text-sm text-center">you have no notification right now <br> come back later</p>
@@ -65,9 +66,52 @@
             </x-button>
         </div>
     </div>
-    <div class="cursor-pointer">
-        <img src="{{ asset('images/profilePic.png') }}" id="profilePic" class=" w-11 h-11 object-cover rounded-full"
-            alt="Profile Pic">
+    <div class="cursor-pointer relative">
+        <img id="profilcPic" src="{{ asset('images/profilePic.png') }}" id="profilePic"
+            class=" w-11 h-11 object-cover rounded-full" alt="Profile Pic">
+
+        <div id="profileDiv" style="display: none"
+            class=" absolute bg-slate-300 right-[0] top-[60px] p-7 rounded flex flex-col justify-center w-[235px] gap-3">
+
+            <div class="flex gap-4">
+                <img src="{{ asset('images/profilePic.png') }}" id="profilePic"
+                    class=" w-14 h-14 object-cover rounded-lg" alt="Profile Pic" srcset="">
+                <div class="flex flex-col">
+                    <div class="name flex gap-2">
+
+                        <span>Adil</span>
+                        <span>Ezerouki</span>
+                    </div>
+                    <div class="role text-[14px] bg-white rounded px-2 py-1 text-center">
+                        <span>Teacher</span>
+                    </div>
+                </div>
+            </div>
+
+
+                <div class="flex gap-3 flex-col">
+                    <a href="#" class="flex gap-7  link">
+                        <i class="fa-solid fa-user self-center text-2xl"></i>
+                        <span class="self-center">Porfile</span>
+                    </a>
+
+                    <a href="#" class="flex gap-7 link">
+                        <i class="fa-solid fa-gear self-center text-2xl"></i>
+                        <span class="self-center">Settings</span>
+                    </a>
+
+                    <a href="#" class="flex gap-7 link">
+                        <i class="fa-solid fa-sun self-center text-2xl"></i>
+                        <span class="self-center flex gap-1">
+                            <span>Light Mode</span>
+                        </span>
+                    </a>
+                </div>
+
+            <x-button background="bg-[#05B2B0]" text="text-white" width="w-full">
+                <span class="">Logout</span>
+            </x-button>
+        </div>
 
     </div>
 

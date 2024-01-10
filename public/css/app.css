@@ -142,7 +142,7 @@ body {
 
 @keyframes notifiDivShrink {
     from {
-        height: 394px;
+        height: 362px;
         opacity: 1;
     }
 
@@ -159,7 +159,32 @@ body {
     }
 
     to {
-        height: 394px;
+        height: 362px;
+        opacity: 1;
+    }
+}
+
+
+@keyframes profileDivShrink {
+    from {
+        height: 296px;
+        opacity: 1;
+    }
+
+    to {
+        height: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes profileDivEnlarge {
+    from {
+        height: 0;
+        opacity: 0;
+    }
+
+    to {
+        height: 296px;
         opacity: 1;
     }
 }

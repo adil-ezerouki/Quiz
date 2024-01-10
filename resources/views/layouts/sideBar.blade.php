@@ -70,8 +70,7 @@
                 <a href="#" class="flex gap-7 link">
                     <i class="fa-solid fa-sun self-center text-2xl"></i>
                     <span class="self-center flex gap-1">
-                        <span>Light</span>
-                        {{-- <span>Mode</span> --}}
+                        <span>Light Mode</span>
                     </span>
                 </a>
             </li>
