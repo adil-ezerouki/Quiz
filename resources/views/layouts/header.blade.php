@@ -1,7 +1,7 @@
-<header class="bg-white px-5 py-3 w-full h-[12vh] flex items-center justify-center shadow-2xl gap-6">
+<header class="bg-white px-5 py-3 w-full flex items-center justify-center shadow-2xl gap-6">
     <div class="relative searchBar w-[73%] flex">
         <i class="fa-solid fa-magnifying-glass p-2 bg-slate-200 flex items-center rounded-l"></i>
-        <input class=" search p-2 bg-slate-200 w-full focus:outline-none" type="text" name="" id=""
+        <input class="search p-2 bg-slate-200 w-full focus:outline-none" type="text" name="" id=""
             placeholder="search about quizes, users, and gategories ">
         <div class="p-2 bg-slate-200 flex items-center rounded-r">
             <div class="bg-slate-400 w-[0.5px] h-7 mx-2">
@@ -13,7 +13,7 @@
             </select>
         </div>
 
-        <div class="results absolute bg-slate-300 top-[47px] w-full h-[358px] p-7 rounded-b flex justify-center items-center"
+        <div class="results absolute bg-slate-300 top-[60px] w-full h-[358px] p-7 rounded flex justify-center items-center"
             style="display: none">
 
             <div searchPic class="beforeSearchDiv flex flex-col  justify-center items-center gap-6">
@@ -29,14 +29,25 @@
     </div>
 
 
-    <div class="w-[13%]">
-        <x-button background="bg-[#05B2B0]" text="text-white" width="w-full">
-            <span class="">Enter Code</span>
+    <div class="w-[13%] relative h-full" >
+        <x-button background="bg-[#05B2B0]" text="text-white" width="w-full h-full">
+            <span class="flex gap-3 justify-center" id="enterCodebtn">
+                <span class="">Join Room</span>
+                <i class="fa-solid fa-arrow-down self-center"></i>
+            </span>
         </x-button>
 
-        <div class="roomDiv absolute bg-slate-300 top-[47px] w-full h-[358px] p-7 rounded-b flex justify-center items-center"
-            style="display: none">
+        <div class="roomDiv absolute bg-slate-300 right-[0] top-[60px] p-7 rounded flex flex-col justify-center items-center gap-4"
+            >
+            <img class="w-[190px]" src="{{ asset('images/roomPic.png') }}" alt="">
+            <form action="" method="post" class="flex gap-4 flex-col ">
+                <input type="text" class="p-2 focus:outline-none rounded border text-center"
+                    name="" id="" placeholder="enter your code">
 
+                <x-button background="bg-[#05B2B0]" text="text-white" width="w-full">
+                    <span class="">Enter Code</span>
+                </x-button>
+            </form>
         </div>
     </div>
 
