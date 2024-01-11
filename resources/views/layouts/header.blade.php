@@ -13,7 +13,7 @@
             </select>
         </div>
 
-        <div class="results absolute bg-slate-300 top-[60px] w-full h-[358px] p-7 rounded flex justify-center items-center"
+        <div class="results absolute z-[10] bg-slate-300 top-[60px] w-full h-[358px] p-7 rounded flex justify-center items-center"
             style="display: none">
 
             <div class="beforeSearchDiv flex flex-col  justify-center items-center gap-6">
@@ -37,7 +37,7 @@
             </span>
         </x-button>
 
-        <div class="roomDiv absolute bg-slate-300 right-[0] top-[60px] p-7 rounded flex flex-col justify-center items-center gap-4"
+        <div class="roomDiv absolute z-[10] bg-slate-300 right-[0] top-[60px] p-7 rounded flex flex-col justify-center items-center gap-4"
             style="display: none">
             <img class="w-[190px]" src="{{ asset('images/roomPic.png') }}" alt="">
             <span class="text-2xl text-[#425885]">Join The Room !</span>
@@ -58,7 +58,7 @@
         <i id="notificationIcon"
             class=" fa-regular fa-bell flex justify-center items-center text-2xl bg-slate-200 rounded-full w-12 h-12 cursor-pointer"></i>
         <div id="notificationDiv"
-            class=" absolute bg-slate-300 right-[0] top-[60px] w-[300px] p-7 rounded flex flex-col justify-center items-center gap-3"
+            class=" absolute z-[10] bg-slate-300 right-[0] top-[60px] w-[300px] p-7 rounded flex flex-col justify-center items-center gap-3"
             style="display: none">
             <img class="w-[190px]" src="{{ asset('images/noNotofication.png') }}" alt="noNotofication pic">
             <span class="text-2xl text-[#425885]">No Notification Yet !</span>
@@ -74,7 +74,7 @@
             class=" w-11 h-11 object-cover rounded-full" alt="Profile Pic">
 
         <div id="profileDiv" style="display: none"
-            class=" absolute bg-slate-300 right-[0] top-[60px] p-7 rounded flex flex-col justify-center w-[235px] gap-3">
+            class=" absolute z-[10] bg-slate-300 right-[0] top-[60px] p-7 rounded flex flex-col justify-center w-[235px] gap-3">
 
             <div class="flex gap-4">
                 <img src="{{ asset('images/profilePic.png') }}" id="profilePic"

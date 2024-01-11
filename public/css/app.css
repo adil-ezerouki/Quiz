@@ -8,6 +8,11 @@ body {
     font-family: 'Roboto', sans-serif;
     font-family: 'Rubik', sans-serif;
     font-family: 'Tektur', sans-serif;
+    animation: fadeIn 1s ;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 @keyframes fadeIn {

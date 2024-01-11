@@ -50,7 +50,7 @@
 
             </li>
 
-            <li class="w-full flex flex-col gap-4 p-2 pl-2 hover:bg-slate-300 rounded-lg transition-all @if (Route::currentRouteName() == 'getDashboardView') bg-slate-300  @endif">
+            <li class="w-full flex flex-col gap-4 p-2 pl-2 hover:bg-slate-300 rounded-lg transition-all @if (Route::currentRouteName() == '') bg-slate-300  @endif">
 
                 <a href="{{ route('getDashboardView') }}" class="flex gap-7  link">
                     {{-- <i class="fa-solid fa-house"></i> --}}

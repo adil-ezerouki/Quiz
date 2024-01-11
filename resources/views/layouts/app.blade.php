@@ -26,7 +26,7 @@
         <div class="flex flex-col w-full">
             @include('layouts.header')
 
-            <div class="bg-[#F2F2F2] h-full">
+            <div class="bg-[#F2F2F2] h-full p-5">
                 @yield('content')
             </div>
         </div>
