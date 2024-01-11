@@ -9,8 +9,8 @@
 
     <div class=" p-2  flex gap-16 rounded-lg ">
         <div class="flex gap-4">
-            <img src="{{ asset('images/profilePic.png') }}" id="profilePic" class=" w-14 h-14 object-cover rounded-lg" alt="Profile Pic"
-                srcset="">
+            <img src="{{ asset('images/profilePic.png') }}" id="profilePic" class=" w-14 h-14 object-cover rounded-lg"
+                alt="Profile Pic" srcset="">
             <div class=" text-lg flex flex-col justify-center text-center ">
 
                 <div class="name flex gap-2">
@@ -36,12 +36,25 @@
     </div>
 
 
-    <nav class="w-full flex flex-col gap-10">
-        <ul class="flex flex-col gap-5 w-full text-lg">
-            <li class="w-full flex flex-col gap-4 p-2 pl-2 hover:bg-slate-300 rounded-lg transition-all">
+    <nav class="w-full flex flex-col gap-10 overflow-y-scroll">
 
-                <a href="#" class="flex gap-7  link">
-                    <i class="fa-solid fa-house self-center text-2xl"></i>
+        <ul class="flex flex-col gap-5 w-full text-lg">
+
+            <li
+                class="w-full flex flex-col gap-4 p-2 pl-2 hover:bg-slate-300 rounded-lg transition-all @if (Route::currentRouteName() == 'getFeedView') bg-slate-300  @endif">
+
+                <a href="{{ route('getFeedView') }}" class="flex gap-7  link">
+                    <i class="fa-solid fa-braille self-center text-2xl"></i>
+                    <span class="self-center">Feed</span>
+                </a>
+
+            </li>
+
+            <li class="w-full flex flex-col gap-4 p-2 pl-2 hover:bg-slate-300 rounded-lg transition-all @if (Route::currentRouteName() == 'getDashboardView') bg-slate-300  @endif">
+
+                <a href="{{ route('getDashboardView') }}" class="flex gap-7  link">
+                    {{-- <i class="fa-solid fa-house"></i> --}}
+                    <i class="fa-solid fa-chart-simple self-center text-2xl"></i>
                     <span class="self-center">Dashboard</span>
                 </a>
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FeedController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OauthController;
 use App\Http\Controllers\SignupController;
@@ -42,6 +43,15 @@ Route::get('auth/google/callback',[OauthController::class, 'handleGoogleCallback
 
 Route::get('auth/facebook',[OauthController::class, 'redirectToFacebook'])->name('redirectToFacebook');
 Route::get('auth/facebook/callback',[OauthController::class, 'handleFacebookCallback'])->name('handleFacebookCallback');
+
+// feed
+
+Route::get('feed', [FeedController::class, 'getFeedView'])->name('getFeedView');
+
+// dashboard
+
+Route::get('dashboard', [DashboardController::class, 'getDashboardView'])->name('getDashboardView');
+
 
 
 Route::get('test', function () {

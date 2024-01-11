@@ -40,12 +40,15 @@
         <div class="roomDiv absolute bg-slate-300 right-[0] top-[60px] p-7 rounded flex flex-col justify-center items-center gap-4"
             style="display: none">
             <img class="w-[190px]" src="{{ asset('images/roomPic.png') }}" alt="">
+            <span class="text-2xl text-[#425885]">Join The Room !</span>
+
+            <p class="text-sm text-center">enter the code you were given <br> to join the room</p>
+
             <form action="" method="post" class="flex gap-4 flex-col ">
                 <input type="text" class="p-2 focus:outline-none rounded border text-center" name=""
                     id="" placeholder="enter your code">
-
                 <x-button background="bg-[#05B2B0]" text="text-white" width="w-full">
-                    <span class="">Enter Code</span>
+                    <span class="">Join Room</span>
                 </x-button>
             </form>
         </div>
@@ -89,27 +92,30 @@
             </div>
 
 
-                <div class="flex gap-3 flex-col">
-                    <a href="#" class="flex gap-7  link">
-                        <i class="fa-solid fa-user self-center text-2xl"></i>
-                        <span class="self-center">Porfile</span>
-                    </a>
+            <div class="flex gap-3 flex-col">
+                <a href="#" class="flex gap-7  link">
+                    <i class="fa-solid fa-user self-center text-2xl"></i>
+                    <span class="self-center">Porfile</span>
+                </a>
 
-                    <a href="#" class="flex gap-7 link">
-                        <i class="fa-solid fa-gear self-center text-2xl"></i>
-                        <span class="self-center">Settings</span>
-                    </a>
+                <a href="#" class="flex gap-7 link">
+                    <i class="fa-solid fa-gear self-center text-2xl"></i>
+                    <span class="self-center">Settings</span>
+                </a>
 
-                    <a href="#" class="flex gap-7 link">
-                        <i class="fa-solid fa-sun self-center text-2xl"></i>
-                        <span class="self-center flex gap-1">
-                            <span>Light Mode</span>
-                        </span>
-                    </a>
-                </div>
+                <a href="#" class="flex gap-7 link">
+                    <i class="fa-solid fa-sun self-center text-2xl"></i>
+                    <span class="self-center flex gap-1">
+                        <span>Light Mode</span>
+                    </span>
+                </a>
+            </div>
 
             <x-button background="bg-[#05B2B0]" text="text-white" width="w-full">
-                <span class="">Logout</span>
+                <a href="{{route('logout')}}" class="flex justify-center items-center gap-4">
+                    <span class="">Logout</span>
+                    <i class="fa-solid fa-right-from-bracket self-center"></i>
+                </a>
             </x-button>
         </div>
 
