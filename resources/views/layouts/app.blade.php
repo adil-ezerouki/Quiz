@@ -20,14 +20,16 @@
     {{-- popup div for stories --}}
     <x-pop-up-div>
 
-        <div class="biggestStoryHolder flex flex-col  pt-0 w-[560px] h-[570px]">
+        <div class="biggestStoryHolder relative flex flex-col  pt-0 w-[560px] h-[570px]">
+
+            <i class="flex justify-center items-center fa-solid fa-x absolute w-10 h-10 right-2 top-2 bg-slate-200  rounded-full cursor-pointer"></i>
 
             <div class="progressDiv bg-slate-700 w-[33.3%] h-2 rounded-t-lg mb-10">
 
             </div>
 
 
-            <div class=" storySlider flex flex-col gap-10 p-10 pt-0">
+            <div class="storySlider flex flex-col gap-10 p-10 pt-0">
 
 
                 <p class="text-center text-2xl">choose your story type</p>
