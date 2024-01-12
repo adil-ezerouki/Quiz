@@ -11,6 +11,10 @@ body {
     animation: fadeIn 1s ;
 }
 
+h1 {
+color : #a2fffd;
+}
+
 ::-webkit-scrollbar {
     display: none;
 }

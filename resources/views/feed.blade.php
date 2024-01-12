@@ -3,6 +3,8 @@
 @section('title', 'feed')
 
 @section('content')
+
+
     <div class="feed_stories flex flex-col  justify-center">
 
         <div class="feed flex gap-7">
@@ -15,34 +17,34 @@
             <div class="w-[50%] h-[479px] overflow-y-scroll">
                 <div id="stories" class=" flex  h-[105px] overflow-x-auto ">
                     <div class="flex justify-center  gap-[28px] w-fit">
-                        <div class="createStory flex relative rounded-full w-20 h-20">
+                        <div class="createStory flex relative rounded-full w-20 h-20 active:scale-[1.01] transition-all">
                             <img src="{{ asset('images/profilePic.png') }}" id="profilePic"
                                 class=" w-20 h-20 object-cover rounded-full p-[2px] border border-[#EF592E]"
                                 alt="Profile Pic" srcset="">
                             <i
                                 class="fa-solid fa-plus self-center text-md absolute top-[70px] right-[26px]  w-6 h-6 rounded-full bg-[#EF592E] flex justify-center items-center text-white"></i>
                         </div>
-                        <div class="createStory flex relative rounded-full w-20 h-20">
+                        <div class="story flex relative rounded-full w-20 h-20">
                             <img src="{{ asset('images/profilePic.png') }}" id="profilePic"
                                 class=" w-20 h-20 object-cover rounded-full p-[2px] border border-[#EF592E]"
                                 alt="Profile Pic" srcset="">
                         </div>
-                        <div class="createStory flex relative rounded-full w-20 h-20">
+                        <div class="story flex relative rounded-full w-20 h-20">
                             <img src="{{ asset('images/profilePic.png') }}" id="profilePic"
                                 class=" w-20 h-20 object-cover rounded-full p-[2px] border border-[#EF592E]"
                                 alt="Profile Pic" srcset="">
                         </div>
-                        <div class="createStory flex relative rounded-full w-20 h-20">
+                        <div class="story flex relative rounded-full w-20 h-20">
                             <img src="{{ asset('images/profilePic.png') }}" id="profilePic"
                                 class=" w-20 h-20 object-cover rounded-full p-[2px] border border-[#EF592E]"
                                 alt="Profile Pic" srcset="">
                         </div>
-                        <div class="createStory flex relative rounded-full w-20 h-20">
+                        <div class="story flex relative rounded-full w-20 h-20">
                             <img src="{{ asset('images/profilePic.png') }}" id="profilePic"
                                 class=" w-20 h-20 object-cover rounded-full p-[2px] border border-[#EF592E]"
                                 alt="Profile Pic" srcset="">
                         </div>
-                        <div class="createStory flex relative rounded-full w-20 h-20">
+                        <div class="story flex relative rounded-full w-20 h-20">
                             <img src="{{ asset('images/profilePic.png') }}" id="profilePic"
                                 class=" w-20 h-20 object-cover rounded-full p-[2px] border border-[#EF592E]"
                                 alt="Profile Pic" srcset="">
