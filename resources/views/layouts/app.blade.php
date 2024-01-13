@@ -15,7 +15,7 @@
     <title>@yield('title')</title>
 </head>
 
-<body class="h-[100vh]">
+<body class="h-[100vh] relative">
 
     {{-- popup div for stories --}}
     <x-pop-up-div>
@@ -91,7 +91,7 @@
                             <p class="text-center">type the text you want to include in your sotry </p>
                         </div>
 
-                        <input type="text" placeholder="type you story text" name="storyContent" id="inputText"
+                        <input type="text" placeholder="type you story text" name="storyTxtContent" id="inputText"
                             class="w-[100%] border border-[#bfbfbf] py-1 px-2 text-center" />
 
                     </div>

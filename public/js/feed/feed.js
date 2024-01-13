@@ -19,11 +19,16 @@ const storyReadyPic = document.querySelector(' #storyReadyPic')
 const inputText = document.querySelector(' #inputText')
 const storyReadyText = document.querySelector(' #storyReadyText')
 
+const viewStory = Array.from(document.querySelectorAll(' .viewStory'))
+const viewStoryPopUpDiv = Array.from(document.querySelectorAll(' .viewStoryPopUpDiv'))
+const closeStory = Array.from(document.querySelectorAll(' .closeStory'))
+
+
 let index = 0;
 let storyType = '';
 
 
-console.log(submitBtn)
+console.log(viewStoryPopUpDiv)
 
 
 slideBtn[0].disabled = true;
@@ -236,3 +241,30 @@ inputText.addEventListener('input', () => {
     }
 })
 
+
+viewStory.forEach((story) => {
+
+
+    var targetStoryindex = 0;
+
+    story.addEventListener('click', () => {
+
+        targetStoryindex = viewStory.indexOf(story);
+
+        viewStoryPopUpDiv[targetStoryindex].style.display = 'flex';
+        viewStoryPopUpDiv[targetStoryindex].style.animation = 'fadeIn 1s'
+
+    })
+
+    closeStory[viewStory.indexOf(story)].addEventListener('click', () => {
+
+        viewStoryPopUpDiv[viewStory.indexOf(story)].style.animation = 'fadeOut 1s'
+
+        viewStoryPopUpDiv[viewStory.indexOf(story)].addEventListener('animationend', () => {
+            viewStoryPopUpDiv[viewStory.indexOf(story)].style.display = 'none';
+        }, { once: true })
+
+    })
+
+
+})

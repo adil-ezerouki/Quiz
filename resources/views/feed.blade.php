@@ -24,31 +24,62 @@
                             <i
                                 class="fa-solid fa-plus self-center text-md absolute top-[70px] right-[26px]  w-6 h-6 rounded-full bg-[#EF592E] flex justify-center items-center text-white"></i>
                         </div>
-                        <div class="story flex relative rounded-full w-20 h-20">
-                            <img src="{{ asset('images/profilePic.png') }}" id="profilePic"
-                                class=" w-20 h-20 object-cover rounded-full p-[2px] border border-[#EF592E]"
-                                alt="Profile Pic" srcset="">
-                        </div>
-                        <div class="story flex relative rounded-full w-20 h-20">
-                            <img src="{{ asset('images/profilePic.png') }}" id="profilePic"
-                                class=" w-20 h-20 object-cover rounded-full p-[2px] border border-[#EF592E]"
-                                alt="Profile Pic" srcset="">
-                        </div>
-                        <div class="story flex relative rounded-full w-20 h-20">
-                            <img src="{{ asset('images/profilePic.png') }}" id="profilePic"
-                                class=" w-20 h-20 object-cover rounded-full p-[2px] border border-[#EF592E]"
-                                alt="Profile Pic" srcset="">
-                        </div>
-                        <div class="story flex relative rounded-full w-20 h-20">
-                            <img src="{{ asset('images/profilePic.png') }}" id="profilePic"
-                                class=" w-20 h-20 object-cover rounded-full p-[2px] border border-[#EF592E]"
-                                alt="Profile Pic" srcset="">
-                        </div>
-                        <div class="story flex relative rounded-full w-20 h-20">
-                            <img src="{{ asset('images/profilePic.png') }}" id="profilePic"
-                                class=" w-20 h-20 object-cover rounded-full p-[2px] border border-[#EF592E]"
-                                alt="Profile Pic" srcset="">
-                        </div>
+
+                        @isset($stories)
+                            @foreach ($stories as $story)
+                                <div id="{{ $story->id }}" class="viewStory flex relative rounded-full w-20 h-20">
+                                    <img src="{{ asset('images/profilePic.png') }}" id="profilePic"
+                                        class=" w-20 h-20 object-cover rounded-full p-[2px] border border-[#EF592E]"
+                                        alt="Profile Pic" srcset="">
+                                </div>
+
+                                <div style="display: none"
+                                    class="viewStoryPopUpDiv absolute  bg-[#0000007E] w-full h-full top-0 left-0 z-[9] flex justify-center items-center">
+                                    <div class="bg-white flex rounded-lg">
+                                        <div class="story relative w-[260px] h-[340px]">
+                                            <div
+                                                class="absolute top-1 left-1 flex justify-center items-center gap-2 text-white">
+                                                <img src="{{ asset('images/profilePic.png') }}"
+                                                    class="w-8 h-8 object-cover rounded-full" alt="" srcset="">
+                                                <div class="flex flex-col text-xs">
+                                                    <span class="">Adil Ezerouki</span>
+                                                    <span>18 h</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="absolute top-1 right-1">
+                                                <i key={{ $story->id }}
+                                                    class="closeStory flex justify-center items-center fa-solid fa-x absolute w-6 h-6 right-1 top-1 bg-slate-200  rounded-full cursor-pointer"></i>
+                                            </div>
+
+                                            @if($story->story_media_path != '')
+
+                                                <div class="picStory storyT">
+                                                    <img src="{{ asset('storage/' . $story->story_media_path) }}" id="storyReadyPic"
+                                                        alt="" srcset=""
+                                                        class="w-full h-[400px] rounded-lg object-cover">
+                                                </div>
+                                            @endif
+
+
+                                            @if($story->story_txt_content != '')
+                                                <div
+                                                    class="txtStory storyT w-full flex justify-center items-center bg-red-500 h-full rounded-lg">
+                                                    <span id="storyReadyText"
+                                                        class="max-w-[240px] text-center flex justify-center items-center h-full">
+                                                        {{$story->story_txt_content}}
+                                                    </span>
+                                                </div>
+                                            @endif
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endisset
+
+
 
                     </div>
                 </div>

@@ -9,7 +9,13 @@ use Illuminate\Support\Facades\Auth;
 class FeedController extends Controller
 {
     public function getFeedView() {
-        return view('feed');
+
+        $stories = Story::all();
+
+        $toTheViewData = [
+            'stories'=> $stories,
+        ];
+        return view('feed',$toTheViewData);
     }
 
     // for stories
@@ -31,6 +37,29 @@ class FeedController extends Controller
             ]);
         }
 
+        if($request->storyTxtContent) {
+            $request->validate([
+                'storyTxtContent' => 'required',
+            ]);
+
+            // return $request;
+
+
+             Story::create([
+                'story_txt_content' => $request->storyTxtContent,
+                'story_type' => 'txt',
+                'user_id' => Auth::user()->id,
+            ]);
+        }
+
         return redirect()->back()->with('storySuccess', 'Story Uploaded successfully');
+    }
+
+    public function viewStory() {
+        
+    }
+
+    public function deleteStoryAuto() {
+
     }
 }
