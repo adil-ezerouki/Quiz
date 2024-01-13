@@ -20,16 +20,17 @@
     {{-- popup div for stories --}}
     <x-pop-up-div>
 
-        <div class="biggestStoryHolder relative flex flex-col  pt-0 w-[560px] h-[570px]">
+        <form action="" method="" class="biggestStoryHolder relative flex flex-col  pt-0 w-[560px] h-[570px]">
 
-            <i class="flex justify-center items-center fa-solid fa-x absolute w-10 h-10 right-2 top-2 bg-slate-200  rounded-full cursor-pointer"></i>
+            <i
+                class="flex justify-center items-center fa-solid fa-x absolute w-10 h-10 right-2 top-2 bg-slate-200  rounded-full cursor-pointer"></i>
 
-            <div class="progressDiv bg-slate-700 w-[33.3%] h-2 rounded-t-lg mb-10">
+            <div class="progressDiv bg-slate-700 w-[33.3%] h-2 rounded-t-lg rounded-r-lg mb-10 transition-all">
 
             </div>
 
 
-            <div class="storySlider flex flex-col gap-10 p-10 pt-0">
+            <div class="storySlider flex flex-col gap-10 p-10 pt-0 ">
 
 
                 <p class="text-center text-2xl">choose your story type</p>
@@ -55,13 +56,13 @@
                 </div>
             </div>
 
-            <div class="storySlider">
-                <div style="display: inline" class=" storyPicUpload storySliderType flex flex-col gap-10 p-10 pt-0">
+            <div class="storySlider p-10 pt-0 flex justify-center items-center h-[442px]">
+                <div class=" storyPicUpload storySliderType flex flex-col gap-14">
 
                     <p class="text-center text-2xl">upload your file</p>
 
                     <div
-                        class="border border-[#0000007E] border-dashed p-3 flex flex-col justify-center items-center gap-5 w-96 h-72">
+                        class="border border-[#0000007E] border-dashed rounded-lg p-3 flex flex-col justify-center items-center gap-5 w-96 h-72">
 
                         <div class="bg-white p-2 rounded-full flex flex-col justify-center items-center gap-3">
                             <img src="{{ asset('images/PicFileStoryPic.png') }}" class="w-20" alt=""
@@ -74,12 +75,12 @@
                     </div>
                 </div>
 
-                <div style="display: inline" class=" storyTextUpload storySliderType flex flex-col gap-10 p-10 pt-0">
+                <div class=" storyTextUpload storySliderType flex flex-col gap-12">
 
                     <p class="text-center text-2xl">type your Text</p>
 
                     <div action="" method="post"
-                        class="border border-[#0000007E] border-dashed p-3 flex flex-col justify-center items-center gap-5 w-96">
+                        class="border border-[#0000007E] border-dashed p-6 rounded-lg flex flex-col justify-center items-center gap-5 w-96">
 
                         <div class="bg-white p-2 rounded-full flex flex-col justify-center items-center gap-3">
                             <img src="{{ asset('images/PicFontStoryPic.png') }}" class="w-20" alt=""
@@ -88,20 +89,20 @@
                             <p class="text-center">type the text you want to include in your sotry </p>
                         </div>
 
-                        <textarea type="text" placeholder="type you story text" name="" id=""
-                            class="w-[80%] h-24 border border-[#bfbfbf] p-3 ">
-                </textarea>
+                        <input type="text" placeholder="type you story text" name="storyContent" id=""
+                            class="w-[100%] border border-[#bfbfbf] py-1 px-2 text-center" />
+
                     </div>
                 </div>
             </div>
 
 
-            <div class="storySlider storyready flex flex-col gap-10 justify-center items-center p-10 pt-0">
+            <div class="storySlider storyready flex flex-col gap-8 justify-center items-center p-10 pt-0 h-[442px]">
                 <p class="text-center text-2xl">Your Story is ready !</p>
 
 
                 <div class="storyFather w-[260px] h-[370px] flex justify-center items-center gap-4 rounded-lg">
-                    <div class="story relative w-full h-full">
+                    <div class="story relative w-[260px] h-[340px]">
                         <div class="absolute top-1 left-1 flex justify-center items-center gap-2 text-white">
                             <img src="{{ asset('images/profilePic.png') }}" class="w-8 h-8 object-cover rounded-full"
                                 alt="" srcset="">
@@ -112,10 +113,11 @@
                         </div>
                         <div class="picStory storyT">
                             <img src="{{ asset('images/storyPicTest.png') }}" alt="" srcset=""
-                                class="w-full h-full rounded-lg">
+                                class="w-full h-[340px] rounded-lg object-cover">
                         </div>
 
-                        <div class="picStory storyT flex justify-center items-center bg-red-500 w-full h-full rounded-lg">
+                        <div
+                            class="picStory storyT flex justify-center items-center bg-red-500 w-full h-full rounded-lg">
                             <p>
                                 Hi I am doing Fine man
                             </p>
@@ -146,7 +148,7 @@
 
             </div>
 
-        </div>
+        </form>
     </x-pop-up-div>
 
     <div class="app flex h-full">

@@ -200,6 +200,55 @@ color : #a2fffd;
 
 
 
+/* feed */
+
+    /* stories */
+
+    @keyframes progressStoriesEnlarge_1 {
+        from {
+            width: 33.3%;
+
+        }
+
+        to {
+            width: 66.6% ;
+        }
+    }
+
+    @keyframes progressStoriesEnlarge_2 {
+        from {
+            width: 66.6%;
+
+        }
+
+        to {
+            width: 100% ;
+        }
+    }
+
+    @keyframes progressStoriesShrink_2 {
+        from {
+            width: 100%;
+
+        }
+
+        to {
+            width: 66.3% ;
+        }
+    }
+
+    @keyframes progressStoriesShrink_1 {
+        from {
+            width: 66.3%;
+
+        }
+
+        to {
+            width: 33.3%;
+        }
+    }
+
+
 
 
 

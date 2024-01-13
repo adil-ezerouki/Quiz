@@ -5,7 +5,7 @@ const slideBtn = Array.from(document.querySelectorAll(' .slideBtn'))
 const storyT = Array.from(document.querySelectorAll(' .storyT'))
 const progressDiv = document.querySelector(' .progressDiv')
 const closeBTN = document.querySelector(' .fa-x')
-let progressWidth = 0;
+let progressWidth = 33.3;
 const biggestStoryHolder = document.querySelector(' .biggestStoryHolder')
 const containerPopUpDiv = document.querySelector(' .containerPopUpDiv')
 const createStory = document.querySelector(' .createStory')
@@ -73,6 +73,9 @@ if (storyTypeDivs) {
                 storyType = "textStory";
             }
 
+            progressDiv.className = `w-[66.3%] bg-slate-700 h-2 rounded-t-lg rounded-r-lg mb-10`;
+            progressDiv.style.animation = 'progressStoriesEnlarge_1 1s'
+
 
 
             slideBtn[0].disabled = false;
@@ -97,25 +100,32 @@ slideBtn.forEach((btn) => {
         if (e.target.id == 'next') {
             index += 1;
             console.log(index)
-            progressWidth += (560 / 3);
-            console.log(progressWidth)
 
+            progressDiv.className = `${index == 2 ? "w-full" : 'w-[66.3%] rounded-r-lg'} bg-slate-700 h-2 rounded-t-lg mb-10`;
+            progressDiv.style.animation = `${index == 2 ? "progressStoriesEnlarge_2" : "progressStoriesShrink_2"} 1s`
 
         }
 
         if (e.target.id == 'previous') {
 
             index -= 1;
-            progressDiv.style.width += progressDiv.style.width / storySlider.length;
-
             console.log(index)
-        }
+            // progressWidth -= (560 / 3);
+            // progressDiv.style.width = `${progressWidth}px`
+            progressDiv.className = `${index == 1 ? "w-[66.3%]" : 'w-[33.3%]'} rounded-r-lg bg-slate-700 h-2 rounded-t-lg mb-10`;
+            progressDiv.style.animation = `${index == 1 ? "progressStoriesShrink_2" : "progressStoriesEnlarge_1"} 1s`
+            // = '';
 
-        progressDiv.style.width = `${progressWidth}px`
+            // if(index == 2)
+        }
 
         if (index == 0) {
             slideBtn[0].disabled = true;
             slideBtn[0].className = 'bg-[#a2fffd] text-white flex gap-3 justify-center slideBtn  px-3 py-2 w-[80%] rounded'
+            slideBtn[1].disabled = true;
+            slideBtn[1].className = 'bg-[#f0ad99] text-white flex gap-3 justify-center slideBtn  px-3 py-2 w-[80%] rounded';
+            progressDiv.className = 'bg-slate-700 w-[33.3%] h-2 rounded-r-lg rounded-t-lg mb-10';
+            progressDiv.style.animation = 'progressStoriesShrink_1 1s'
         } else {
             slideBtn[0].disabled = false;
             slideBtn[0].className = 'bg-[#05B2B0]  text-white flex gap-3 justify-center slideBtn  px-3 py-2 w-[80%] rounded';
@@ -124,8 +134,11 @@ slideBtn.forEach((btn) => {
         if (index >= storySlider.length - 1) {
             slideBtn[1].disabled = true;
             slideBtn[1].className = 'bg-[#f0ad99] text-white flex gap-3 justify-center slideBtn  px-3 py-2 w-[80%] rounded';
+            // progressDiv.className = 'bg-slate-700 w-full h-2 rounded-t-lg mb-10';
 
-        } else {
+        }
+
+        if(index < storySlider.length - 1 && index > 0){
             slideBtn[1].disabled = false;
             slideBtn[1].className = 'bg-[#EF592E] text-white flex gap-3 justify-center slideBtn  px-3 py-2 w-[80%] rounded'
 
@@ -136,7 +149,7 @@ slideBtn.forEach((btn) => {
             div.style.display = 'none';
         })
         storySlider[index].style.display = 'flex';
-        storySlider[index].style.animation = 'fadeIn 1s';
+        storySlider[index].style.animation = 'fadeIn 1.5s';
 
 
     })
@@ -144,14 +157,20 @@ slideBtn.forEach((btn) => {
 
 
 storySlider[index].style.display = 'flex';
-storySlider[index].style.animation = 'fadeIn 1s';
+storySlider[index].style.animation = 'fadeIn 1.5s';
 
 
-createStory.addEventListener('click',()=> {
+createStory.addEventListener('click', () => {
     containerPopUpDiv.style.display = 'flex'
+    containerPopUpDiv.style.animation = 'fadeIn 1s';
 })
 
-closeBTN.addEventListener('click',()=> {
-    containerPopUpDiv.style.display = 'none'
+closeBTN.addEventListener('click', () => {
+    containerPopUpDiv.style.animation = 'fadeOut 1s';
+
+    containerPopUpDiv.addEventListener('animationend', () => {
+        containerPopUpDiv.style.display = 'none'
+    }, { once: true })
+
 })
 
