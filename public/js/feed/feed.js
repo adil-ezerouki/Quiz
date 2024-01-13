@@ -1,7 +1,10 @@
+
+
 const storySlider = Array.from(document.querySelectorAll(' .storySlider'))
 const storySliderType = Array.from(document.querySelectorAll(' .storySliderType'))
 const storyTypeDivs = Array.from(document.querySelectorAll(' .storyTypeDiv'))
 const slideBtn = Array.from(document.querySelectorAll(' .slideBtn'))
+const submitBtn = document.querySelector(' #submitBtn')
 const storyT = Array.from(document.querySelectorAll(' .storyT'))
 const progressDiv = document.querySelector(' .progressDiv')
 const closeBTN = document.querySelector(' .fa-x')
@@ -9,8 +12,18 @@ let progressWidth = 33.3;
 const biggestStoryHolder = document.querySelector(' .biggestStoryHolder')
 const containerPopUpDiv = document.querySelector(' .containerPopUpDiv')
 const createStory = document.querySelector(' .createStory')
+
+const inputPic = document.querySelector(' #inputPic')
+const storyReadyPic = document.querySelector(' #storyReadyPic')
+
+const inputText = document.querySelector(' #inputText')
+const storyReadyText = document.querySelector(' #storyReadyText')
+
 let index = 0;
 let storyType = '';
+
+
+console.log(submitBtn)
 
 
 slideBtn[0].disabled = true;
@@ -51,6 +64,8 @@ if (storyTypeDivs) {
 
                 storyType = "fileStory";
 
+                inputText.value = '';
+
 
                 // console.log(storySliderType[0])
             }
@@ -71,6 +86,8 @@ if (storyTypeDivs) {
 
                 console.log(storySliderType[1])
                 storyType = "textStory";
+
+                // inputPic.value = '';
             }
 
             progressDiv.className = `w-[66.3%] bg-slate-700 h-2 rounded-t-lg rounded-r-lg mb-10`;
@@ -131,16 +148,18 @@ slideBtn.forEach((btn) => {
             slideBtn[0].className = 'bg-[#05B2B0]  text-white flex gap-3 justify-center slideBtn  px-3 py-2 w-[80%] rounded';
         }
 
-        if (index >= storySlider.length - 1) {
-            slideBtn[1].disabled = true;
-            slideBtn[1].className = 'bg-[#f0ad99] text-white flex gap-3 justify-center slideBtn  px-3 py-2 w-[80%] rounded';
-            // progressDiv.className = 'bg-slate-700 w-full h-2 rounded-t-lg mb-10';
-
+        if (index < storySlider.length - 1 && index > 0) {
+            slideBtn[1].className = 'slideBtn flex gap-3 justify-center bg-[#EF592E] text-white px-3 py-2 w-[80%] rounded';
+            slideBtn[1].style.animation = 'fadeIn 1s'
+            submitBtn.className = 'hidden gap-3  justify-center bg-[#EF592E] text-white px-3 py-2 w-[80%] rounded'
+            submitBtn.style.animation = 'fadeOut 1s'
         }
 
-        if(index < storySlider.length - 1 && index > 0){
-            slideBtn[1].disabled = false;
-            slideBtn[1].className = 'bg-[#EF592E] text-white flex gap-3 justify-center slideBtn  px-3 py-2 w-[80%] rounded'
+        if (index >= storySlider.length - 1) {
+            slideBtn[1].className = 'slideBtn hidden gap-3 justify-center bg-[#EF592E] text-white px-3 py-2 w-[80%] rounded';
+            slideBtn[1].style.animation = 'fadeOut 1s'
+            submitBtn.className = 'flex gap-3  justify-center bg-[#EF592E] text-white px-3 py-2 w-[80%] rounded'
+            submitBtn.style.animation = 'fadeIn 1s'
 
         }
 
@@ -172,5 +191,48 @@ closeBTN.addEventListener('click', () => {
         containerPopUpDiv.style.display = 'none'
     }, { once: true })
 
+})
+
+
+inputPic.addEventListener('input', () => {
+    // Check if files are selected
+
+
+
+    if (inputPic.files && inputPic.files[0]) {
+        // Get the selected file
+        const selectedFile = inputPic.files[0];
+
+        // Create a FileReader to read the selected file
+        const reader = new FileReader();
+
+        // Set the onload event to update the image source when the file is read
+        reader.onload = function (e) {
+            if (index === 1) {
+                storyReadyPic.src = e.target.result;
+            }
+
+            // const imagePath = e.target.result;
+            // const pathWithoutPrefix = imagePath.split(',')[1];
+        };
+
+        // Read the selected file as a data URL
+        reader.readAsDataURL(selectedFile);
+    }
+
+
+    console.log(inputPic.value)
+
+
+
+});
+
+
+inputText.addEventListener('input', () => {
+    // console.log(inputPic.value)
+
+    if (index == 1) {
+        storyReadyText.innerHTML = inputText.value
+    }
 })
 

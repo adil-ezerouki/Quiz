@@ -20,7 +20,9 @@
     {{-- popup div for stories --}}
     <x-pop-up-div>
 
-        <form action="" method="" class="biggestStoryHolder relative flex flex-col  pt-0 w-[560px] h-[570px]">
+        <form action="{{ route('storeStory') }}" method="Post"
+            class="biggestStoryHolder relative flex flex-col  pt-0 w-[560px] h-[570px]" enctype="multipart/form-data">
+            @csrf
 
             <i
                 class="flex justify-center items-center fa-solid fa-x absolute w-10 h-10 right-2 top-2 bg-slate-200  rounded-full cursor-pointer"></i>
@@ -71,7 +73,7 @@
                             <p>supports JPG, JPEG200,PNG</p>
                         </div>
 
-                        <input type="file" name="" id="" class="w-56">
+                        <input type="file" name="mediaStoryFile" id="inputPic" class="w-56" accept="image/*">
                     </div>
                 </div>
 
@@ -89,7 +91,7 @@
                             <p class="text-center">type the text you want to include in your sotry </p>
                         </div>
 
-                        <input type="text" placeholder="type you story text" name="storyContent" id=""
+                        <input type="text" placeholder="type you story text" name="storyContent" id="inputText"
                             class="w-[100%] border border-[#bfbfbf] py-1 px-2 text-center" />
 
                     </div>
@@ -112,15 +114,16 @@
                             </div>
                         </div>
                         <div class="picStory storyT">
-                            <img src="{{ asset('images/storyPicTest.png') }}" alt="" srcset=""
-                                class="w-full h-[340px] rounded-lg object-cover">
+                            <img src="{{ asset('images/storyPicTest.png') }}" id="storyReadyPic" alt=""
+                                srcset="" class="w-full h-[340px] rounded-lg object-cover">
                         </div>
 
                         <div
-                            class="picStory storyT flex justify-center items-center bg-red-500 w-full h-full rounded-lg">
-                            <p>
+                            class="picStory storyT max-w-[240px] flex justify-center items-center bg-red-500 h-full rounded-lg">
+                            <span id="storyReadyText"
+                                class="max-w-[240px] text-center flex justify-center items-center h-full">
                                 Hi I am doing Fine man
-                            </p>
+                            </span>
                         </div>
 
                     </div>
@@ -130,7 +133,7 @@
 
             <div class="flex justify-center items-center gap-10 p-10 pt-0">
 
-                <button id="previous"
+                <button type="button" id="previous"
                     class=" flex gap-3 justify-center slideBtn bg-[#05B2B0] text-white px-3 py-2 w-[80%] rounded ">
 
                     Back
@@ -138,10 +141,18 @@
 
                 </button>
 
-                <button id='next'
+                <button type="button" id='next'
                     class="slideBtn flex gap-3 justify-center bg-[#EF592E] text-white px-3 py-2 w-[80%] rounded">
 
                     Next
+                    <i class="fa-solid fa-arrow-right self-center"></i>
+
+                </button>
+
+                <button type="submit" id='submitBtn'
+                    class="hidden gap-3  justify-center bg-[#EF592E] text-white px-3 py-2 w-[80%] rounded">
+
+                    upload
                     <i class="fa-solid fa-arrow-right self-center"></i>
 
                 </button>
@@ -173,6 +184,12 @@
             {{ session('welcoming_message') }}
 
         </x-alert-error>
+    @endif
+
+    @if (session('storySuccess'))
+        <x-success-alert>
+            {{ session('storySuccess') }}
+        </x-success-alert>
     @endif
 
     <script src="{{ asset('js/errAlert/errAlert.js') }}"></script>

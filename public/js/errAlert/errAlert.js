@@ -30,3 +30,8 @@ function closeERRpopup() {
         errorsDiv.style.display = 'none';
     }, { once: true });
 }
+
+
+setTimeout(()=> {
+   okBTN ? okBTN.click() : "";
+},3000)

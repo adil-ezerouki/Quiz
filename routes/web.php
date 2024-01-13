@@ -48,6 +48,10 @@ Route::get('auth/facebook/callback',[OauthController::class, 'handleFacebookCall
 
 Route::get('feed', [FeedController::class, 'getFeedView'])->name('getFeedView');
 
+    // stories
+
+    route::post('stories/create',[FeedController::class,"storeStory"])->name('storeStory');
+
 // dashboard
 
 Route::get('dashboard', [DashboardController::class, 'getDashboardView'])->name('getDashboardView');

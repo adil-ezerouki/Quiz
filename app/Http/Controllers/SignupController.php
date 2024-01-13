@@ -42,7 +42,7 @@ class SignupController extends Controller
         Auth::login($newUser);
 
         Session::flash('welcoming message', 'welcome mr '.Auth::user()["firstName"] . " !");
-        return redirect(route('getDashboard'));
+        return redirect(route("getFeedView"));
 
     }
 }
