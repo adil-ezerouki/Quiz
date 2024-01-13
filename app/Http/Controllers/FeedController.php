@@ -55,11 +55,17 @@ class FeedController extends Controller
         return redirect()->back()->with('storySuccess', 'Story Uploaded successfully');
     }
 
-    public function viewStory() {
-        
-    }
+    // public function viewStory() {
 
-    public function deleteStoryAuto() {
+    // }
 
+    public function deleteStory($id) {
+
+        $story = Story::find($id);
+
+        if($story->delete()) {
+            return redirect()->back()->with('storyDeleteSuccess', 'Story Deleted successfully');
+
+        }
     }
 }

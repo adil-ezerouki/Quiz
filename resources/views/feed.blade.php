@@ -51,23 +51,33 @@
                                                 <i key={{ $story->id }}
                                                     class="closeStory flex justify-center items-center fa-solid fa-x absolute w-6 h-6 right-1 top-1 bg-slate-200  rounded-full cursor-pointer"></i>
                                             </div>
+                                            <div class="absolute top-1 right-1">
+                                                <form action="{{ route('deleteStory', $story->id) }}" method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit">
+                                                        <i key={{ $story->id }}
+                                                            class="deleteStory flex justify-center items-center fa-solid fa-trash absolute w-6 h-6 right-10 top-1 bg-slate-200  rounded-full cursor-pointer"></i>
+                                                    </button>
 
-                                            @if($story->story_media_path != '')
+                                                </form>
+                                            </div>
 
+                                            @if ($story->story_media_path != '')
                                                 <div class="picStory storyT">
-                                                    <img src="{{ asset('storage/' . $story->story_media_path) }}" id="storyReadyPic"
-                                                        alt="" srcset=""
+                                                    <img src="{{ asset('storage/' . $story->story_media_path) }}"
+                                                        id="storyReadyPic" alt="" srcset=""
                                                         class="w-full h-[400px] rounded-lg object-cover">
                                                 </div>
                                             @endif
 
 
-                                            @if($story->story_txt_content != '')
+                                            @if ($story->story_txt_content != '')
                                                 <div
                                                     class="txtStory storyT w-full flex justify-center items-center bg-red-500 h-full rounded-lg">
                                                     <span id="storyReadyText"
                                                         class="max-w-[240px] text-center flex justify-center items-center h-full">
-                                                        {{$story->story_txt_content}}
+                                                        {{ $story->story_txt_content }}
                                                     </span>
                                                 </div>
                                             @endif

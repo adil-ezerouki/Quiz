@@ -51,6 +51,7 @@ Route::get('feed', [FeedController::class, 'getFeedView'])->name('getFeedView');
     // stories
 
     route::post('stories/create',[FeedController::class,"storeStory"])->name('storeStory');
+    route::delete('stories/{id}/delete',[FeedController::class,"deleteStory"])->name('deleteStory');
 
 // dashboard
 

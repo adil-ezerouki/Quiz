@@ -192,6 +192,12 @@
         </x-success-alert>
     @endif
 
+    @if (session('storyDeleteSuccess'))
+        <x-success-alert>
+            {{ session('storyDeleteSuccess') }}
+        </x-success-alert>
+    @endif
+
     <script src="{{ asset('js/errAlert/errAlert.js') }}"></script>
 </body>
 
