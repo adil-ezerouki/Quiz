@@ -187,15 +187,17 @@
     @endif
 
     @if (session('storySuccess'))
-        <x-success-alert>
+        <x-created-success-alert>
             {{ session('storySuccess') }}
-        </x-success-alert>
+            {{-- <p>your story is created successfuly !</p> --}}
+        </x-created-success-alert>
     @endif
 
     @if (session('storyDeleteSuccess'))
-        <x-success-alert>
+        <x-deleted-success-alert>
             {{ session('storyDeleteSuccess') }}
-        </x-success-alert>
+            {{-- <p>your story is created successfuly !</p> --}}
+        </x-deleted-success-alert>
     @endif
 
     <script src="{{ asset('js/errAlert/errAlert.js') }}"></script>

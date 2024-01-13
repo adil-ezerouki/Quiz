@@ -52,7 +52,7 @@ class FeedController extends Controller
             ]);
         }
 
-        return redirect()->back()->with('storySuccess', 'Story Uploaded successfully');
+        return redirect()->back()->with('storySuccess', 'Your story is uploaded successfully');
     }
 
     // public function viewStory() {
@@ -64,7 +64,7 @@ class FeedController extends Controller
         $story = Story::find($id);
 
         if($story->delete()) {
-            return redirect()->back()->with('storyDeleteSuccess', 'Story Deleted successfully');
+            return redirect()->back()->with('storyDeleteSuccess', 'Your story is deleted successfully');
 
         }
     }
