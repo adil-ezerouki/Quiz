@@ -231,6 +231,13 @@
                                         accept="image/*">
                                 </div>
                             </div>
+                            <div class="feeling flex justify-center">
+                                <p>How Are you feeling ?</p>
+                                {{-- @foreach ($feelings as $feeling )
+                                    <p>{{$feeling->state}}</p>
+                                    <p>{{$feeling->code}}</p>
+                                @endforeach --}}
+                            </div>
                         </div>
                     </div>
                 </div>
