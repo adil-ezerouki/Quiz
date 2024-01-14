@@ -10,7 +10,7 @@ const progressDiv = document.querySelector(' .progressDiv')
 const closeBTN = document.querySelector(' .fa-x')
 let progressWidth = 33.3;
 const biggestStoryHolder = document.querySelector(' .biggestStoryHolder')
-const containerPopUpDiv = document.querySelector(' .containerPopUpDiv')
+const containerPopUpDivStory = document.querySelector(' .containerPopUpDivStory')
 const createStory = document.querySelector(' .createStory')
 
 const inputPic = document.querySelector(' #inputPic')
@@ -185,15 +185,15 @@ storySlider[index].style.animation = 'fadeIn 1.5s';
 
 
 createStory.addEventListener('click', () => {
-    containerPopUpDiv.style.display = 'flex'
-    containerPopUpDiv.style.animation = 'fadeIn 1s';
+    containerPopUpDivStory.style.display = 'flex'
+    containerPopUpDivStory.style.animation = 'fadeIn 1s';
 })
 
 closeBTN.addEventListener('click', () => {
-    containerPopUpDiv.style.animation = 'fadeOut 1s';
+    containerPopUpDivStory.style.animation = 'fadeOut 1s';
 
-    containerPopUpDiv.addEventListener('animationend', () => {
-        containerPopUpDiv.style.display = 'none'
+    containerPopUpDivStory.addEventListener('animationend', () => {
+        containerPopUpDivStory.style.display = 'none'
     }, { once: true })
 
 })
