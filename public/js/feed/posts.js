@@ -7,11 +7,17 @@ const postAttIcons = Array.from(document.querySelectorAll(' .postAttIcons img'))
 const postAttachmentsDivs = Array.from(document.querySelectorAll(' .postAttachmentsDiv'))
 const postAttatchementsSelects = Array.from(document.querySelectorAll(' .postAttachmentsDiv select'))
 const inputMedia = document.getElementById('inputMedia')
+const postContent = document.getElementById('postContent')
 const postBTN = Array.from(document.querySelectorAll(' .postBTN'))
+const resetSelect = Array.from(document.querySelectorAll(' .resetSelect'))
+
+postContent.value = ''
 
 
 
-let postInfos = {
+
+let newPostData = {
+    content: '',
     media: '',
     feeling: '',
     activity: '',
@@ -168,32 +174,79 @@ postAttatchementsSelects.forEach((select) => {
 
 
         if (e.target.id == 'feeling') {
-            postInfos = { ...postInfos, feeling: feelings[e.target.value] }
+            newPostData = { ...newPostData, feeling: feelings[e.target.value] }
+
+            if (newPostData.feeling != "") {
+                postAttatchementsSelects[1].disabled = true;
+
+            } else {
+                postAttatchementsSelects[1].disabled = false;
+            }
 
         }
 
         if (e.target.id == 'activity') {
-            postInfos = { ...postInfos, activity: activities[e.target.value] }
+            newPostData = { ...newPostData, activity: activities[e.target.value] }
+
+            if (newPostData.activity != "") {
+                postAttatchementsSelects[0].disabled = true;
+
+            } else {
+                postAttatchementsSelects[0].disabled = false;
+            }
+
+
 
         }
 
         if (e.target.id == 'quiz') {
-            postInfos = { ...postInfos, quiz: e.target.value }
+            newPostData = { ...newPostData, quiz: e.target.value }
 
         }
 
         if (e.target.id == 'tag') {
-            postInfos = { ...postInfos, tag: e.target.value }
+            newPostData = { ...newPostData, tag: e.target.value }
 
         }
 
         if (e.target.id == 'location') {
-            postInfos = { ...postInfos, location: e.target.value }
+            newPostData = { ...newPostData, location: e.target.value }
 
         }
 
-        console.log(postInfos)
 
+    })
+})
+
+resetSelect.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        targetedSelect = postAttatchementsSelects[resetSelect.indexOf(e.target)]
+
+        targetedSelect.value = ''
+
+
+        newPostData[targetedSelect.id] = ''
+
+        console.log(newPostData)
+
+
+        if (targetedSelect.id == 'feeling' ) {
+            postAttatchementsSelects[1].disabled = false
+        } else {
+            postAttatchementsSelects[1].disabled = true
+
+            postAttatchementsSelects[1].value = ''
+
+        }
+
+        if (targetedSelect.id == 'activity') {
+            postAttatchementsSelects[0].disabled = false
+        } else {
+            postAttatchementsSelects[0].disabled = true
+
+            postAttatchementsSelects[0].value = ''
+
+        }
     })
 })
 
@@ -213,9 +266,9 @@ inputMedia.addEventListener('input', (e) => {
         reader.onload = function (e) {
 
             // testPic.src = ;
-            postInfos = { ...postInfos, media: e.target.result }
+            newPostData = { ...newPostData, media: e.target.result }
 
-            console.log(postInfos)
+            console.log(newPostData)
 
         };
 
@@ -225,4 +278,80 @@ inputMedia.addEventListener('input', (e) => {
 
 })
 
-// postBTN.addEventListener()
+postBTN.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+
+        let indexPost = 0;
+
+
+
+
+
+        if (e.target.id == "previousPostBtn") {
+
+            indexPost -= 1;
+
+            if (indexPost < 0) {
+                indexPost = 0
+            }
+
+        }
+
+        if (e.target.id == "previewPostBtn") {
+
+
+            indexPost += 1;
+
+            if (indexPost >= postSlider.length - 1) {
+                indexPost = postSlider.length - 1;
+            }
+
+        }
+
+
+        postSlider.forEach(div => {
+            div.style.display = 'none';
+        })
+
+        postSlider[indexPost].style.display = 'flex'
+        postSlider[indexPost].style.animation = 'fadeIn 1s'
+
+        if (indexPost == 1) {
+            postBTN[0].className = 'postBTN flex gap-3 justify-center slideBtn bg-[#05B2B0] text-white px-3 py-2 w-[80%] rounded'
+            postBTN[0].style.animation = 'fadeIn 1s'
+
+            postBTN[1].className = 'postBTN hidden gap-3  justify-center bg-[#EF592E] text-white px-3 py-2 w-[80%] rounded'
+            postBTN[1].style.animation = 'fadeOut 1s'
+
+            postBTN[2].className = 'postBTN flex gap-3  justify-center bg-[#EF592E] text-white px-3 py-2 w-[80%] rounded'
+            postBTN[2].style.animation = 'fadeIn 1s'
+
+
+        } else {
+            postBTN[0].className = 'postBTN hidden gap-3 justify-center slideBtn bg-[#05B2B0] text-white px-3 py-2 w-[80%] rounded'
+            postBTN[0].style.animation = 'fadeOut 1s'
+
+            postBTN[1].className = 'postBTN flex gap-3  justify-center bg-[#EF592E] text-white px-3 py-2 w-[80%] rounded'
+            postBTN[1].style.animation = 'fadeIn 1s'
+
+            postBTN[2].className = 'postBTN hidden gap-3  justify-center bg-[#EF592E] text-white px-3 py-2 w-[80%] rounded'
+            postBTN[2].style.animation = 'fadeOut 1s'
+
+        }
+
+        if (e.target.id == "submitPostBtn") {
+            console.log("submitPostBtn")
+        }
+    })
+})
+
+postContent.addEventListener('input', () => {
+
+
+    newPostData = { ...newPostData, content: postContent.value }
+
+    console.log(newPostData)
+})
+
+
+console.log(newPostData)
