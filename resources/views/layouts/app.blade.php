@@ -164,6 +164,7 @@
 
     {{-- popup div for post --}}
 
+
     <x-pop-up-div class="containerPopUpDivPost">
         <form action="{{ route('storeStory') }}" method="Post"
             class="biggestPostHolder relative flex flex-col  pt-0 w-[560px] h-[570px]" enctype="multipart/form-data">
@@ -206,22 +207,21 @@
                         <div class="activities w-full rounded-lg flex justify-between p-5 border border-gray-300">
                             <p>add to your new post</p>
 
-                            <div class="flex gap-3">
-                                <img src="{{ asset('images/media.png') }}" alt="" srcset="">
-                                <img src="{{ asset('images/feeling.png') }}" alt="" srcset="">
-                                <img src="{{ asset('images/quiz.png') }}" class="w-6" alt=""
+                            <div class="flex gap-3 postAttIcons">
+                                <img src="{{ asset('images/media.png') }}" alt="" srcset="" class="cursor-pointer">
+                                <img src="{{ asset('images/feeling.png') }}" alt="" srcset="" class="cursor-pointer">
+                                <img src="{{ asset('images/quiz.png') }}" class="w-6 cursor-pointer" alt=""
                                     srcset="">
-                                <img src="{{ asset('images/tag.png') }}" alt="" srcset="">
-                                <img src="{{ asset('images/location.png') }}" alt="" srcset="">
+                                <img src="{{ asset('images/tag.png') }}" alt="" srcset="" class="cursor-pointer">
+                                <img src="{{ asset('images/location.png') }}" alt="" srcset="" class="cursor-pointer">
                             </div>
                         </div>
-                        <div class="activitiesDisplayDiv border border-[#0000007E] border-dashed rounded-lg  w-full">
-                            <div class="media">
+                        <div class="postAttatchements w-full flex flex-col gap-3">
+                            <div class="media postAttachmentsDiv w-full">
                                 <div
-                                    class=" p-3 flex flex-col justify-center items-center gap-2 w-full">
+                                    class=" p-3 flex flex-col justify-center items-center gap-2 border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[156px]">
 
-                                    <div
-                                        class="p-2 rounded-full flex flex-col justify-center items-center gap-3">
+                                    <div class="p-2 rounded-full flex flex-col justify-center items-center gap-3">
                                         <img src="{{ asset('images/PicFileStoryPic.png') }}" class="w-10"
                                             alt="" srcset="">
                                         <p>supports JPG, JPEG200,PNG</p>
@@ -231,19 +231,75 @@
                                         accept="image/*">
                                 </div>
                             </div>
-                            <div class="feeling flex flex-col justify-center">
+                            <div
+                                class="feeling&activities postAttachmentsDiv flex flex-col gap-3 justify-center border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[156px] p-3">
                                 <p>How Are you feeling ?</p>
-                                @foreach ($feelings as $feeling )
-                                    <p>{{$feeling->description}}</p>
-                                    &#x{{$feeling->code}};
-                                @endforeach
 
-                                @foreach ($activities as $activity )
-                                    <p>{{$activity->description}}</p>
-                                    &#x{{$activity->code}};
-                                @endforeach
+                                @isset($feelings)
+                                    <select name="" id="">
+                                        @foreach ($feelings as $feeling)
+                                            <option value="">
+                                                <p>{{ $feeling->description }}</p>
+                                                &#x{{ $feeling->code }};
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                @endisset
 
-                                {{-- &#128514; --}}
+                                <p>What Are you doing ?</p>
+
+                                @isset($activities)
+                                    <select name="" id="">
+                                        @foreach ($activities as $activity)
+                                            <option value="">
+                                                <p>{{ $activity->description }}</p>
+                                                &#x{{ $activity->code }};
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                @endisset
+
+
+
+
+                            </div>
+                            <div
+                                class="quiz postAttachmentsDiv flex flex-col gap-3 justify-center border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[156px] p-3">
+                                <p>chosse a quiz of yours</p>
+
+                                <select name="" id="">
+                                    <option value="">quiz 1</option>
+                                    <option value="">quiz 2</option>
+                                    <option value="">quiz 3</option>
+                                    <option value="">quiz 4</option>
+                                </select>
+
+
+
+                            </div>
+                            <div
+                                class="tag postAttachmentsDiv flex flex-col gap-3 justify-center border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[156px] p-3">
+                                <p>tag a friend of yours</p>
+
+                                <select name="" id="">
+                                    <option value="">friend 1</option>
+                                    <option value="">friend 2</option>
+                                    <option value="">friend 3</option>
+                                    <option value="">friend 4</option>
+                                </select>
+
+                            </div>
+                            <div
+                                class="location postAttachmentsDiv flex flex-col gap-3 justify-center border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[156px] p-3">
+                                <p>include a location of yours</p>
+
+                                <select name="" id="">
+                                    <option value="">localion 1</option>
+                                    <option value="">localion 2</option>
+                                    <option value="">localion 3</option>
+                                    <option value="">localion 4</option>
+                                </select>
+
                             </div>
                         </div>
                     </div>

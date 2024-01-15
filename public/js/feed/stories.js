@@ -28,7 +28,6 @@ let index = 0;
 let storyType = '';
 
 
-console.log(viewStoryPopUpDiv)
 
 
 slideBtn[0].disabled = true;
@@ -45,7 +44,7 @@ if (storyTypeDivs) {
 
     storyTypeDivs.forEach((div) => {
         div.addEventListener('click', (e) => {
-            console.log(e.target.id)
+
 
             index = 1;
 
@@ -72,7 +71,7 @@ if (storyTypeDivs) {
                 inputText.value = '';
 
 
-                // console.log(storySliderType[0])
+
             }
 
             if (e.target.id == 'textStory') {
@@ -89,7 +88,7 @@ if (storyTypeDivs) {
                 storyT[1].style.display = 'flex';
                 storySliderType[1].style.animation = 'fadeIn 1s';
 
-                console.log(storySliderType[1])
+
                 storyType = "textStory";
 
                 // inputPic.value = '';
@@ -121,7 +120,7 @@ slideBtn.forEach((btn) => {
 
         if (e.target.id == 'next') {
             index += 1;
-            console.log(index)
+
 
             progressDiv.className = `${index == 2 ? "w-full" : 'w-[66.3%] rounded-r-lg'} bg-slate-700 h-2 rounded-t-lg mb-10`;
             progressDiv.style.animation = `${index == 2 ? "progressStoriesEnlarge_2" : "progressStoriesShrink_2"} 1s`
@@ -131,7 +130,7 @@ slideBtn.forEach((btn) => {
         if (e.target.id == 'previous') {
 
             index -= 1;
-            console.log(index)
+
             // progressWidth -= (560 / 3);
             // progressDiv.style.width = `${progressWidth}px`
             progressDiv.className = `${index == 1 ? "w-[66.3%]" : 'w-[33.3%]'} rounded-r-lg bg-slate-700 h-2 rounded-t-lg mb-10`;
@@ -226,7 +225,7 @@ inputPic.addEventListener('input', () => {
     }
 
 
-    console.log(inputPic.value)
+
 
 
 
@@ -234,7 +233,7 @@ inputPic.addEventListener('input', () => {
 
 
 inputText.addEventListener('input', () => {
-    // console.log(inputPic.value)
+  
 
     if (index == 1) {
         storyReadyText.innerHTML = inputText.value
