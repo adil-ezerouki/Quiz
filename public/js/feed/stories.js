@@ -214,10 +214,8 @@ inputPic.addEventListener('input', () => {
         reader.onload = function (e) {
             if (index === 1) {
                 storyReadyPic.src = e.target.result;
+                console.log('hhh')
             }
-
-            // const imagePath = e.target.result;
-            // const pathWithoutPrefix = imagePath.split(',')[1];
         };
 
         // Read the selected file as a data URL
@@ -233,7 +231,7 @@ inputPic.addEventListener('input', () => {
 
 
 inputText.addEventListener('input', () => {
-  
+
 
     if (index == 1) {
         storyReadyText.innerHTML = inputText.value

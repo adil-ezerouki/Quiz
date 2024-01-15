@@ -166,7 +166,7 @@
 
 
     <x-pop-up-div class="containerPopUpDivPost">
-        <form action="{{ route('storeStory') }}" method="Post"
+        <form action="{{ route('posts.store') }}" method="Post"
             class="biggestPostHolder relative flex flex-col  pt-0 w-[560px] h-[570px]" enctype="multipart/form-data">
             @csrf
 
@@ -185,7 +185,7 @@
 
 
                 <div class="flex gap-10">
-                    <div id="newpost "
+                    <div id="newpost"
                         class="w-full h-[330px] relative flex flex-col  items-center gap-5 bg-[#E2E8F0] rounded-lg p-3 overflow-y-auto">
                         <div class="w-full flex gap-3 top-2 left-2">
                             <img src="{{ asset('images/profilePic.png') }}"
@@ -217,7 +217,7 @@
                             </div>
                         </div>
                         <div class="postAttatchements w-full flex flex-col gap-3">
-                            <div class="media postAttachmentsDiv w-full">
+                            <div id="media" class=" postAttachmentsDiv w-full">
                                 <div
                                     class=" p-3 flex flex-col justify-center items-center gap-2 border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[156px]">
 
@@ -227,18 +227,17 @@
                                         <p>supports JPG, JPEG200,PNG</p>
                                     </div>
 
-                                    <input type="file" name="mediaStoryFile" id="inputPic" class="w-56"
+                                    <input type="file" name="mediaPostFile" id="inputMedia" class="w-56"
                                         accept="image/*">
                                 </div>
                             </div>
-                            <div
-                                class="feeling&activities postAttachmentsDiv flex flex-col gap-3 justify-center border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[156px] p-3">
+                            <div id="feelings&activities" class=" postAttachmentsDiv flex flex-col gap-3 justify-center border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[156px] p-3">
                                 <p>How Are you feeling ?</p>
 
                                 @isset($feelings)
-                                    <select name="" id="">
+                                    <select name="" id="feeling">
                                         @foreach ($feelings as $feeling)
-                                            <option value="">
+                                            <option value={{$feeling->code}}>
                                                 <p>{{ $feeling->description }}</p>
                                                 &#x{{ $feeling->code }};
                                             </option>
@@ -249,9 +248,9 @@
                                 <p>What Are you doing ?</p>
 
                                 @isset($activities)
-                                    <select name="" id="">
+                                    <select name="" id="activity">
                                         @foreach ($activities as $activity)
-                                            <option value="">
+                                            <option value={{$activity->code}}>
                                                 <p>{{ $activity->description }}</p>
                                                 &#x{{ $activity->code }};
                                             </option>
@@ -263,47 +262,46 @@
 
 
                             </div>
-                            <div
-                                class="quiz postAttachmentsDiv flex flex-col gap-3 justify-center border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[156px] p-3">
+                            <div id="quiz" class=" postAttachmentsDiv flex flex-col gap-3 justify-center border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[156px] p-3">
                                 <p>chosse a quiz of yours</p>
 
-                                <select name="" id="">
-                                    <option value="">quiz 1</option>
-                                    <option value="">quiz 2</option>
-                                    <option value="">quiz 3</option>
-                                    <option value="">quiz 4</option>
+                                <select name="" id="quiz">
+                                    <option value="quiz 1">quiz 1</option>
+                                    <option value="quiz 2">quiz 2</option>
+                                    <option value="quiz 3">quiz 3</option>
+                                    <option value="quiz 4">quiz 4</option>
                                 </select>
 
 
 
                             </div>
-                            <div
-                                class="tag postAttachmentsDiv flex flex-col gap-3 justify-center border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[156px] p-3">
+                            <div id="tag" class=" postAttachmentsDiv flex flex-col gap-3 justify-center border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[156px] p-3">
                                 <p>tag a friend of yours</p>
 
-                                <select name="" id="">
-                                    <option value="">friend 1</option>
-                                    <option value="">friend 2</option>
-                                    <option value="">friend 3</option>
-                                    <option value="">friend 4</option>
+                                <select name="" id="tag">
+                                    <option value="friend 1">friend 1</option>
+                                    <option value="friend 2">friend 2</option>
+                                    <option value="friend 3">friend 3</option>
+                                    <option value="friend 4">friend 4</option>
                                 </select>
 
                             </div>
-                            <div
-                                class="location postAttachmentsDiv flex flex-col gap-3 justify-center border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[156px] p-3">
+                            <div id="location" class=" postAttachmentsDiv flex flex-col gap-3 justify-center border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[156px] p-3">
                                 <p>include a location of yours</p>
 
-                                <select name="" id="">
-                                    <option value="">localion 1</option>
-                                    <option value="">localion 2</option>
-                                    <option value="">localion 3</option>
-                                    <option value="">localion 4</option>
+                                <select name="" id="location">
+                                    <option value="localion 1">localion 1</option>
+                                    <option value="localion 2">localion 2</option>
+                                    <option value="localion 3">localion 3</option>
+                                    <option value="localion 4">localion 4</option>
                                 </select>
 
                             </div>
                         </div>
                     </div>
                 </div>
+
+
             </div>
 
             <div class="postSlider postReady p-10 pt-0 flex justify-center items-center h-[442px]">
@@ -329,24 +327,24 @@
 
             <div class="flex justify-center items-center gap-10 p-10 pt-0">
 
-                <button type="button" id="previous"
-                    class=" flex gap-3 justify-center slideBtn bg-[#05B2B0] text-white px-3 py-2 w-[80%] rounded ">
+                <button type="button" id="previousDivPostBtn"
+                    class="postBTN flex gap-3 justify-center slideBtn bg-[#05B2B0] text-white px-3 py-2 w-[80%] rounded ">
 
                     Back
                     <i class="fa-solid fa-arrow-left self-center"></i>
 
                 </button>
 
-                <button type="button" id='next'
-                    class="slideBtn flex gap-3 justify-center bg-[#EF592E] text-white px-3 py-2 w-[80%] rounded">
+                <button type="button" id='nextDivPostBtn'
+                    class="postBTN flex gap-3 justify-center bg-[#EF592E] text-white px-3 py-2 w-[80%] rounded">
 
                     Preview
                     <i class="fa-solid fa-arrow-right self-center"></i>
 
                 </button>
 
-                <button type="submit" id='submitBtn'
-                    class="hidden gap-3  justify-center bg-[#EF592E] text-white px-3 py-2 w-[80%] rounded">
+                <button type="submit" id='submitDivPostBtn'
+                    class="postBTN hidden gap-3  justify-center bg-[#EF592E] text-white px-3 py-2 w-[80%] rounded">
 
                     upload
                     <i class="fa-solid fa-arrow-right self-center"></i>

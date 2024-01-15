@@ -125,7 +125,7 @@
                     </div>
 
 
-                   
+
 
                     <div class="postsDiv flex flex-col gap-6  justify-center bg-white rounded-lg p-4">
                         <div class="h-96">

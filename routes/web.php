@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FeedController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OauthController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\SignupController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -52,6 +53,9 @@ Route::get('feed', [FeedController::class, 'getFeedView'])->name('getFeedView');
 
     route::post('stories/create',[FeedController::class,"storeStory"])->name('storeStory');
     route::delete('stories/{id}/delete',[FeedController::class,"deleteStory"])->name('deleteStory');
+
+    //posts
+    route::resource('posts',PostController::class);
 
 // dashboard
 

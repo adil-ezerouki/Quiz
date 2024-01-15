@@ -14,7 +14,7 @@ class FeelingSeeder extends Seeder
     public function run(): void
     {
 
-        $emojies = [
+        $feelings = [
             '1F600' => 'Joyful',
             '1F601' => 'Cheerful',
             '1F602' => 'Amused',
@@ -68,7 +68,7 @@ class FeelingSeeder extends Seeder
         ];
 
 
-        foreach($emojies as $key=>$value) {
+        foreach($feelings as $key=>$value) {
             Feeling::create([
 
                 'code' => $key,
