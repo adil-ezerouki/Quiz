@@ -231,12 +231,19 @@
                                         accept="image/*">
                                 </div>
                             </div>
-                            <div class="feeling flex justify-center">
+                            <div class="feeling flex flex-col justify-center">
                                 <p>How Are you feeling ?</p>
-                                {{-- @foreach ($feelings as $feeling )
-                                    <p>{{$feeling->state}}</p>
-                                    <p>{{$feeling->code}}</p>
-                                @endforeach --}}
+                                @foreach ($feelings as $feeling )
+                                    <p>{{$feeling->description}}</p>
+                                    &#x{{$feeling->code}};
+                                @endforeach
+
+                                @foreach ($activities as $activity )
+                                    <p>{{$activity->description}}</p>
+                                    &#x{{$activity->code}};
+                                @endforeach
+
+                                {{-- &#128514; --}}
                             </div>
                         </div>
                     </div>

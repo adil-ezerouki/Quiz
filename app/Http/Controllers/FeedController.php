@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activity;
 use App\Models\Feeling;
 use App\Models\Story;
 use Illuminate\Http\Request;
@@ -13,10 +14,12 @@ class FeedController extends Controller
 
         $stories = Story::all();
         $feelings = Feeling::all();
+        $activities = Activity::all();
 
         $toTheViewData = [
             'stories'=> $stories,
-            'feeling'=> $feelings,
+            'feelings'=> $feelings,
+            'activities'=> $activities,
         ];
         return view('feed',$toTheViewData);
     }
