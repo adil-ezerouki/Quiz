@@ -390,7 +390,7 @@
                                         class=" flex justify-center items-center  feelingSpan font-[100] text-slate-500 gap-1">
                                         <img style="display: none" src="{{ asset('images/tag.png') }}" alt="" srcset=""
                                                 class="tagANDlocalIcon cursor-pointer w-5 h-5">
-                                        <span class="newPostDataDisplay text-black flex justify-center items-center gap-1">
+                                        <span class="newPostDataDisplay text-slate-500 flex justify-center items-center gap-1">
 
 
                                         </span>
@@ -402,7 +402,7 @@
                                         class=" flex justify-center items-center  feelingSpan font-[100] text-slate-500 gap-1">
                                         <img style="display: none" src="{{ asset('images/location.png') }}" alt=""
                                                 srcset="" class="tagANDlocalIcon cursor-pointer w-5 h-5">
-                                        <span class="newPostDataDisplay text-black flex justify-center items-center gap-1">
+                                        <span class="newPostDataDisplay text-slate-500 flex justify-center items-center gap-1">
 
                                         </span>
                                     </span>
