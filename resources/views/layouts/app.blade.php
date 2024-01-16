@@ -173,7 +173,7 @@
             <i
                 class="flex justify-center items-center fa-solid fa-x absolute w-10 h-10 right-2 top-2 bg-slate-200  rounded-full cursor-pointer"></i>
 
-            <div class="progressDiv bg-slate-700 w-[33.3%] h-2 rounded-t-lg rounded-r-lg mb-10 transition-all">
+            <div class="progressDivPost bg-slate-700 w-[50%] h-2 rounded-t-lg rounded-r-lg mb-10 transition-all">
 
             </div>
 
@@ -243,7 +243,8 @@
                                 <div class="flex gap-3 items-center">
                                     @isset($feelings)
                                         <select name="" id="feeling" class=" p-2 rounded-lg w-[94%]">
-                                            <option value="" selected >choose how you're feeling</option>
+                                            <option value="" selected>choose how you're feeling</option>
+                                            <hr>
                                             @foreach ($feelings as $feeling)
                                                 <option value={{ $feeling->code }}>
                                                     <p>{{ $feeling->description }}</p>
@@ -261,7 +262,8 @@
                                 <div class="flex gap-3 items-center">
                                     @isset($activities)
                                         <select name="" id="activity" class="p-2 rounded-lg w-[94%]">
-                                            <option value="" selected >choose what are you doing</option>
+                                            <option value="" selected>choose what are you doing</option>
+                                            <hr>
                                             @foreach ($activities as $activity)
                                                 <option value={{ $activity->code }}>
                                                     <p>{{ $activity->description }}</p>
@@ -285,7 +287,8 @@
 
                                 <div class="flex gap-3 items-center">
                                     <select name="" id="quiz" class="p-2 rounded-lg w-[94%]">
-                                        <option value="" selected >choose your quiz</option>
+                                        <option value="" selected>choose your quiz</option>
+                                        <hr>
                                         <option value="quiz 1">quiz 1</option>
                                         <option value="quiz 2">quiz 2</option>
                                         <option value="quiz 3">quiz 3</option>
@@ -305,7 +308,8 @@
 
                                 <div class="flex gap-3 items-center">
                                     <select name="" id="tag" class="p-2 rounded-lg w-[94%]">
-                                        <option value="" selected >choose your friend</option>
+                                        <option value="" selected>choose your friend</option>
+                                        <hr>
                                         <option value="friend 1">friend 1</option>
                                         <option value="friend 2">friend 2</option>
                                         <option value="friend 3">friend 3</option>
@@ -322,14 +326,16 @@
                                 <p>include a location of yours</p>
 
                                 <div class="flex gap-3 items-center">
-                                <select name="" id="location" class="p-2 rounded-lg w-[94%]">
-                                    <option value="" selected >choose your location</option>
-                                    <option value="localion 1">localion 1</option>
-                                    <option value="localion 2">localion 2</option>
-                                    <option value="localion 3">localion 3</option>
-                                    <option value="localion 4">localion 4</option>
-                                </select>
-                                <i id="locationReset" class="resetSelect fa-solid fa-x flex justify-center items-center bg-black text-white p-2 rounded-full w-6 h-6 text-[13px]"></i>
+                                    <select name="" id="location" class="p-2 rounded-lg w-[94%]">
+                                        <option value="" selected>choose your location</option>
+                                        <hr>
+                                        <option value="localion 1">localion 1</option>
+                                        <option value="localion 2">localion 2</option>
+                                        <option value="localion 3">localion 3</option>
+                                        <option value="localion 4">localion 4</option>
+                                    </select>
+                                    <i id="locationReset"
+                                        class="resetSelect fa-solid fa-x flex justify-center items-center bg-black text-white p-2 rounded-full w-6 h-6 text-[13px]"></i>
 
                                 </div>
 
@@ -346,20 +352,140 @@
 
                     <p class="text-center text-2xl">your post is ready !</p>
 
-                    <div
-                        class=" bg-[#E2E8F0] border-dashed rounded-lg p-3 flex flex-col justify-center items-center gap-5 w-full h-72">
 
-                        new post
+
+                    <div
+                        class="postFather bg-[#E2E8F0]  rounded-lg px-7 pt-7 flex flex-col  items-center gap-5 w-full h-72 overflow-y-scroll">
+
+                        <div class=" flex w-full items-center gap-3">
+                            <img src="{{ asset('images/profilePic.png') }}"
+                                class="w-10 h-10 object-cover rounded-full" alt="" srcset="">
+                            <div class="flex flex-col gap-1 text-xs w-full">
+                                <span class="text-[16px] w-full flex flex-wrap gap-1">
+
+                                    <span class=" flex justify-center items-center ">Adil Ezerouki</span>
+
+                                    <span
+                                        class=" flex justify-center items-center feelingSpan font-[100] text-slate-500 gap-1">is
+                                        feeling <span>sad &#x1F641;</span> </span>
+
+                                    <span
+                                        class="  justify-center items-center hidden feelingSpan font-[100] text-slate-500 gap-1">is
+                                        <span>playing soccer &#x26BD;</span> </span>
+
+                                    <span
+                                        class=" flex justify-center items-center  feelingSpan font-[100] text-slate-500 gap-1">with
+                                        <span class="text-black flex justify-center items-center gap-1">
+                                            <img src="{{ asset('images/tag.png') }}" alt="" srcset=""
+                                                class="cursor-pointer w-5 h-5">
+                                            lprawi de srawi
+                                        </span>
+
+                                    </span>
+
+
+                                    <span
+                                        class=" flex justify-center items-center  feelingSpan font-[100] text-slate-500 gap-1">
+                                        in
+                                        <span class="text-black flex justify-center items-center gap-1">
+                                            <img src="{{ asset('images/location.png') }}" alt=""
+                                                srcset="" class="cursor-pointer w-5 h-5">
+                                            Souk El Arbaa
+                                        </span>
+                                    </span>
+
+                                </span>
+
+
+                                {{-- <img src="{{ asset('images/quiz.png') }}" class="w-6 cursor-pointer" alt=""
+                                    srcset=""> --}}
+                                </span>
+
+                                <span>18 h</span>
+                            </div>
+                        </div>
+                        <div class="NewPostPreview w-full h-auto  flex flex-col gap-5">
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde blanditiis provident ipsum
+                                maiores quis aliquid modi quisquam earum. Cumque.
+                            </p>
+
+
+                            <img src="{{ asset('images/storyPicTest.png') }}" id="storyReadyPic" alt=""
+                                srcset="" class="  w-full h-72 rounded-lg object-cover" />
+
+
+                            <div class="react flex gap-1 items-center justify-between text-slate-500">
+                                <div class=" flex gap-3 items-center justify-center">
+                                    <div class="flex">
+                                        <img src="{{ asset('images/react buttons/likeReact.png') }}" class="w-7"
+                                            alt="" srcset="">
+                                        <img src="{{ asset('images/react buttons/loveReact.png') }}" class="w-7"
+                                            alt="" srcset="">
+                                        <img src="{{ asset('images/react buttons/funnyReact.png') }}" class="w-7"
+                                            alt="" srcset="">
+                                    </div>
+                                    <span class="">
+                                        128
+                                    </span>
+                                </div>
+
+                                <div class="flex gap-2 statistics">
+                                    <div class="comments flex gap-1 items-center">
+
+                                        <img src="{{ asset('images/react buttons/comments.png') }}"
+                                            id="storyReadyPic" alt="" srcset=""
+                                            class="  w-7 rounded-lg object-cover" />
+                                        <span>100</span>
+                                    </div>
+                                    <div class="sahre flex gap-1 items-center">
+
+                                        <img src="{{ asset('images/react buttons/share.png') }}" id="storyReadyPic"
+                                            alt="" srcset="" class="  w-7 rounded-lg object-cover" />
+                                        <span>200</span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <hr class="bg-slate-400 h-[2px]">
+
+                            <div class="ReactBtns flex justify-between pb-7 text-slate-500">
+                                <div class="likeBtn flex gap-2 items-center">
+                                    <img src="{{ asset('images/react buttons/likeReact.png') }}" id="storyReadyPic"
+                                            alt="" srcset="" class="  w-8 rounded-lg object-cover" />
+                                        <span>Like</span>
+                                </div>
+                                <div class="commentBtn flex gap-2 items-center">
+                                    <img src="{{ asset('images/react buttons/comments.png') }}" id="storyReadyPic"
+                                            alt="" srcset="" class="  w-8 rounded-lg object-cover" />
+                                        <span>Comment</span>
+                                </div>
+                                <div class="shareBtn flex gap-2 items-center">
+                                    <img src="{{ asset('images/react buttons/share.png') }}" id="storyReadyPic"
+                                            alt="" srcset="" class="  w-8 rounded-lg object-cover" />
+                                        <span>Share</span>
+                                </div>
+                            </div>
+
+
+                        </div>
+
 
                     </div>
+
+                    {{-- <div class="h-72 w-full">
+
+                    </div> --}}
+
                 </div>
 
             </div>
 
-            <div class="flex justify-center items-center gap-10 p-10 pt-0">
+            <div class="flex justify-center items-center gap-10 p-10 pt-0 w-full">
 
                 <button type="button" id="previousPostBtn"
-                    class="postBTN hidden gap-3 justify-center slideBtn bg-[#05B2B0] text-white px-3 py-2 w-[80%] rounded ">
+                    class="postBTN hidden gap-3 justify-center slideBtn bg-[#05B2B0] text-white px-3 py-2 w-1/2 rounded ">
 
                     Back
                     <i class="fa-solid fa-arrow-left self-center"></i>
@@ -367,7 +493,7 @@
                 </button>
 
                 <button type="button" id='previewPostBtn'
-                    class="postBTN flex gap-3 justify-center bg-[#EF592E] text-white px-3 py-2 w-[80%] rounded">
+                    class="postBTN flex gap-3 justify-center bg-[#EF592E] text-white px-3 py-2 w-full rounded">
 
                     Preview
                     <i class="fa-solid fa-arrow-right self-center"></i>
@@ -375,7 +501,7 @@
                 </button>
 
                 <button type="submit" id='submitPostBtn'
-                    class="postBTN hidden gap-3  justify-center bg-[#EF592E] text-white px-3 py-2 w-[80%] rounded">
+                    class="postBTN hidden gap-3  justify-center bg-[#EF592E] text-white px-3 py-2 w-1/2 rounded">
 
                     upload
                     <i class="fa-solid fa-arrow-right self-center"></i>

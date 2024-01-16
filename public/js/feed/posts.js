@@ -10,10 +10,9 @@ const inputMedia = document.getElementById('inputMedia')
 const postContent = document.getElementById('postContent')
 const postBTN = Array.from(document.querySelectorAll(' .postBTN'))
 const resetSelect = Array.from(document.querySelectorAll(' .resetSelect'))
+const progressDivPost = document.querySelector(' .progressDivPost')
 
 postContent.value = ''
-
-
 
 
 let newPostData = {
@@ -317,25 +316,32 @@ postBTN.forEach((btn) => {
         postSlider[indexPost].style.animation = 'fadeIn 1s'
 
         if (indexPost == 1) {
-            postBTN[0].className = 'postBTN flex gap-3 justify-center slideBtn bg-[#05B2B0] text-white px-3 py-2 w-[80%] rounded'
+            postBTN[0].className = 'postBTN flex gap-3 justify-center slideBtn bg-[#05B2B0] text-white px-3 py-2 w-1/2 rounded'
             postBTN[0].style.animation = 'fadeIn 1s'
 
-            postBTN[1].className = 'postBTN hidden gap-3  justify-center bg-[#EF592E] text-white px-3 py-2 w-[80%] rounded'
+            postBTN[1].className = 'postBTN hidden gap-3  justify-center bg-[#EF592E] text-white px-3 py-2 w-full rounded'
             postBTN[1].style.animation = 'fadeOut 1s'
 
-            postBTN[2].className = 'postBTN flex gap-3  justify-center bg-[#EF592E] text-white px-3 py-2 w-[80%] rounded'
+            postBTN[2].className = 'postBTN flex gap-3  justify-center bg-[#EF592E] text-white px-3 py-2 w-1/2 rounded'
             postBTN[2].style.animation = 'fadeIn 1s'
+
+            progressDivPost.className = 'progressDivPost bg-slate-700 w-[100%] h-2 rounded-t-lg rounded-r-lg mb-10 transition-all'
+            progressDivPost.style.animation = 'progressPostsEnlarge 1s'
+
 
 
         } else {
-            postBTN[0].className = 'postBTN hidden gap-3 justify-center slideBtn bg-[#05B2B0] text-white px-3 py-2 w-[80%] rounded'
+            postBTN[0].className = 'postBTN hidden gap-3 justify-center slideBtn bg-[#05B2B0] text-white px-3 py-2 w-1/2 rounded'
             postBTN[0].style.animation = 'fadeOut 1s'
 
-            postBTN[1].className = 'postBTN flex gap-3  justify-center bg-[#EF592E] text-white px-3 py-2 w-[80%] rounded'
+            postBTN[1].className = 'postBTN flex gap-3  justify-center bg-[#EF592E] text-white px-3 py-2 w-full rounded'
             postBTN[1].style.animation = 'fadeIn 1s'
 
-            postBTN[2].className = 'postBTN hidden gap-3  justify-center bg-[#EF592E] text-white px-3 py-2 w-[80%] rounded'
+            postBTN[2].className = 'postBTN hidden gap-3  justify-center bg-[#EF592E] text-white px-3 py-2 w-1/2 rounded'
             postBTN[2].style.animation = 'fadeOut 1s'
+
+            progressDivPost.className = 'progressDivPost bg-slate-700 w-[50%] h-2 rounded-t-lg rounded-r-lg mb-10 transition-all'
+            progressDivPost.style.animation = 'progressPostsShrink 1s'
 
         }
 
@@ -354,4 +360,3 @@ postContent.addEventListener('input', () => {
 })
 
 
-console.log(newPostData)

@@ -249,6 +249,30 @@ color : #a2fffd;
     }
 
 
+    /* posts */
+
+
+    @keyframes progressPostsEnlarge {
+        from {
+            width: 50%;
+
+        }
+
+        to {
+            width: 100%;
+        }
+    }
+
+    @keyframes progressPostsShrink {
+        from {
+            width: 100%;
+
+        }
+
+        to {
+            width: 50%;
+        }
+    }
 
 
 
