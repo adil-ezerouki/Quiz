@@ -11,6 +11,11 @@ const postContent = document.getElementById('postContent')
 const postBTN = Array.from(document.querySelectorAll(' .postBTN'))
 const resetSelect = Array.from(document.querySelectorAll(' .resetSelect'))
 const progressDivPost = document.querySelector(' .progressDivPost')
+const closeDivPost = document.querySelector(' .closeDivPost')
+const closeAttaDiv = Array.from(document.querySelectorAll(' .closeAttaDiv'))
+
+const newPostDataDisplay = Array.from(document.querySelectorAll(' .newPostDataDisplay'))
+const newPostDataDisplayDynamic = Array.from(document.querySelectorAll(' .newPostDataDisplayDynamic'))
 
 postContent.value = ''
 
@@ -147,6 +152,7 @@ postSlider[0].style.display = 'flex';
 
 createStoryBtn.addEventListener('click', () => {
     containerPopUpDivPost.style.display = 'flex'
+    containerPopUpDivPost.style.animation = 'fadeIn 1s'
 })
 
 postAttIcons.forEach(icon => {
@@ -213,6 +219,7 @@ postAttatchementsSelects.forEach((select) => {
 
         }
 
+        newPostData.feeling != "" ? newPostDataDisplay[0].innerHTML
 
     })
 })
@@ -358,5 +365,40 @@ postContent.addEventListener('input', () => {
 
     console.log(newPostData)
 })
+
+
+closeDivPost.addEventListener('click',()=> {
+    containerPopUpDivPost.style.animation = 'fadeOut 1s';
+
+    containerPopUpDivPost.addEventListener('animationend', () => {
+        containerPopUpDivPost.style.display = 'none'
+    }, { once: true })
+})
+
+closeAttaDiv.forEach((colsebtn) => {
+    colsebtn.addEventListener('click', (e) => {
+        let targetedAttachDiv =  postAttachmentsDivs[closeAttaDiv.indexOf(e.target)]
+
+        targetedAttachDiv.style.animation = 'fadeOut .5s';
+
+        targetedAttachDiv.addEventListener('animationend',()=> {
+            targetedAttachDiv.style.display = 'none';
+        },{once:true})
+
+        console.log(targetedAttachDiv.scrollHeight)
+
+        newpostDiv.scrollTo({
+            top: 0 ,
+            behavior: 'smooth'
+
+        })
+    })
+})
+
+console.log()
+console.log(newPostDataDisplay[1].innerHTML)
+console.log(newPostDataDisplay[2].innerHTML)
+console.log(newPostDataDisplayDynamic[0].innerHTML)
+// console.log(newPostDataDisplayDynamic)
 
 

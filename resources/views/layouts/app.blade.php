@@ -171,7 +171,7 @@
             @csrf
 
             <i
-                class="flex justify-center items-center fa-solid fa-x absolute w-10 h-10 right-2 top-2 bg-slate-200  rounded-full cursor-pointer"></i>
+                class="closeDivPost flex justify-center items-center fa-solid fa-x absolute w-10 h-10 right-2 top-2 bg-slate-200  rounded-full cursor-pointer"></i>
 
             <div class="progressDivPost bg-slate-700 w-[50%] h-2 rounded-t-lg rounded-r-lg mb-10 transition-all">
 
@@ -222,9 +222,12 @@
                             </div>
                         </div>
                         <div class="postAttatchements w-full flex flex-col gap-3">
-                            <div id="media" class=" postAttachmentsDiv w-full">
+                            <div id="media" class=" postAttachmentsDiv w-full relative">
+                                <i
+                                    class=" closeAttaDiv flex justify-center items-center fa-solid fa-x absolute w-10 h-10 right-1 top-0  rounded-full cursor-pointer"></i>
+
                                 <div
-                                    class=" p-3 flex flex-col justify-center items-center gap-2 border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[156px]">
+                                    class=" p-3 flex flex-col justify-center items-center gap-2 border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[188px]">
 
                                     <div class="p-2 rounded-full flex flex-col justify-center items-center gap-3">
                                         <img src="{{ asset('images/PicFileStoryPic.png') }}" class="w-10"
@@ -237,10 +240,12 @@
                                 </div>
                             </div>
                             <div id="feelings&activities"
-                                class=" postAttachmentsDiv flex flex-col gap-3 justify-center border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[156px] p-3">
+                                class=" postAttachmentsDiv relative flex flex-col gap-3 justify-center border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[188px] p-3">
+                                <i
+                                    class="closeAttaDiv flex justify-center items-center fa-solid fa-x absolute w-10 h-10 right-1 top-0   rounded-full cursor-pointer"></i>
                                 <p>How Are you feeling ?</p>
 
-                                <div class="flex gap-3 items-center">
+                                <div class="flex gap-3 items-center relative top-0 right-0">
                                     @isset($feelings)
                                         <select name="" id="feeling" class=" p-2 rounded-lg w-[94%]">
                                             <option value="" selected>choose how you're feeling</option>
@@ -282,7 +287,10 @@
 
                             </div>
                             <div id="quiz"
-                                class=" postAttachmentsDiv flex flex-col gap-3 justify-center border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[156px] p-3">
+                                class="  postAttachmentsDiv relative flex flex-col gap-3 justify-center border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[188px] p-3">
+                                <i
+                                    class=" closeAttaDiv flex justify-center items-center fa-solid fa-x absolute w-10 h-10 right-1 top-0   rounded-full cursor-pointer"></i>
+
                                 <p>chosse a quiz of yours</p>
 
                                 <div class="flex gap-3 items-center">
@@ -303,7 +311,9 @@
 
                             </div>
                             <div id="tag"
-                                class=" postAttachmentsDiv flex flex-col gap-3 justify-center border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[156px] p-3">
+                                class=" postAttachmentsDiv relative flex flex-col gap-3 justify-center border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[188px] p-3">
+                                <i class=" closeAttaDiv flex justify-center items-center fa-solid fa-x absolute w-10 h-10 right-1 top-0   rounded-full cursor-pointer"></i>
+
                                 <p>tag a friend of yours</p>
 
                                 <div class="flex gap-3 items-center">
@@ -322,7 +332,9 @@
 
                             </div>
                             <div id="location"
-                                class=" postAttachmentsDiv flex flex-col gap-3 justify-center border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[156px] p-3">
+                                class=" postAttachmentsDiv relative flex flex-col gap-3 justify-center border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[188px] p-3">
+                                <i class=" closeAttaDiv flex justify-center items-center fa-solid fa-x absolute w-10 h-10 right-1 top-0   rounded-full cursor-pointer"></i>
+
                                 <p>include a location of yours</p>
 
                                 <div class="flex gap-3 items-center">
@@ -365,20 +377,20 @@
 
                                     <span class=" flex justify-center items-center ">Adil Ezerouki</span>
 
-                                    <span
-                                        class=" flex justify-center items-center feelingSpan font-[100] text-slate-500 gap-1">is
-                                        feeling <span>sad &#x1F641;</span> </span>
+                                    <span id="feelingDisplay"
+                                        class="newPostDataDisplay flex justify-center items-center feelingSpan font-[100] text-slate-500 gap-1">is
+                                        feeling <span class="newPostDataDisplayDynamic">sad &#x1F641;</span> </span>
 
-                                    <span
-                                        class="  justify-center items-center hidden feelingSpan font-[100] text-slate-500 gap-1">is
-                                        <span>playing soccer &#x26BD;</span> </span>
+                                    <span id="activityDisplay"
+                                        class=" newPostDataDisplay justify-center items-center hidden feelingSpan font-[100] text-slate-500 gap-1">is
+                                        <span class="newPostDataDisplayDynamic">playing soccer &#x26BD;</span> </span>
 
-                                    <span
-                                        class=" flex justify-center items-center  feelingSpan font-[100] text-slate-500 gap-1">with
+                                    <span id="tagDisplay"
+                                        class=" newPostDataDisplay flex justify-center items-center  feelingSpan font-[100] text-slate-500 gap-1">with
                                         <span class="text-black flex justify-center items-center gap-1">
                                             <img src="{{ asset('images/tag.png') }}" alt="" srcset=""
                                                 class="cursor-pointer w-5 h-5">
-                                            lprawi de srawi
+                                            <span class="newPostDataDisplayDynamic">lprawi de srawi</span>
                                         </span>
 
                                     </span>
@@ -453,18 +465,18 @@
                             <div class="ReactBtns flex justify-between pb-7 text-slate-500">
                                 <div class="likeBtn flex gap-2 items-center">
                                     <img src="{{ asset('images/react buttons/likeReact.png') }}" id="storyReadyPic"
-                                            alt="" srcset="" class="  w-8 rounded-lg object-cover" />
-                                        <span>Like</span>
+                                        alt="" srcset="" class="  w-8 rounded-lg object-cover" />
+                                    <span>Like</span>
                                 </div>
                                 <div class="commentBtn flex gap-2 items-center">
                                     <img src="{{ asset('images/react buttons/comments.png') }}" id="storyReadyPic"
-                                            alt="" srcset="" class="  w-8 rounded-lg object-cover" />
-                                        <span>Comment</span>
+                                        alt="" srcset="" class="  w-8 rounded-lg object-cover" />
+                                    <span>Comment</span>
                                 </div>
                                 <div class="shareBtn flex gap-2 items-center">
                                     <img src="{{ asset('images/react buttons/share.png') }}" id="storyReadyPic"
-                                            alt="" srcset="" class="  w-8 rounded-lg object-cover" />
-                                        <span>Share</span>
+                                        alt="" srcset="" class="  w-8 rounded-lg object-cover" />
+                                    <span>Share</span>
                                 </div>
                             </div>
 
