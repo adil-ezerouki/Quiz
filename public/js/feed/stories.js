@@ -24,6 +24,7 @@ const viewStoryPopUpDiv = Array.from(document.querySelectorAll(' .viewStoryPopUp
 const closeStory = Array.from(document.querySelectorAll(' .closeStory'))
 
 
+
 let index = 0;
 let storyType = '';
 

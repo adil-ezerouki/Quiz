@@ -19,6 +19,11 @@ const newPostDataDisplayDynamic = Array.from(document.querySelectorAll(' .newPos
 const tagANDlocalPic = Array.from(document.querySelectorAll(' .tagANDlocalIcon'))
 const resetMediaBtn = document.getElementById('resetMediaBtn1')
 const resetAllPostData = document.getElementById('resetAllPostData')
+const visibilitySelect = document.getElementById('visibilitySelect')
+const visibilityDisplay = document.getElementById('visibilityDisplay')
+
+const resetAllPostDataDiv = document.querySelector(' .resetAllPostDataDiv')
+
 
 postContent.value = ''
 
@@ -37,6 +42,7 @@ let newPostData = {
     quiz: '',
     tag: '',
     location: '',
+    visibility : ''
 }
 
 const activities = {
@@ -173,6 +179,10 @@ postAttIcons.forEach(icon => {
 
         postAttachmentsDivs[postAttIcons.indexOf(icon)].style.display = 'flex';
         postAttachmentsDivs[postAttIcons.indexOf(icon)].style.animation = 'fadeIn 1s';
+        resetAllPostDataDiv.style.display = 'flex';
+        resetAllPostDataDiv.style.animation = 'fadeIn 1s';
+
+
 
         newpostDiv.scrollTo({
             top: newpostDiv.scrollHeight,
@@ -242,6 +252,10 @@ postAttatchementsSelects.forEach((select) => {
         }
 
     })
+})
+
+visibilitySelect.addEventListener('change', ()=> {
+    newPostData = {...newPostData, visibility : visibilitySelect.value}
 })
 
 resetSelect.forEach(btn => {
@@ -355,6 +369,10 @@ postBTN.forEach((btn) => {
             newPostDataDisplay[5].style.display = newPostData.media ? 'block' : 'none';
 
 
+            visibilityDisplay.className = newPostData.visibility == 'public' ? 'fa-solid fa-eye' : 'fa-solid fa-user-group'
+
+
+
 
         }
 
@@ -425,11 +443,19 @@ closeAttaDiv.forEach((colsebtn) => {
 
         targetedAttachDiv.style.animation = 'fadeOut .5s';
 
+
         targetedAttachDiv.addEventListener('animationend',()=> {
             targetedAttachDiv.style.display = 'none';
         },{once:true})
 
-        console.log(targetedAttachDiv.scrollHeight)
+        resetAllPostDataDiv.style.animation = 'fadeOut .5s';
+
+
+        resetAllPostDataDiv.addEventListener('animationend',()=> {
+            resetAllPostDataDiv.style.display = 'none';
+        },{once:true})
+
+        
 
         newpostDiv.scrollTo({
             top: 0 ,
@@ -451,6 +477,8 @@ resetAllPostData.addEventListener('click',()=> {
         select.value = '';
     })
 
+    visibilitySelect.value = '';
+
     newPostData = {
         content: '',
         media: '',
@@ -465,6 +493,7 @@ resetAllPostData.addEventListener('click',()=> {
         quiz: '',
         tag: '',
         location: '',
+        visibility: '',
     }
 })
 

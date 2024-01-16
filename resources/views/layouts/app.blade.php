@@ -194,9 +194,9 @@
                             <div class="flex flex-col gap-1 justify-center">
                                 <p class="text-center">Adil Ezerouki</p>
 
-                                <select name="" id="" class="rounded">
-                                    <option value="">friends </option>
-                                    <option value="">public</option>
+                                <select id="visibilitySelect" name="" id="" class="rounded">
+                                    <option selected value="public">public</option>
+                                    <option value="friends">friends </option>
                                 </select>
                             </div>
                         </div>
@@ -238,7 +238,7 @@
                                     <input type="file" name="mediaPostFile" id="inputMedia" class="w-56"
                                         accept="image/*">
 
-                                    <span id="resetMediaBtn1"  class="px-3 py-2   bg-[#05b2b0] text-white rounded" >Reset Media</span>
+                                    <span id="resetMediaBtn1"  class="px-3 py-2 cursor-pointer  bg-[#05b2b0] text-white rounded" >Reset Media</span>
                                 </div>
                             </div>
                             <div id="feelings&activities"
@@ -261,7 +261,7 @@
                                         </select>
                                     @endisset
                                     <i id="feelingReset"
-                                        class="resetSelect fa-solid fa-x flex justify-center items-center bg-[#05b2b0] text-white p-2 rounded-full w-6 h-6 text-[13px]"></i>
+                                        class="resetSelect cursor-pointer fa-solid fa-x flex justify-center items-center bg-[#05b2b0] text-white p-2 rounded-full w-6 h-6 text-[13px]"></i>
                                 </div>
 
                                 <p>What Are you doing ?</p>
@@ -280,7 +280,7 @@
                                         </select>
                                     @endisset
                                     <i id="activityReset"
-                                        class="resetSelect fa-solid fa-x flex justify-center items-center bg-[#05b2b0] text-white p-2 rounded-full w-6 h-6 text-[13px]"></i>
+                                        class="resetSelect cursor-pointer fa-solid fa-x flex justify-center items-center bg-[#05b2b0] text-white p-2 rounded-full w-6 h-6 text-[13px]"></i>
 
                                 </div>
 
@@ -302,7 +302,7 @@
                                         <option value="quiz 4">quiz 4</option>
                                     </select>
                                     <i id="quizReset"
-                                        class="resetSelect fa-solid fa-x flex justify-center items-center bg-[#05b2b0] text-white p-2 rounded-full w-6 h-6 text-[13px]"></i>
+                                        class="resetSelect cursor-pointer fa-solid fa-x flex justify-center items-center bg-[#05b2b0] text-white p-2 rounded-full w-6 h-6 text-[13px]"></i>
 
                                 </div>
 
@@ -325,7 +325,7 @@
                                         <option value="friend 4">friend 4</option>
                                     </select>
                                     <i id="tagReset"
-                                        class="resetSelect fa-solid fa-x flex justify-center items-center bg-[#05b2b0] text-white p-2 rounded-full w-6 h-6 text-[13px]"></i>
+                                        class="resetSelect cursor-pointer fa-solid fa-x flex justify-center items-center bg-[#05b2b0] text-white p-2 rounded-full w-6 h-6 text-[13px]"></i>
 
                                 </div>
 
@@ -346,14 +346,14 @@
                                         <option value="localion 4">localion 4</option>
                                     </select>
                                     <i id="locationReset"
-                                        class="resetSelect fa-solid fa-x flex justify-center items-center bg-[#05b2b0] text-white p-2 rounded-full w-6 h-6 text-[13px]"></i>
+                                        class="resetSelect cursor-pointer fa-solid fa-x flex justify-center items-center bg-[#05b2b0] text-white p-2 rounded-full w-6 h-6 text-[13px]"></i>
 
                                 </div>
 
                             </div>
 
-                            <div class="flex justify-center">
-                                <span id="resetAllPostData"  class="px-3 py-2   bg-[#05b2b0] text-white rounded" >Reset All</span>
+                            <div style="display: none" class="flex justify-center resetAllPostDataDiv">
+                                <span id="resetAllPostData"  class="px-3 py-2 cursor-pointer   bg-[#05b2b0] text-white rounded" >Reset All</span>
                             </div>
                         </div>
                     </div>
@@ -414,7 +414,10 @@
                                     srcset=""> --}}
                                 </span>
 
-                                <span>18 h</span>
+                                <div>
+                                    <span>18 h</span>
+                                    <i id="visibilityDisplay" class="fa-solid fa-eye"></i>
+                                </div>
                             </div>
                         </div>
                         <div class="NewPostPreview w-full h-auto  flex flex-col gap-5">
