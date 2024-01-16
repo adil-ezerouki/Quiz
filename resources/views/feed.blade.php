@@ -128,11 +128,160 @@
 
 
                     <div class="postsDiv flex flex-col gap-6  justify-center bg-white rounded-lg p-4">
-                        <div class="h-96">
-                            <img src="{{ asset('images/profilePic.png') }}" id="profilePic"
-                                class=" w-20 h-20 object-cover rounded-full p-[2px] border border-[#EF592E]"
-                                alt="Profile Pic" srcset="">
-                        </div>
+                        @isset($posts)
+                            @foreach ($posts as $post)
+                                <div
+                                    class="postFather bg-[#E2E8F0]  rounded-lg px-7 pt-7 flex flex-col  items-center gap-5 w-full ">
+
+                                    <div class=" flex w-full items-center gap-3">
+                                        <img src="{{ asset('images/profilePic.png') }}"
+                                            class="w-10 h-10 object-cover rounded-full" alt="" srcset="">
+                                        <div class="flex flex-col gap-1 text-xs w-full">
+                                            <span class="text-[16px] w-full flex flex-wrap gap-1">
+
+                                                <span class=" flex justify-center items-center ">Adil Ezerouki</span>
+
+                                                @if ($post->feeling)
+                                                    <span id="feelingDisplay"
+                                                        class="newPostDataDisplay flex justify-center items-center feelingSpan font-[100] text-slate-500 gap-1">
+
+                                                        {{ 'is feeling ' . $post->feeling->description }}
+                                                        &#x{{ $post->feeling->code }};
+                                                    </span>
+                                                @endif
+
+                                                @if ($post->activity)
+                                                    <span id="activityDisplay"
+                                                        class=" newPostDataDisplay flex justify-center items-center  feelingSpan font-[100] text-slate-500 gap-1">{{ 'is ' . $post->activity->description }}
+                                                        &#x{{ $post->activity->code }};</span>
+                                                @endif
+
+                                                @if ($post->tag)
+                                                    <span id="tagDisplay"
+                                                        class=" flex justify-center items-center  feelingSpan font-[100] text-slate-500 gap-1">
+                                                        <img src="{{ asset('images/tag.png') }}"
+                                                            alt="" srcset=""
+                                                            class="tagANDlocalIcon cursor-pointer w-5 h-5">
+                                                        <span
+                                                            class="newPostDataDisplay text-slate-500 flex justify-center items-center gap-1">
+                                                            with
+                                                            {{ $post->tag }}
+                                                        </span>
+
+                                                    </span>
+                                                @endif
+
+                                                @if ($post->location)
+                                                    <span id="locationDisplay"
+                                                        class=" flex justify-center items-center  feelingSpan font-[100] text-slate-500 gap-1">
+                                                        <img  src="{{ asset('images/location.png') }}"
+                                                            alt="" srcset=""
+                                                            class="tagANDlocalIcon cursor-pointer w-5 h-5">
+                                                        <span
+                                                            class="newPostDataDisplay text-slate-500 flex justify-center items-center gap-1">
+                                                            in {{ $post->location }}
+                                                        </span>
+                                                    </span>
+                                                @endif
+
+                                            </span>
+
+
+                                            {{-- <img src="{{ asset('images/quiz.png') }}" class="w-6 cursor-pointer" alt=""
+                                    srcset=""> --}}
+                                            </span>
+
+                                            <div>
+                                                <span>18 h</span>
+
+                                                @if ($post->visibility == 'public')
+                                                    <i id="visibilityDisplay" class="fa-solid fa-eye"></i>
+                                                @endif
+
+                                                @if ($post->visibility == 'private')
+                                                    <i id="visibilityDisplay" class="fa-solid fa-user-group"></i>
+                                                @endif
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="NewPostPreview w-full h-auto  flex flex-col gap-5">
+
+                                        @if($post->postContent)
+                                            <p class="newPostDataDisplay">
+                                                {{ $post->postContent }}
+                                            </p>
+                                        @endif
+
+                                        @if ($post->postMeidaPath)
+                                            <img class="newPostDataDisplay" src={{ asset('storage/'.$post->postMeidaPath) }}
+                                                id="storyReadyPic" alt="" srcset=""
+                                                class="  w-full h-72 rounded-lg object-cover" />
+                                        @endif
+
+                                        <div class="react flex gap-1 items-center justify-between text-slate-500">
+                                            <div class=" flex gap-3 items-center justify-center">
+                                                <div class="flex">
+                                                    <img src="{{ asset('images/react buttons/likeReact.png') }}"
+                                                        class="w-7" alt="" srcset="">
+                                                    <img src="{{ asset('images/react buttons/loveReact.png') }}"
+                                                        class="w-7" alt="" srcset="">
+                                                    <img src="{{ asset('images/react buttons/funnyReact.png') }}"
+                                                        class="w-7" alt="" srcset="">
+                                                </div>
+                                                <span class="">
+                                                    128
+                                                </span>
+                                            </div>
+
+                                            <div class="flex gap-2 statistics">
+                                                <div class="comments flex gap-1 items-center">
+
+                                                    <img src="{{ asset('images/react buttons/comments.png') }}"
+                                                        id="storyReadyPic" alt="" srcset=""
+                                                        class="  w-7 rounded-lg object-cover" />
+                                                    <span>100</span>
+                                                </div>
+                                                <div class="sahre flex gap-1 items-center">
+
+                                                    <img src="{{ asset('images/react buttons/share.png') }}"
+                                                        id="storyReadyPic" alt="" srcset=""
+                                                        class="  w-7 rounded-lg object-cover" />
+                                                    <span>200</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <hr class="bg-slate-400 h-[2px]">
+
+                                        <div class="ReactBtns flex justify-between pb-7 text-slate-500">
+                                            <div class="likeBtn flex gap-2 items-center">
+                                                <img src="{{ asset('images/react buttons/likeReact.png') }}"
+                                                    id="storyReadyPic" alt="" srcset=""
+                                                    class="  w-8 rounded-lg object-cover" />
+                                                <span>Like</span>
+                                            </div>
+                                            <div class="commentBtn flex gap-2 items-center">
+                                                <img src="{{ asset('images/react buttons/comments.png') }}"
+                                                    id="storyReadyPic" alt="" srcset=""
+                                                    class="  w-8 rounded-lg object-cover" />
+                                                <span>Comment</span>
+                                            </div>
+                                            <div class="shareBtn flex gap-2 items-center">
+                                                <img src="{{ asset('images/react buttons/share.png') }}" id="storyReadyPic"
+                                                    alt="" srcset="" class="  w-8 rounded-lg object-cover" />
+                                                <span>Share</span>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+
+                                </div>
+                            @endforeach
+                        @endisset
                     </div>
                 </div>
             </div>

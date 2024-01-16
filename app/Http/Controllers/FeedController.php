@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Activity;
 use App\Models\Feeling;
+use App\Models\Post;
 use App\Models\Story;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,12 +18,52 @@ class FeedController extends Controller
         $stories = Story::all();
         $feelings = Feeling::all();
         $activities = Activity::all();
+        // $posts = Post::all()->sortByDesc(function ($post) {
+        //     return Carbon::parse($post->created_at);
+        // });
+
+        $posts = Post::latest()->get();
+
+        // return $posts;
+
+
+
 
         $toTheViewData = [
             'stories'=> $stories,
             'feelings'=> $feelings,
             'activities'=> $activities,
+            'posts'=> $posts,
         ];
+
+
+
+        foreach($posts as $post) {
+            if ($post->feeling_id != null) {
+                $targetedFeeling = Feeling::find($post->feeling_id);
+                unset($post->feeling_id);
+                $post->feeling = $targetedFeeling;
+
+
+            }
+
+            if ($post->activity_id != null) {
+                $targetedActivity = Activity::find($post->activity_id);
+                unset($post->activity);
+                $post->activity = $targetedActivity;
+            }
+
+            if($post->user_id != null) {
+                $targetedUser = User::find($post->user_id);
+                unset($post->user_id);
+                $post->user = $targetedUser;
+            }
+        }
+
+        // return $posts;
+
+
+
         return view('feed',$toTheViewData);
     }
 

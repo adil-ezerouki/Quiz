@@ -194,7 +194,7 @@
                             <div class="flex flex-col gap-1 justify-center">
                                 <p class="text-center">Adil Ezerouki</p>
 
-                                <select id="visibilitySelect" name="" id="" class="rounded">
+                                <select id="visibilitySelect" name="visibility" id="" class="rounded">
                                     <option selected value="public">public</option>
                                     <option value="friends">friends </option>
                                 </select>
@@ -202,7 +202,7 @@
                         </div>
                         <div class="w-full">
                             <textarea class="bg-white w-full h-32 p-3" id="postContent" placeholder="Whta's on your mind, Adil ?" type="text"
-                                name="hh">
+                                name="postContent">
                             </textarea>
                         </div>
                         <div class="activities w-full rounded-lg flex justify-between p-5 border border-gray-300">
@@ -249,7 +249,7 @@
 
                                 <div class="flex gap-3 items-center relative top-0 right-0">
                                     @isset($feelings)
-                                        <select name="" id="feeling" class=" p-2 rounded-lg w-[94%]">
+                                        <select name="feeling" id="feeling" class=" p-2 rounded-lg w-[94%]">
                                             <option value="" selected>choose how you're feeling</option>
                                             <hr>
                                             @foreach ($feelings as $feeling)
@@ -268,7 +268,7 @@
 
                                 <div class="flex gap-3 items-center">
                                     @isset($activities)
-                                        <select name="" id="activity" class="p-2 rounded-lg w-[94%]">
+                                        <select name="activity" id="activity" class="p-2 rounded-lg w-[94%]">
                                             <option value="" selected>choose what are you doing</option>
                                             <hr>
                                             @foreach ($activities as $activity)
@@ -293,8 +293,8 @@
                                 <p>chosse a quiz of yours</p>
 
                                 <div class="flex gap-3 items-center">
-                                    <select name="" id="quiz" class="p-2 rounded-lg w-[94%]">
-                                        <option value="" selected>choose your quiz</option>
+                                    <select name="quiz" id="quiz" class="p-2 rounded-lg w-[94%]">
+                                        <option value="quiz" selected>choose your quiz</option>
                                         <hr>
                                         <option value="quiz 1">quiz 1</option>
                                         <option value="quiz 2">quiz 2</option>
@@ -316,8 +316,8 @@
                                 <p>tag a friend of yours</p>
 
                                 <div class="flex gap-3 items-center">
-                                    <select name="" id="tag" class="p-2 rounded-lg w-[94%]">
-                                        <option value="" selected>choose your friend</option>
+                                    <select name="tag" id="tag" class="p-2 rounded-lg w-[94%]">
+                                        <option value="friend" selected>choose your friend</option>
                                         <hr>
                                         <option value="friend 1">friend 1</option>
                                         <option value="friend 2">friend 2</option>
@@ -337,7 +337,7 @@
                                 <p>include a location of yours</p>
 
                                 <div class="flex gap-3 items-center">
-                                    <select name="" id="location" class="p-2 rounded-lg w-[94%]">
+                                    <select name="location" id="location" class="p-2 rounded-lg w-[94%]">
                                         <option value="" selected>choose your location</option>
                                         <hr>
                                         <option value="localion 1">localion 1</option>
@@ -555,6 +555,21 @@
     @if (session('storySuccess'))
         <x-created-success-alert>
             {{ session('storySuccess') }}
+            {{-- <p>your story is created successfuly !</p> --}}
+        </x-created-success-alert>
+    @endif
+
+    @if (session('storyDeleteSuccess'))
+        <x-deleted-success-alert>
+            {{ session('storyDeleteSuccess') }}
+            {{-- <p>your story is created successfuly !</p> --}}
+        </x-deleted-success-alert>
+    @endif
+
+
+    @if (session('newPostSuccess'))
+        <x-created-success-alert>
+            {{ session('newPostSuccess') }}
             {{-- <p>your story is created successfuly !</p> --}}
         </x-created-success-alert>
     @endif
