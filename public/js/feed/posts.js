@@ -16,6 +16,9 @@ const closeAttaDiv = Array.from(document.querySelectorAll(' .closeAttaDiv'))
 
 const newPostDataDisplay = Array.from(document.querySelectorAll(' .newPostDataDisplay'))
 const newPostDataDisplayDynamic = Array.from(document.querySelectorAll(' .newPostDataDisplayDynamic'))
+const tagANDlocalPic = Array.from(document.querySelectorAll(' .tagANDlocalIcon'))
+const resetMediaBtn = document.getElementById('resetMediaBtn1')
+const resetAllPostData = document.getElementById('resetAllPostData')
 
 postContent.value = ''
 
@@ -23,8 +26,14 @@ postContent.value = ''
 let newPostData = {
     content: '',
     media: '',
-    feeling: '',
-    activity: '',
+    feeling: {
+        code : '',
+        description : ''
+    },
+    activity: {
+        code : '',
+        description : ''
+    },
     quiz: '',
     tag: '',
     location: '',
@@ -179,7 +188,11 @@ postAttatchementsSelects.forEach((select) => {
 
 
         if (e.target.id == 'feeling') {
-            newPostData = { ...newPostData, feeling: feelings[e.target.value] }
+            newPostData = { ...newPostData,  feeling : { ...newPostData.feeling ,
+                  code : e.target.value,
+                  description : feelings[e.target.value],
+
+                },}
 
             if (newPostData.feeling != "") {
                 postAttatchementsSelects[1].disabled = true;
@@ -188,10 +201,17 @@ postAttatchementsSelects.forEach((select) => {
                 postAttatchementsSelects[1].disabled = false;
             }
 
+
+
+
         }
 
         if (e.target.id == 'activity') {
-            newPostData = { ...newPostData, activity: activities[e.target.value] }
+            newPostData = { ...newPostData, activity : { ...newPostData.activity,
+                 code: e.target.value,
+                 description: activities[e.target.value],
+
+                }}
 
             if (newPostData.activity != "") {
                 postAttatchementsSelects[0].disabled = true;
@@ -203,6 +223,8 @@ postAttatchementsSelects.forEach((select) => {
 
 
         }
+
+        console.log(newPostData)
 
         if (e.target.id == 'quiz') {
             newPostData = { ...newPostData, quiz: e.target.value }
@@ -219,8 +241,6 @@ postAttatchementsSelects.forEach((select) => {
 
         }
 
-        newPostData.feeling != "" ? newPostDataDisplay[0].innerHTML
-
     })
 })
 
@@ -233,26 +253,33 @@ resetSelect.forEach(btn => {
 
         newPostData[targetedSelect.id] = ''
 
-        console.log(newPostData)
+
+
+
 
 
         if (targetedSelect.id == 'feeling' ) {
             postAttatchementsSelects[1].disabled = false
-        } else {
-            postAttatchementsSelects[1].disabled = true
+            postAttatchementsSelects[0].disabled = true
 
-            postAttatchementsSelects[1].value = ''
-
+            newPostData.feeling = {
+                code : '',
+                description : '',
+            }
         }
 
         if (targetedSelect.id == 'activity') {
             postAttatchementsSelects[0].disabled = false
-        } else {
-            postAttatchementsSelects[0].disabled = true
+            postAttatchementsSelects[1].disabled = true
 
-            postAttatchementsSelects[0].value = ''
+            newPostData.activity = {
+                code : '',
+                description : '',
+            }
 
         }
+
+        console.log(newPostData)
     })
 })
 
@@ -311,6 +338,23 @@ postBTN.forEach((btn) => {
             if (indexPost >= postSlider.length - 1) {
                 indexPost = postSlider.length - 1;
             }
+
+
+            if(newPostData.feeling ) {
+
+            }
+            newPostDataDisplay[0].innerHTML = newPostData.feeling.code != '' ? "is feeling " + newPostData.feeling.description + " "   + " &#x" + newPostData.feeling.code + ';' : '';
+            newPostDataDisplay[1].innerHTML = newPostData.activity.code != '' ? "is " + newPostData.activity.description + " "   + " &#x" + newPostData.activity.code + ';' : '';
+            newPostDataDisplay[2].innerHTML = newPostData.tag ? "with " + newPostData.tag : '';
+            tagANDlocalPic[0].style.display = newPostData.tag ? 'block' : 'none';
+            newPostDataDisplay[3].innerHTML = newPostData.location ?  "in " + newPostData.location : '';
+            tagANDlocalPic[1].style.display = newPostData.location ? 'block' : 'none';
+            newPostDataDisplay[4].innerHTML = newPostData.content != '' ? newPostData.content : '';
+            newPostDataDisplay[4].style.display = newPostData.content ? 'block' : 'none';
+            newPostDataDisplay[5].src = newPostData.media != '' ? newPostData.media : '';
+            newPostDataDisplay[5].style.display = newPostData.media ? 'block' : 'none';
+
+
 
         }
 
@@ -395,10 +439,38 @@ closeAttaDiv.forEach((colsebtn) => {
     })
 })
 
-console.log()
-console.log(newPostDataDisplay[1].innerHTML)
-console.log(newPostDataDisplay[2].innerHTML)
-console.log(newPostDataDisplayDynamic[0].innerHTML)
-// console.log(newPostDataDisplayDynamic)
+resetMediaBtn.addEventListener('click',()=> {
+
+    inputMedia.value = ''
+    newPostData.media = ''
+})
+
+resetAllPostData.addEventListener('click',()=> {
+
+    postAttatchementsSelects.forEach((select) => {
+        select.value = '';
+    })
+
+    newPostData = {
+        content: '',
+        media: '',
+        feeling: {
+            code : '',
+            description : ''
+        },
+        activity: {
+            code : '',
+            description : ''
+        },
+        quiz: '',
+        tag: '',
+        location: '',
+    }
+})
+
+// console.log()
+// console.log(newPostDataDisplay[1].innerHTML)
+// console.log(newPostDataDisplay[2].innerHTML)
+// console.log(newPostDataDisplayDynamic[0].innerHTML)
 
 

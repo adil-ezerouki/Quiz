@@ -227,9 +227,9 @@
                                     class=" closeAttaDiv flex justify-center items-center fa-solid fa-x absolute w-10 h-10 right-1 top-0  rounded-full cursor-pointer"></i>
 
                                 <div
-                                    class=" p-3 flex flex-col justify-center items-center gap-2 border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[188px]">
+                                    class=" p-3 flex flex-col justify-center gap-5 items-center border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[212px] ">
 
-                                    <div class="p-2 rounded-full flex flex-col justify-center items-center gap-3">
+                                    <div class=" rounded-full flex flex-col justify-center items-center gap-3">
                                         <img src="{{ asset('images/PicFileStoryPic.png') }}" class="w-10"
                                             alt="" srcset="">
                                         <p>supports JPG, JPEG200,PNG</p>
@@ -237,10 +237,12 @@
 
                                     <input type="file" name="mediaPostFile" id="inputMedia" class="w-56"
                                         accept="image/*">
+
+                                    <span id="resetMediaBtn1"  class="px-3 py-2   bg-[#05b2b0] text-white rounded" >Reset Media</span>
                                 </div>
                             </div>
                             <div id="feelings&activities"
-                                class=" postAttachmentsDiv relative flex flex-col gap-3 justify-center border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[188px] p-3">
+                                class=" postAttachmentsDiv relative flex flex-col gap-3 justify-center border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[212px] p-3">
                                 <i
                                     class="closeAttaDiv flex justify-center items-center fa-solid fa-x absolute w-10 h-10 right-1 top-0   rounded-full cursor-pointer"></i>
                                 <p>How Are you feeling ?</p>
@@ -259,7 +261,7 @@
                                         </select>
                                     @endisset
                                     <i id="feelingReset"
-                                        class="resetSelect fa-solid fa-x flex justify-center items-center bg-black text-white p-2 rounded-full w-6 h-6 text-[13px]"></i>
+                                        class="resetSelect fa-solid fa-x flex justify-center items-center bg-[#05b2b0] text-white p-2 rounded-full w-6 h-6 text-[13px]"></i>
                                 </div>
 
                                 <p>What Are you doing ?</p>
@@ -278,16 +280,13 @@
                                         </select>
                                     @endisset
                                     <i id="activityReset"
-                                        class="resetSelect fa-solid fa-x flex justify-center items-center bg-black text-white p-2 rounded-full w-6 h-6 text-[13px]"></i>
+                                        class="resetSelect fa-solid fa-x flex justify-center items-center bg-[#05b2b0] text-white p-2 rounded-full w-6 h-6 text-[13px]"></i>
 
                                 </div>
 
-
-
-
                             </div>
                             <div id="quiz"
-                                class="  postAttachmentsDiv relative flex flex-col gap-3 justify-center border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[188px] p-3">
+                                class="  postAttachmentsDiv relative flex flex-col gap-3 justify-center border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[212px] p-3">
                                 <i
                                     class=" closeAttaDiv flex justify-center items-center fa-solid fa-x absolute w-10 h-10 right-1 top-0   rounded-full cursor-pointer"></i>
 
@@ -303,7 +302,7 @@
                                         <option value="quiz 4">quiz 4</option>
                                     </select>
                                     <i id="quizReset"
-                                        class="resetSelect fa-solid fa-x flex justify-center items-center bg-black text-white p-2 rounded-full w-6 h-6 text-[13px]"></i>
+                                        class="resetSelect fa-solid fa-x flex justify-center items-center bg-[#05b2b0] text-white p-2 rounded-full w-6 h-6 text-[13px]"></i>
 
                                 </div>
 
@@ -311,7 +310,7 @@
 
                             </div>
                             <div id="tag"
-                                class=" postAttachmentsDiv relative flex flex-col gap-3 justify-center border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[188px] p-3">
+                                class=" postAttachmentsDiv relative flex flex-col gap-3 justify-center border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[212px] p-3">
                                 <i class=" closeAttaDiv flex justify-center items-center fa-solid fa-x absolute w-10 h-10 right-1 top-0   rounded-full cursor-pointer"></i>
 
                                 <p>tag a friend of yours</p>
@@ -326,13 +325,13 @@
                                         <option value="friend 4">friend 4</option>
                                     </select>
                                     <i id="tagReset"
-                                        class="resetSelect fa-solid fa-x flex justify-center items-center bg-black text-white p-2 rounded-full w-6 h-6 text-[13px]"></i>
+                                        class="resetSelect fa-solid fa-x flex justify-center items-center bg-[#05b2b0] text-white p-2 rounded-full w-6 h-6 text-[13px]"></i>
 
                                 </div>
 
                             </div>
                             <div id="location"
-                                class=" postAttachmentsDiv relative flex flex-col gap-3 justify-center border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[188px] p-3">
+                                class=" postAttachmentsDiv relative flex flex-col gap-3 justify-center border border-[#0000007E] border-dashed rounded-lg  w-[456px] h-[212px] p-3">
                                 <i class=" closeAttaDiv flex justify-center items-center fa-solid fa-x absolute w-10 h-10 right-1 top-0   rounded-full cursor-pointer"></i>
 
                                 <p>include a location of yours</p>
@@ -347,10 +346,14 @@
                                         <option value="localion 4">localion 4</option>
                                     </select>
                                     <i id="locationReset"
-                                        class="resetSelect fa-solid fa-x flex justify-center items-center bg-black text-white p-2 rounded-full w-6 h-6 text-[13px]"></i>
+                                        class="resetSelect fa-solid fa-x flex justify-center items-center bg-[#05b2b0] text-white p-2 rounded-full w-6 h-6 text-[13px]"></i>
 
                                 </div>
 
+                            </div>
+
+                            <div class="flex justify-center">
+                                <span id="resetAllPostData"  class="px-3 py-2   bg-[#05b2b0] text-white rounded" >Reset All</span>
                             </div>
                         </div>
                     </div>
@@ -378,31 +381,29 @@
                                     <span class=" flex justify-center items-center ">Adil Ezerouki</span>
 
                                     <span id="feelingDisplay"
-                                        class="newPostDataDisplay flex justify-center items-center feelingSpan font-[100] text-slate-500 gap-1">is
-                                        feeling <span class="newPostDataDisplayDynamic">sad &#x1F641;</span> </span>
+                                        class="newPostDataDisplay flex justify-center items-center feelingSpan font-[100] text-slate-500 gap-1"> </span>
 
                                     <span id="activityDisplay"
-                                        class=" newPostDataDisplay justify-center items-center hidden feelingSpan font-[100] text-slate-500 gap-1">is
-                                        <span class="newPostDataDisplayDynamic">playing soccer &#x26BD;</span> </span>
+                                        class=" newPostDataDisplay flex justify-center items-center  feelingSpan font-[100] text-slate-500 gap-1"></span>
 
                                     <span id="tagDisplay"
-                                        class=" newPostDataDisplay flex justify-center items-center  feelingSpan font-[100] text-slate-500 gap-1">with
-                                        <span class="text-black flex justify-center items-center gap-1">
-                                            <img src="{{ asset('images/tag.png') }}" alt="" srcset=""
-                                                class="cursor-pointer w-5 h-5">
-                                            <span class="newPostDataDisplayDynamic">lprawi de srawi</span>
+                                        class=" flex justify-center items-center  feelingSpan font-[100] text-slate-500 gap-1">
+                                        <img style="display: none" src="{{ asset('images/tag.png') }}" alt="" srcset=""
+                                                class="tagANDlocalIcon cursor-pointer w-5 h-5">
+                                        <span class="newPostDataDisplay text-black flex justify-center items-center gap-1">
+
+
                                         </span>
 
                                     </span>
 
 
-                                    <span
+                                    <span id="locationDisplay"
                                         class=" flex justify-center items-center  feelingSpan font-[100] text-slate-500 gap-1">
-                                        in
-                                        <span class="text-black flex justify-center items-center gap-1">
-                                            <img src="{{ asset('images/location.png') }}" alt=""
-                                                srcset="" class="cursor-pointer w-5 h-5">
-                                            Souk El Arbaa
+                                        <img style="display: none" src="{{ asset('images/location.png') }}" alt=""
+                                                srcset="" class="tagANDlocalIcon cursor-pointer w-5 h-5">
+                                        <span class="newPostDataDisplay text-black flex justify-center items-center gap-1">
+
                                         </span>
                                     </span>
 
@@ -417,13 +418,12 @@
                             </div>
                         </div>
                         <div class="NewPostPreview w-full h-auto  flex flex-col gap-5">
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde blanditiis provident ipsum
-                                maiores quis aliquid modi quisquam earum. Cumque.
+                            <p style="display: none" class="newPostDataDisplay">
+
                             </p>
 
 
-                            <img src="{{ asset('images/storyPicTest.png') }}" id="storyReadyPic" alt=""
+                            <img style="display: none" class="newPostDataDisplay" src="" id="storyReadyPic" alt=""
                                 srcset="" class="  w-full h-72 rounded-lg object-cover" />
 
 
