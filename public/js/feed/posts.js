@@ -24,6 +24,9 @@ const visibilityDisplay = document.getElementById('visibilityDisplay')
 
 const resetAllPostDataDiv = document.querySelector(' .resetAllPostDataDiv')
 
+const postOptionsIcon = Array.from(document.querySelectorAll(' .postOptionsIcon'))
+const postOptions = Array.from(document.querySelectorAll(' .postOptions'))
+
 
 postContent.value = ''
 
@@ -32,17 +35,17 @@ let newPostData = {
     content: '',
     media: '',
     feeling: {
-        code : '',
-        description : ''
+        code: '',
+        description: ''
     },
     activity: {
-        code : '',
-        description : ''
+        code: '',
+        description: ''
     },
     quiz: '',
     tag: '',
     location: '',
-    visibility : ''
+    visibility: ''
 }
 
 const activities = {
@@ -198,11 +201,14 @@ postAttatchementsSelects.forEach((select) => {
 
 
         if (e.target.id == 'feeling') {
-            newPostData = { ...newPostData,  feeling : { ...newPostData.feeling ,
-                  code : e.target.value,
-                  description : feelings[e.target.value],
+            newPostData = {
+                ...newPostData, feeling: {
+                    ...newPostData.feeling,
+                    code: e.target.value,
+                    description: feelings[e.target.value],
 
-                },}
+                },
+            }
 
             if (newPostData.feeling != "") {
                 postAttatchementsSelects[1].disabled = true;
@@ -217,11 +223,14 @@ postAttatchementsSelects.forEach((select) => {
         }
 
         if (e.target.id == 'activity') {
-            newPostData = { ...newPostData, activity : { ...newPostData.activity,
-                 code: e.target.value,
-                 description: activities[e.target.value],
+            newPostData = {
+                ...newPostData, activity: {
+                    ...newPostData.activity,
+                    code: e.target.value,
+                    description: activities[e.target.value],
 
-                }}
+                }
+            }
 
             if (newPostData.activity != "") {
                 postAttatchementsSelects[0].disabled = true;
@@ -254,8 +263,8 @@ postAttatchementsSelects.forEach((select) => {
     })
 })
 
-visibilitySelect.addEventListener('change', ()=> {
-    newPostData = {...newPostData, visibility : visibilitySelect.value}
+visibilitySelect.addEventListener('change', () => {
+    newPostData = { ...newPostData, visibility: visibilitySelect.value }
 })
 
 resetSelect.forEach(btn => {
@@ -272,13 +281,13 @@ resetSelect.forEach(btn => {
 
 
 
-        if (targetedSelect.id == 'feeling' ) {
+        if (targetedSelect.id == 'feeling') {
             postAttatchementsSelects[1].disabled = false
             postAttatchementsSelects[0].disabled = true
 
             newPostData.feeling = {
-                code : '',
-                description : '',
+                code: '',
+                description: '',
             }
         }
 
@@ -287,8 +296,8 @@ resetSelect.forEach(btn => {
             postAttatchementsSelects[1].disabled = true
 
             newPostData.activity = {
-                code : '',
-                description : '',
+                code: '',
+                description: '',
             }
 
         }
@@ -354,14 +363,14 @@ postBTN.forEach((btn) => {
             }
 
 
-            if(newPostData.feeling ) {
+            if (newPostData.feeling) {
 
             }
-            newPostDataDisplay[0].innerHTML = newPostData.feeling.code != '' ? "is feeling " + newPostData.feeling.description + " "   + " &#x" + newPostData.feeling.code + ';' : '';
-            newPostDataDisplay[1].innerHTML = newPostData.activity.code != '' ? "is " + newPostData.activity.description + " "   + " &#x" + newPostData.activity.code + ';' : '';
+            newPostDataDisplay[0].innerHTML = newPostData.feeling.code != '' ? "is feeling " + newPostData.feeling.description + " " + " &#x" + newPostData.feeling.code + ';' : '';
+            newPostDataDisplay[1].innerHTML = newPostData.activity.code != '' ? "is " + newPostData.activity.description + " " + " &#x" + newPostData.activity.code + ';' : '';
             newPostDataDisplay[2].innerHTML = newPostData.tag ? "with " + newPostData.tag : '';
             tagANDlocalPic[0].style.display = newPostData.tag ? 'block' : 'none';
-            newPostDataDisplay[3].innerHTML = newPostData.location ?  "in " + newPostData.location : '';
+            newPostDataDisplay[3].innerHTML = newPostData.location ? "in " + newPostData.location : '';
             tagANDlocalPic[1].style.display = newPostData.location ? 'block' : 'none';
             newPostDataDisplay[4].innerHTML = newPostData.content != '' ? newPostData.content : '';
             newPostDataDisplay[4].style.display = newPostData.content ? 'block' : 'none';
@@ -429,7 +438,7 @@ postContent.addEventListener('input', () => {
 })
 
 
-closeDivPost.addEventListener('click',()=> {
+closeDivPost.addEventListener('click', () => {
     containerPopUpDivPost.style.animation = 'fadeOut 1s';
 
     containerPopUpDivPost.addEventListener('animationend', () => {
@@ -439,39 +448,39 @@ closeDivPost.addEventListener('click',()=> {
 
 closeAttaDiv.forEach((colsebtn) => {
     colsebtn.addEventListener('click', (e) => {
-        let targetedAttachDiv =  postAttachmentsDivs[closeAttaDiv.indexOf(e.target)]
+        let targetedAttachDiv = postAttachmentsDivs[closeAttaDiv.indexOf(e.target)]
 
         targetedAttachDiv.style.animation = 'fadeOut .5s';
 
 
-        targetedAttachDiv.addEventListener('animationend',()=> {
+        targetedAttachDiv.addEventListener('animationend', () => {
             targetedAttachDiv.style.display = 'none';
-        },{once:true})
+        }, { once: true })
 
         resetAllPostDataDiv.style.animation = 'fadeOut .5s';
 
 
-        resetAllPostDataDiv.addEventListener('animationend',()=> {
+        resetAllPostDataDiv.addEventListener('animationend', () => {
             resetAllPostDataDiv.style.display = 'none';
-        },{once:true})
+        }, { once: true })
 
-        
+
 
         newpostDiv.scrollTo({
-            top: 0 ,
+            top: 0,
             behavior: 'smooth'
 
         })
     })
 })
 
-resetMediaBtn.addEventListener('click',()=> {
+resetMediaBtn.addEventListener('click', () => {
 
     inputMedia.value = ''
     newPostData.media = ''
 })
 
-resetAllPostData.addEventListener('click',()=> {
+resetAllPostData.addEventListener('click', () => {
 
     postAttatchementsSelects.forEach((select) => {
         select.value = '';
@@ -483,12 +492,12 @@ resetAllPostData.addEventListener('click',()=> {
         content: '',
         media: '',
         feeling: {
-            code : '',
-            description : ''
+            code: '',
+            description: ''
         },
         activity: {
-            code : '',
-            description : ''
+            code: '',
+            description: ''
         },
         quiz: '',
         tag: '',
@@ -497,9 +506,26 @@ resetAllPostData.addEventListener('click',()=> {
     }
 })
 
-// console.log()
-// console.log(newPostDataDisplay[1].innerHTML)
-// console.log(newPostDataDisplay[2].innerHTML)
-// console.log(newPostDataDisplayDynamic[0].innerHTML)
+
+let postOptionsIsOpen = false;
+
+
+postOptionsIcon.forEach(icon => {
+    icon.addEventListener('click', () => {
+        postOptionsIsOpen = !postOptionsIsOpen;
+
+        if (postOptionsIsOpen) {
+            postOptions[postOptionsIcon.indexOf(icon)].style.display = 'flex';
+            postOptions[postOptionsIcon.indexOf(icon)].style.animation = 'fadeIn 1s';
+        } else {
+            postOptions[postOptionsIcon.indexOf(icon)].style.animation = 'fadeOut 1s';
+
+            postOptions[postOptionsIcon.indexOf(icon)].addEventListener('animationend', () => {
+                postOptions[postOptionsIcon.indexOf(icon)].style.display = 'none';
+            }, { once: true })
+        }
+    })
+})
+
 
 

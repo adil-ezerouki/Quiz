@@ -5,7 +5,7 @@
 @section('content')
 
 
-    <div class="feed_stories flex flex-col  justify-center">
+    <div class="feed_stories flex flex-col justify-center">
 
         <div class="feed flex gap-7">
 
@@ -15,7 +15,7 @@
 
 
             <div class="w-[50%] h-[479px] overflow-y-scroll">
-                <div id="stories" class=" flex  h-[105px] overflow-x-auto ">
+                <div id="stories" class=" flex   overflow-x-auto py-7">
                     <div class="flex justify-center  gap-[28px] w-fit">
                         <div class="createStory flex relative rounded-full w-20 h-20 active:scale-[1.01] transition-all">
                             <img src="{{ asset('images/profilePic.png') }}" id="profilePic"
@@ -127,13 +127,13 @@
 
 
 
-                    <div class="postsDiv flex flex-col gap-6  justify-center bg-white rounded-lg p-4">
+                    <div class="postsDiv flex flex-col gap-6  justify-center rounded-lg">
                         @isset($posts)
                             @foreach ($posts as $post)
                                 <div
-                                    class="postFather bg-[#E2E8F0]  rounded-lg px-7 pt-7 flex flex-col  items-center gap-5 w-full ">
+                                    class="postFather relative bg-white  rounded-lg px-7 pt-7 flex flex-col  items-center gap-5 w-full ">
 
-                                    <div class=" flex w-full items-center gap-3">
+                                    <div class=" flex w-full items-center gap-3 ">
                                         <img src="{{ asset('images/profilePic.png') }}"
                                             class="w-10 h-10 object-cover rounded-full" alt="" srcset="">
                                         <div class="flex flex-col gap-1 text-xs w-full">
@@ -148,19 +148,25 @@
                                                         {{ 'is feeling ' . $post->feeling->description }}
                                                         &#x{{ $post->feeling->code }};
                                                     </span>
+
+
                                                 @endif
 
                                                 @if ($post->activity)
                                                     <span id="activityDisplay"
                                                         class=" newPostDataDisplay flex justify-center items-center  feelingSpan font-[100] text-slate-500 gap-1">{{ 'is ' . $post->activity->description }}
                                                         &#x{{ $post->activity->code }};</span>
+
                                                 @endif
 
+
+
                                                 @if ($post->tag)
+
+
                                                     <span id="tagDisplay"
                                                         class=" flex justify-center items-center  feelingSpan font-[100] text-slate-500 gap-1">
-                                                        <img src="{{ asset('images/tag.png') }}"
-                                                            alt="" srcset=""
+                                                        <img src="{{ asset('images/tag.png') }}" alt="" srcset=""
                                                             class="tagANDlocalIcon cursor-pointer w-5 h-5">
                                                         <span
                                                             class="newPostDataDisplay text-slate-500 flex justify-center items-center gap-1">
@@ -174,9 +180,8 @@
                                                 @if ($post->location)
                                                     <span id="locationDisplay"
                                                         class=" flex justify-center items-center  feelingSpan font-[100] text-slate-500 gap-1">
-                                                        <img  src="{{ asset('images/location.png') }}"
-                                                            alt="" srcset=""
-                                                            class="tagANDlocalIcon cursor-pointer w-5 h-5">
+                                                        <img src="{{ asset('images/location.png') }}" alt=""
+                                                            srcset="" class="tagANDlocalIcon cursor-pointer w-5 h-5">
                                                         <span
                                                             class="newPostDataDisplay text-slate-500 flex justify-center items-center gap-1">
                                                             in {{ $post->location }}
@@ -187,8 +192,7 @@
                                             </span>
 
 
-                                            {{-- <img src="{{ asset('images/quiz.png') }}" class="w-6 cursor-pointer" alt=""
-                                    srcset=""> --}}
+
                                             </span>
 
                                             <div>
@@ -198,23 +202,58 @@
                                                     <i id="visibilityDisplay" class="fa-solid fa-eye"></i>
                                                 @endif
 
-                                                @if ($post->visibility == 'private')
+                                                @if ($post->visibility == 'friends')
                                                     <i id="visibilityDisplay" class="fa-solid fa-user-group"></i>
                                                 @endif
 
                                             </div>
                                         </div>
+
+                                        <div class="postOptionsIcon felx h-full absolute top-2 right-3  cursor-pointer">
+                                            <i class="fa-solid fa-ellipsis"></i>
+                                        </div>
+
+                                        <div style="display: none" class="postOptions flex flex-col  gap-3 p-4 rounded-lg bg-slate-500 text-white absolute top-7 right-3  cursor-pointer">
+                                                <div class="flex gap-4 items-center">
+                                                    <i class="fa-regular fa-bookmark w-5"></i>
+                                                   <span>save post</span>
+                                                </div>
+
+                                                <hr>
+
+                                                <div class="flex gap-4 items-center">
+                                                    <i class="fa-solid fa-pen w-5"></i>
+                                                    <span>edit post</span>
+                                                </div>
+                                                <div class="flex gap-4 items-center">
+                                                    <i class="fa-solid fa-trash w-5"></i>
+                                                    <span>delete post</span>
+                                                </div>
+
+                                                <hr>
+
+                                                <div class="flex gap-4 items-center">
+
+                                                    <i class="fa-solid fa-user-plus  w-5"></i>
+                                                    <span>add user</span>
+                                                </div>
+                                                <div class="flex gap-4 items-center">
+                                                    <i class="fa-solid fa-ban w-5"></i>
+                                                    <span>block user</span>
+                                                </div>
+
+                                        </div>
                                     </div>
                                     <div class="NewPostPreview w-full h-auto  flex flex-col gap-5">
 
-                                        @if($post->postContent)
+                                        @if ($post->postContent)
                                             <p class="newPostDataDisplay">
                                                 {{ $post->postContent }}
                                             </p>
                                         @endif
 
                                         @if ($post->postMeidaPath)
-                                            <img class="newPostDataDisplay" src={{ asset('storage/'.$post->postMeidaPath) }}
+                                            <img class="newPostDataDisplay" src={{ asset('storage/' . $post->postMeidaPath) }}
                                                 id="storyReadyPic" alt="" srcset=""
                                                 class="  w-full h-72 rounded-lg object-cover" />
                                         @endif

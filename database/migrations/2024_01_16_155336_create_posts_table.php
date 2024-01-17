@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreignId('activity_id')->nullable()->constrained('activities');
             $table->string('tag')->nullable();
             $table->string('location')->nullable();
-            $table->string('visibility')->nullable();
+            $table->string('visibility');
             $table->timestamps();
         });
     }

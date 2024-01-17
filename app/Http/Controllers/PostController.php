@@ -43,12 +43,12 @@ class PostController extends Controller
 
         // return $newPostData;
 
-        if (array_key_exists("feeling", $newPostData)) {
+        if ($newPostData["feeling"] != null) {
             $targetedFeeling = Feeling::where('code', $newPostData["feeling"])->first();
             $newPost->feeling_id = $targetedFeeling->id;
         }
 
-        if (array_key_exists("activity", $newPostData)) {
+        if ($newPostData["activity"] != null) {
             $targetedActivity = Activity::where('code', $newPostData["activity"])->first();
             $newPost->activity_id = $targetedActivity["id"];
         }
@@ -68,10 +68,10 @@ class PostController extends Controller
 
 
         $newPost->user_id = Auth::user()->id;
-        $newPost->postContent = array_key_exists("postContent", $newPostData) ?  $newPostData["postContent"] : null;
-        $newPost->tag = array_key_exists("tag", $newPostData) ?  $newPostData["tag"] : null;
-        $newPost->location = array_key_exists("location", $newPostData) ?  $newPostData["location"] : null;
-        $newPost->visibility = array_key_exists("visibility", $newPostData) ?  $newPostData["visibility"] : null;
+        $newPost->postContent = $newPostData["postContent"] != null ?  $newPostData["postContent"] : null;
+        $newPost->tag =  $newPostData["tag"] != null ?  $newPostData["tag"] : null;
+        $newPost->location =  $newPostData["location"] != null ?  $newPostData["location"] : null;
+        $newPost->visibility = $newPostData["visibility"] != null ?  $newPostData["visibility"] : null;
 
         if ($newPost->save()) {
             return redirect()->back()->with('newPostSuccess', 'Your post is created successfully');

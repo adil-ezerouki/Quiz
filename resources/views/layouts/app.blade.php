@@ -294,7 +294,7 @@
 
                                 <div class="flex gap-3 items-center">
                                     <select name="quiz" id="quiz" class="p-2 rounded-lg w-[94%]">
-                                        <option value="quiz" selected>choose your quiz</option>
+                                        <option value="" selected>choose your quiz</option>
                                         <hr>
                                         <option value="quiz 1">quiz 1</option>
                                         <option value="quiz 2">quiz 2</option>
@@ -317,7 +317,7 @@
 
                                 <div class="flex gap-3 items-center">
                                     <select name="tag" id="tag" class="p-2 rounded-lg w-[94%]">
-                                        <option value="friend" selected>choose your friend</option>
+                                        <option value="" selected>choose your friend</option>
                                         <hr>
                                         <option value="friend 1">friend 1</option>
                                         <option value="friend 2">friend 2</option>
@@ -537,7 +537,7 @@
         <div class="flex flex-col w-full">
             @include('layouts.header')
 
-            <div class="bg-[#F2F2F2] h-full p-5">
+            <div class="bg-slate-200 h-full p-5 pt-0">
                 @yield('content')
             </div>
         </div>
