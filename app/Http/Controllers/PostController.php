@@ -43,12 +43,12 @@ class PostController extends Controller
 
         // return $newPostData;
 
-        if ($newPostData["feeling"] != null) {
+        if (array_key_exists("feeling",$newPostData) && $newPostData["feeling"] != null) {
             $targetedFeeling = Feeling::where('code', $newPostData["feeling"])->first();
             $newPost->feeling_id = $targetedFeeling->id;
         }
 
-        if ($newPostData["activity"] != null) {
+        if (array_key_exists("activity",$newPostData) && $newPostData["activity"] != null) {
             $targetedActivity = Activity::where('code', $newPostData["activity"])->first();
             $newPost->activity_id = $targetedActivity["id"];
         }
@@ -107,6 +107,13 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+
+
+
+        $post = Post::find($id);
+
+        if($post->delete()){
+            return redirect()->back()->with('PostDeleted', 'Your post is deleted successfully');
+        };
     }
 }

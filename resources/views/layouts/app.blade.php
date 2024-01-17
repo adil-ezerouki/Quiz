@@ -574,9 +574,9 @@
         </x-created-success-alert>
     @endif
 
-    @if (session('storyDeleteSuccess'))
+    @if (session('PostDeleted'))
         <x-deleted-success-alert>
-            {{ session('storyDeleteSuccess') }}
+            {{ session('PostDeleted') }}
             {{-- <p>your story is created successfuly !</p> --}}
         </x-deleted-success-alert>
     @endif

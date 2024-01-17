@@ -15,7 +15,7 @@
 
 
             <div class="w-[50%] h-[479px] overflow-y-scroll">
-                <div id="stories" class=" flex   overflow-x-auto py-7">
+                <div id="stories" class=" flex overflow-x-auto py-7">
                     <div class="flex justify-center  gap-[28px] w-fit">
                         <div class="createStory flex relative rounded-full w-20 h-20 active:scale-[1.01] transition-all">
                             <img src="{{ asset('images/profilePic.png') }}" id="profilePic"
@@ -209,38 +209,40 @@
                                             </div>
                                         </div>
 
-                                        <div class="postOptionsIcon felx h-full absolute top-2 right-3  cursor-pointer">
-                                            <i class="fa-solid fa-ellipsis"></i>
+                                        <div class="postOptionsDiv felx h-full absolute top-2 right-3  cursor-pointer">
+                                            <i class="postOptionsIcon fa-solid fa-ellipsis flex justify-center items-center bg-slate-200 rounded-full w-7 h-7 p-3"></i>
                                         </div>
 
-                                        <div style="display: none" class="postOptions flex flex-col  gap-3 p-4 rounded-lg bg-slate-500 text-white absolute top-7 right-3  cursor-pointer">
-                                                <div class="flex gap-4 items-center">
+                                        <div style="display: none" class="postOptions flex flex-col  gap-3 p-4 rounded-lg bg-slate-500 text-white absolute top-11 right-3  cursor-pointer">
+                                                <a href="{{route('deleteStory', $post->id)}}" class="flex gap-4 items-center">
                                                     <i class="fa-regular fa-bookmark w-5"></i>
                                                    <span>save post</span>
-                                                </div>
+                                                </a>
 
                                                 <hr>
 
-                                                <div class="flex gap-4 items-center">
+                                                <a href="{{route('deleteStory', $post->id)}}" class="flex gap-4 items-center">
                                                     <i class="fa-solid fa-pen w-5"></i>
                                                     <span>edit post</span>
-                                                </div>
-                                                <div class="flex gap-4 items-center">
+                                                </a>
+                                                <form action="{{route('posts.destroy', $post->id)}}" method="post" class="flex gap-4 items-center">
+                                                    @csrf
+                                                    @method('delete')
                                                     <i class="fa-solid fa-trash w-5"></i>
-                                                    <span>delete post</span>
-                                                </div>
+                                                    <button type="submit">delete post</button>
+                                                </form>
 
                                                 <hr>
 
-                                                <div class="flex gap-4 items-center">
+                                                <a href="{{route('deleteStory', $post->id)}}" class="flex gap-4 items-center">
 
                                                     <i class="fa-solid fa-user-plus  w-5"></i>
                                                     <span>add user</span>
-                                                </div>
-                                                <div class="flex gap-4 items-center">
+                                                </a>
+                                                <a href="{{route('deleteStory', $post->id)}}" class="flex gap-4 items-center">
                                                     <i class="fa-solid fa-ban w-5"></i>
                                                     <span>block user</span>
-                                                </div>
+                                                </a>
 
                                         </div>
                                     </div>

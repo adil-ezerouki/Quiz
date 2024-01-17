@@ -24,6 +24,7 @@ const visibilityDisplay = document.getElementById('visibilityDisplay')
 
 const resetAllPostDataDiv = document.querySelector(' .resetAllPostDataDiv')
 
+const postOptionsDiv = Array.from(document.querySelectorAll(' .postOptionsDiv'))
 const postOptionsIcon = Array.from(document.querySelectorAll(' .postOptionsIcon'))
 const postOptions = Array.from(document.querySelectorAll(' .postOptions'))
 
@@ -510,19 +511,32 @@ resetAllPostData.addEventListener('click', () => {
 let postOptionsIsOpen = false;
 
 
-postOptionsIcon.forEach(icon => {
+postOptionsDiv.forEach(icon => {
     icon.addEventListener('click', () => {
         postOptionsIsOpen = !postOptionsIsOpen;
 
-        if (postOptionsIsOpen) {
-            postOptions[postOptionsIcon.indexOf(icon)].style.display = 'flex';
-            postOptions[postOptionsIcon.indexOf(icon)].style.animation = 'fadeIn 1s';
-        } else {
-            postOptions[postOptionsIcon.indexOf(icon)].style.animation = 'fadeOut 1s';
 
-            postOptions[postOptionsIcon.indexOf(icon)].addEventListener('animationend', () => {
-                postOptions[postOptionsIcon.indexOf(icon)].style.display = 'none';
+
+
+
+        if (postOptionsIsOpen) {
+
+
+            postOptions[postOptionsDiv.indexOf(icon)].style.display = 'flex';
+            postOptions[postOptionsDiv.indexOf(icon)].style.animation = 'postInfoEnlarge 1s';
+            postOptionsIcon[postOptionsDiv.indexOf(icon)].className = 'postOptionsIcon fa-solid fa-ellipsis flex justify-center items-center bg-slate-300 scale-110 transition-all rounded-full w-7 h-7 p-3'
+
+
+
+        } else {
+            postOptions[postOptionsDiv.indexOf(icon)].style.animation = 'postInfoShrink 1s';
+
+            postOptions[postOptionsDiv.indexOf(icon)].addEventListener('animationend', () => {
+                postOptions[postOptionsDiv.indexOf(icon)].style.display = 'none';
             }, { once: true })
+
+            postOptionsIcon[postOptionsDiv.indexOf(icon)].className = 'postOptionsIcon fa-solid fa-ellipsis flex justify-center items-center bg-slate-200 rounded-full w-7 h-7 p-3'
+
         }
     })
 })
