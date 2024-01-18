@@ -130,8 +130,8 @@
                     <div class="postsDiv flex flex-col gap-6  justify-center rounded-lg">
                         @isset($posts)
                             @foreach ($posts as $post)
-                                <div
-                                    class="postFather relative bg-white  rounded-lg px-7 pt-7 flex flex-col  items-center gap-5 w-full ">
+                                <div id="{{$post->id}}"
+                                    class="postReadyFather relative bg-white  rounded-lg px-7 pt-7 flex flex-col  items-center gap-5 w-full ">
 
                                     <div class=" flex w-full items-center gap-3 ">
                                         <img src="{{ asset('images/profilePic.png') }}"
@@ -221,7 +221,7 @@
 
                                                 <hr>
 
-                                                <a href="{{route('deleteStory', $post->id)}}" class="flex gap-4 items-center">
+                                                <a class="editPostBtn" class="flex gap-4 items-center">
                                                     <i class="fa-solid fa-pen w-5"></i>
                                                     <span>edit post</span>
                                                 </a>
@@ -246,7 +246,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="NewPostPreview w-full h-auto  flex flex-col gap-5">
+                                    <div class="PostDiv w-full h-auto  flex flex-col gap-5">
 
                                         @if ($post->postContent)
                                             <p class="newPostDataDisplay">

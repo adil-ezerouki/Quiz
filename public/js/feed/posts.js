@@ -1,3 +1,5 @@
+// create new post
+
 const createStoryBtn = document.getElementById('createStoryBtn')
 const newpostDiv = document.querySelector(' #newpost')
 const containerPopUpDivPost = document.querySelector(' .containerPopUpDivPost')
@@ -536,6 +538,61 @@ postOptionsDiv.forEach(icon => {
             }, { once: true })
 
             postOptionsIcon[postOptionsDiv.indexOf(icon)].className = 'postOptionsIcon fa-solid fa-ellipsis flex justify-center items-center bg-slate-200 rounded-full w-7 h-7 p-3'
+
+        }
+    })
+})
+
+
+// edit post
+
+const containerPopUpDivEditPost = document.querySelector(' .containerPopUpDivEditPost')
+const biggestEditPostHolder = document.querySelector(' .biggestPostHolder')
+const editPostBtn = Array.from(document.querySelectorAll(' .editPostBtn'))
+const postReadyFather = Array.from(document.querySelectorAll(' .postReadyFather'))
+const loadingDiv = document.querySelector(' .loadingDiv');
+
+
+
+editPostBtn.forEach((btn) => {
+    btn.addEventListener('click', e => {
+
+        loadingDiv.style.display = 'flex';
+        loadingDiv.style.animation = 'fadeIn 1s'
+
+
+        let targetedpostDivId = postReadyFather[editPostBtn.indexOf(btn)].id
+
+        let dataFromBackend = fetch(`http://127.0.0.1:8000/posts/${targetedpostDivId}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error ! Status : ${response.status}`)
+                }
+
+                return response.json();
+            })
+            .then((data) => {
+                console.log('data :', data)
+            })
+            .catch((error) => {
+                console.error('error is', error);
+            })
+
+
+        if (dataFromBackend) {
+
+            setTimeout(() => {
+                loadingDiv.style.animation = 'fadeOut 1s'
+
+                loadingDiv.addEventListener('animationend', () => {
+                    loadingDiv.style.display = 'none';
+                })
+            }, 1500)
+
+            setTimeout(() => {
+                containerPopUpDivEditPost.style.display = 'flex'
+                containerPopUpDivEditPost.style.animation = 'fadeIn 1s'
+            }, 1800)
 
         }
     })
