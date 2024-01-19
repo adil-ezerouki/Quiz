@@ -43,7 +43,7 @@
                                                     class="w-8 h-8 object-cover rounded-full" alt="" srcset="">
                                                 <div class="flex flex-col text-xs">
                                                     <span class="">Adil Ezerouki</span>
-                                                    <span>{{$story->PostedTime}}</span>
+                                                    <span>{{ $story->PostedTime }}</span>
                                                 </div>
                                             </div>
 
@@ -130,7 +130,7 @@
                     <div class="postsDiv flex flex-col gap-6  justify-center rounded-lg">
                         @isset($posts)
                             @foreach ($posts as $post)
-                                <div id="{{$post->id}}"
+                                <div id="{{ $post->id }}"
                                     class="postReadyFather relative bg-white  rounded-lg px-7 pt-7 flex flex-col  items-center gap-5 w-full ">
 
                                     <div class=" flex w-full items-center gap-3 ">
@@ -148,22 +148,17 @@
                                                         {{ 'is feeling ' . $post->feeling->description }}
                                                         &#x{{ $post->feeling->code }};
                                                     </span>
-
-
                                                 @endif
 
                                                 @if ($post->activity)
                                                     <span id="activityDisplay"
                                                         class=" newPostDataDisplay flex justify-center items-center  feelingSpan font-[100] text-slate-500 gap-1">{{ 'is ' . $post->activity->description }}
                                                         &#x{{ $post->activity->code }};</span>
-
                                                 @endif
 
 
 
                                                 @if ($post->tag)
-
-
                                                     <span id="tagDisplay"
                                                         class=" flex justify-center items-center  feelingSpan font-[100] text-slate-500 gap-1">
                                                         <img src="{{ asset('images/tag.png') }}" alt="" srcset=""
@@ -197,7 +192,7 @@
 
                                             <div>
 
-                                                <span>{{$post->PostedTime}}</span>
+                                                <span>{{ $post->PostedTime }}</span>
 
                                                 @if ($post->visibility == 'public')
                                                     <i id="visibilityDisplay" class="fa-solid fa-eye"></i>
@@ -211,39 +206,42 @@
                                         </div>
 
                                         <div class="postOptionsDiv felx h-full absolute top-2 right-3  cursor-pointer">
-                                            <i class="postOptionsIcon fa-solid fa-ellipsis flex justify-center items-center bg-slate-200 rounded-full w-7 h-7 p-3"></i>
+                                            <i
+                                                class="postOptionsIcon fa-solid fa-ellipsis flex justify-center items-center bg-slate-200 rounded-full w-7 h-7 p-3"></i>
                                         </div>
 
-                                        <div style="display: none" class="postOptions flex flex-col  gap-3 p-4 rounded-lg bg-slate-500 text-white absolute top-11 right-3  cursor-pointer">
-                                                <a href="{{route('deleteStory', $post->id)}}" class="flex gap-4 items-center">
-                                                    <i class="fa-regular fa-bookmark w-5"></i>
-                                                   <span>save post</span>
-                                                </a>
+                                        <div style="display: none"
+                                            class="postOptions flex flex-col  gap-3 p-4 rounded-lg bg-slate-500 text-white absolute top-11 right-3  cursor-pointer">
+                                            <a href="{{ route('deleteStory', $post->id) }}" class="flex gap-4 items-center">
+                                                <i class="fa-regular fa-bookmark w-5"></i>
+                                                <span>save post</span>
+                                            </a>
 
-                                                <hr>
+                                            <hr>
 
-                                                <a class="editPostBtnFeed" class="flex gap-4 items-center">
-                                                    <i class="fa-solid fa-pen w-5"></i>
-                                                    <span>edit post</span>
-                                                </a>
-                                                <form action="{{route('posts.destroy', $post->id)}}" method="post" class="flex gap-4 items-center">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <i class="fa-solid fa-trash w-5"></i>
-                                                    <button type="submit">delete post</button>
-                                                </form>
+                                            <a class="editPostBtnFeed" class="flex gap-4 items-center">
+                                                <i class="fa-solid fa-pen w-5"></i>
+                                                <span>edit post</span>
+                                            </a>
+                                            <form action="{{ route('posts.destroy', $post->id) }}" method="post"
+                                                class="flex gap-4 items-center">
+                                                @csrf
+                                                @method('delete')
+                                                <i class="fa-solid fa-trash w-5"></i>
+                                                <button type="submit">delete post</button>
+                                            </form>
 
-                                                <hr>
+                                            <hr>
 
-                                                <a href="{{route('deleteStory', $post->id)}}" class="flex gap-4 items-center">
+                                            <a href="{{ route('deleteStory', $post->id) }}" class="flex gap-4 items-center">
 
-                                                    <i class="fa-solid fa-user-plus  w-5"></i>
-                                                    <span>add user</span>
-                                                </a>
-                                                <a href="{{route('deleteStory', $post->id)}}" class="flex gap-4 items-center">
-                                                    <i class="fa-solid fa-ban w-5"></i>
-                                                    <span>block user</span>
-                                                </a>
+                                                <i class="fa-solid fa-user-plus  w-5"></i>
+                                                <span>add user</span>
+                                            </a>
+                                            <a href="{{ route('deleteStory', $post->id) }}" class="flex gap-4 items-center">
+                                                <i class="fa-solid fa-ban w-5"></i>
+                                                <span>block user</span>
+                                            </a>
 
                                         </div>
                                     </div>
@@ -304,7 +302,7 @@
                                                     class="  w-8 rounded-lg object-cover" />
                                                 <span>Like</span>
                                             </div>
-                                            <div class="commentBtn flex gap-2 items-center">
+                                            <div class="commentBTNS flex gap-2 items-center cursor-pointer">
                                                 <img src="{{ asset('images/react buttons/comments.png') }}"
                                                     id="storyReadyPic" alt="" srcset=""
                                                     class="  w-8 rounded-lg object-cover" />
@@ -316,6 +314,20 @@
                                                 <span>Share</span>
                                             </div>
                                         </div>
+
+
+                                        <div style="display: none"
+                                            class="commentsDivDisplay text-white bg-black w-full h-[450px] mb-7">
+                                            @if ($post->comments)
+                                                @foreach ($post->comments as $comment)
+                                                
+                                                    <div>{{ $comment->content }}</div>
+                                                @endforeach
+                                            @endif
+
+                                        </div>
+
+
 
 
                                     </div>

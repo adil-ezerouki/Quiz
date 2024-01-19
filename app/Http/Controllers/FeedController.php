@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activity;
+use App\Models\Comment;
 use App\Models\Feeling;
 use App\Models\Post;
 use App\Models\Story;
@@ -20,13 +21,14 @@ class FeedController extends Controller
         $stories = Story::all();
         $feelings = Feeling::all();
         $activities = Activity::all();
+        $comments = Comment::all();
         // $posts = Post::all()->sortByDesc(function ($post) {
         //     return Carbon::parse($post->created_at);
         // });
 
         $posts = Post::latest()->get();
 
-        // return $posts;
+
 
 
 
@@ -63,15 +65,32 @@ class FeedController extends Controller
 
 
 
+
+
+
         foreach ($posts as $post) {
 
-            // $postPostedTime = $currentDateTime->diffForHumans($post->created_at);
+
+            $post->comments = $post->comments()->select(['content','created_at'])->get();
+
+            foreach ($post->comments as $comment) {
+                $PostedTime = customDiffForHumans($post->created_at);
+                unset($comment->created_at);
+                $comment->PostedTime =  $PostedTime;
+            }
+
+
+            $post->postOwner = User::find($post->user_id)->select(['firstName', 'lastName'])->first();
+            unset($post->user_id);
+
+
 
             $PostedTime = customDiffForHumans($post->created_at);
-
-            // return $PostedTime;
             unset($post->created_at);
             $post->PostedTime =  $PostedTime;
+
+
+            return $post;
 
 
 
@@ -95,7 +114,7 @@ class FeedController extends Controller
             }
         }
 
-        foreach($stories as $story) {
+        foreach ($stories as $story) {
             $PostedTime = customDiffForHumans($story->created_at);
             unset($story->created_at);
             $story->PostedTime =  $PostedTime;

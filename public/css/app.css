@@ -301,6 +301,30 @@ color : #a2fffd;
         }
     }
 
+            /* comments */
+
+            @keyframes commentsDivEnlarge {
+                from {
+                    height: 0;
+
+                }
+
+                to {
+                    height: 450px;
+                }
+            }
+
+            @keyframes commentsDivShrink {
+                from {
+                    height: 450px;
+
+                }
+
+                to {
+                    height: 0;
+                }
+            }
+
 
 
 /* @keyframes displayLinks {

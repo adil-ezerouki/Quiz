@@ -544,6 +544,7 @@ postOptionsDiv.forEach(icon => {
 })
 
 
+
 // edit post
 
 const containerPopUpDivEditPost = document.querySelector(' .containerPopUpDivEditPost')
@@ -736,6 +737,54 @@ editPostBTN.forEach((btn) => {
         }
     })
 })
+
+
+// comments
+
+
+const commentBTNS = Array.from(document.querySelectorAll(' .commentBTNS'))
+const commentsDivDisplay = Array.from(document.querySelectorAll(' .commentsDivDisplay'))
+let iscommentsDivDisplayOpen = false;
+
+commentBTNS.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+
+        iscommentsDivDisplayOpen = !iscommentsDivDisplayOpen;
+
+        console.log(iscommentsDivDisplayOpen)
+
+
+        if(iscommentsDivDisplayOpen) {
+            commentsDivDisplay[commentBTNS.indexOf(btn)].style.display = 'flex'
+            commentsDivDisplay[commentBTNS.indexOf(btn)].style.animation = 'commentsDivEnlarge 1s';
+        }
+
+        if(!iscommentsDivDisplayOpen){
+            commentsDivDisplay[commentBTNS.indexOf(btn)].style.animation = 'commentsDivShrink 1s';
+            commentsDivDisplay[commentBTNS.indexOf(btn)].style.display = 'none'
+
+            // commentsDivDisplay[commentBTNS.indexOf(btn)].addEventListener('animationend',()=> {
+            //     commentsDivDisplay[commentBTNS.indexOf(btn)].style.display = 'none'
+            // })
+
+
+        }
+
+
+        targetedpostReadyFather = postReadyFather[commentBTNS.indexOf(btn)];
+        targetedpostReadyFather.scrollTo({
+            top: targetedpostReadyFather.scrollHeight,
+            behavior: 'smooth'
+
+        })
+
+    })
+})
+
+
+
+
+
 
 
 
