@@ -548,22 +548,33 @@ postOptionsDiv.forEach(icon => {
 
 const containerPopUpDivEditPost = document.querySelector(' .containerPopUpDivEditPost')
 const biggestEditPostHolder = document.querySelector(' .biggestPostHolder')
-const editPostBtn = Array.from(document.querySelectorAll(' .editPostBtn'))
+const editPostBtnFeed = Array.from(document.querySelectorAll(' .editPostBtnFeed'))
 const postReadyFather = Array.from(document.querySelectorAll(' .postReadyFather'))
 const loadingDiv = document.querySelector(' .loadingDiv');
+const editPostData = Array.from(document.querySelectorAll(' .editPostData'))
+const closeDivEditPost = document.querySelector(' .closeDivEditPost')
+const editPostBTN = Array.from(document.querySelectorAll(' .editPostBTN'))
+const EditPostSlider = Array.from(document.querySelectorAll(' .EditPostSlider'))
+const editPostDataDisplay = Array.from(document.querySelectorAll(' .editPostDataDisplay'))
+
+console.log(editPostData)
 
 
+// console.log(editPostBTN)
 
-editPostBtn.forEach((btn) => {
+editPostBtnFeed.forEach((btn) => {
     btn.addEventListener('click', e => {
 
         loadingDiv.style.display = 'flex';
         loadingDiv.style.animation = 'fadeIn 1s'
 
 
-        let targetedpostDivId = postReadyFather[editPostBtn.indexOf(btn)].id
+        let targetedpostDivId = postReadyFather[editPostBtnFeed.indexOf(btn)].id
 
-        let dataFromBackend = fetch(`http://127.0.0.1:8000/posts/${targetedpostDivId}`)
+        var postTOedit;
+
+
+        let dataFromBackEnd = fetch(`http://127.0.0.1:8000/posts/${targetedpostDivId}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error ! Status : ${response.status}`)
@@ -572,14 +583,49 @@ editPostBtn.forEach((btn) => {
                 return response.json();
             })
             .then((data) => {
-                console.log('data :', data)
+
+                postTOedit = data
+
+                console.log(postTOedit)
+
+
+                // fill form data
+
+                editPostData[0].innerHTML = postTOedit.user.firstName + " " + postTOedit.user.lastName
+                editPostData[1].value = postTOedit.visibility
+                editPostDataDisplay[0].innerHTML =  editPostData[3].value = postTOedit.feeling != null ? postTOedit.feeling.code : ''
+                editPostData[4].value = postTOedit.activity != null ? postTOedit.activity.code : ''
+                editPostData[6].value = postTOedit.tag != null ? postTOedit.tag : ''
+                editPostData[7].value = postTOedit.location != null ? postTOedit.location : ''
+
+                // preview this post based on this data
+
+                // editPostDataDisplay[0].innerHTML = newPostData.feeling.code != '' ? "is feeling " + newPostData.feeling.description + " " + " &#x" + newPostData.feeling.code + ';' : '';
+                // editPostDataDisplay[1].innerHTML = newPostData.activity.code != '' ? "is " + newPostData.activity.description + " " + " &#x" + newPostData.activity.code + ';' : '';
+                // editPostDataDisplay[2].innerHTML = newPostData.tag ? "with " + newPostData.tag : '';
+                // tagANDlocalPic[0].style.display = newPostData.tag ? 'block' : 'none';
+                // editPostDataDisplay[3].innerHTML = newPostData.location ? "in " + newPostData.location : '';
+                // tagANDlocalPic[1].style.display = newPostData.location ? 'block' : 'none';
+                // editPostDataDisplay[4].innerHTML = newPostData.content != '' ? newPostData.content : '';
+                // editPostDataDisplay[4].style.display = newPostData.content ? 'block' : 'none';
+                // editPostDataDisplay[5].src = newPostData.media != '' ? newPostData.media : '';
+                // editPostDataDisplay[5].style.display = newPostData.media ? 'block' : 'none';
+
+
+                visibilityDisplay.className = newPostData.visibility == 'public' ? 'fa-solid fa-eye' : 'fa-solid fa-user-group'
+
+
+
             })
             .catch((error) => {
                 console.error('error is', error);
             })
 
+        // console.log(postTOedit)
 
-        if (dataFromBackend) {
+        if (dataFromBackEnd) {
+
+
 
             setTimeout(() => {
                 loadingDiv.style.animation = 'fadeOut 1s'
@@ -587,16 +633,111 @@ editPostBtn.forEach((btn) => {
                 loadingDiv.addEventListener('animationend', () => {
                     loadingDiv.style.display = 'none';
                 })
-            }, 1500)
+            }, 1000)
 
             setTimeout(() => {
                 containerPopUpDivEditPost.style.display = 'flex'
                 containerPopUpDivEditPost.style.animation = 'fadeIn 1s'
-            }, 1800)
+            }, 1200)
 
         }
     })
 })
+
+closeDivEditPost.addEventListener('click', () => {
+    containerPopUpDivEditPost.style.animation = 'fadeOut 1s';
+
+    containerPopUpDivEditPost.addEventListener('animationend', () => {
+        containerPopUpDivEditPost.style.display = 'none'
+    }, { once: true })
+})
+
+EditPostSlider.forEach(div => {
+    div.style.display = 'none';
+})
+
+EditPostSlider[0].style.display = 'flex'
+
+editPostBTN.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+
+        let indexPost = 0;
+
+
+
+
+
+        if (e.target.id == "previousPostBtn") {
+
+            indexPost -= 1;
+
+            if (indexPost < 0) {
+                indexPost = 0
+            }
+
+
+
+        }
+
+        if (e.target.id == "previewPostBtn") {
+
+
+            indexPost += 1;
+
+            if (indexPost >= EditPostSlider.length - 1) {
+                indexPost = EditPostSlider.length - 1;
+            }
+
+            console.log("yow")
+
+
+        }
+
+
+        EditPostSlider.forEach(div => {
+            div.style.display = 'none';
+        })
+
+        EditPostSlider[indexPost].style.display = 'flex'
+        EditPostSlider[indexPost].style.animation = 'fadeIn 1s'
+
+        if (indexPost == 1) {
+            postBTN[0].className = 'postBTN flex gap-3 justify-center slideBtn bg-[#05B2B0] text-white px-3 py-2 w-1/2 rounded'
+            postBTN[0].style.animation = 'fadeIn 1s'
+
+            postBTN[1].className = 'postBTN hidden gap-3  justify-center bg-[#EF592E] text-white px-3 py-2 w-full rounded'
+            postBTN[1].style.animation = 'fadeOut 1s'
+
+            postBTN[2].className = 'postBTN flex gap-3  justify-center bg-[#EF592E] text-white px-3 py-2 w-1/2 rounded'
+            postBTN[2].style.animation = 'fadeIn 1s'
+
+            progressDivPost.className = 'progressDivPost bg-slate-700 w-[100%] h-2 rounded-t-lg rounded-r-lg mb-10 transition-all'
+            progressDivPost.style.animation = 'progressPostsEnlarge 1s'
+
+
+
+        } else {
+            postBTN[0].className = 'postBTN hidden gap-3 justify-center slideBtn bg-[#05B2B0] text-white px-3 py-2 w-1/2 rounded'
+            postBTN[0].style.animation = 'fadeOut 1s'
+
+            postBTN[1].className = 'postBTN flex gap-3  justify-center bg-[#EF592E] text-white px-3 py-2 w-full rounded'
+            postBTN[1].style.animation = 'fadeIn 1s'
+
+            postBTN[2].className = 'postBTN hidden gap-3  justify-center bg-[#EF592E] text-white px-3 py-2 w-1/2 rounded'
+            postBTN[2].style.animation = 'fadeOut 1s'
+
+            progressDivPost.className = 'progressDivPost bg-slate-700 w-[50%] h-2 rounded-t-lg rounded-r-lg mb-10 transition-all'
+            progressDivPost.style.animation = 'progressPostsShrink 1s'
+
+        }
+
+        if (e.target.id == "submitPostBtn") {
+            console.log("submitPostBtn")
+        }
+    })
+})
+
+
 
 
 

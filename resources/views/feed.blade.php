@@ -43,7 +43,7 @@
                                                     class="w-8 h-8 object-cover rounded-full" alt="" srcset="">
                                                 <div class="flex flex-col text-xs">
                                                     <span class="">Adil Ezerouki</span>
-                                                    <span>18 h</span>
+                                                    <span>{{$story->PostedTime}}</span>
                                                 </div>
                                             </div>
 
@@ -196,7 +196,8 @@
                                             </span>
 
                                             <div>
-                                                <span>18 h</span>
+
+                                                <span>{{$post->PostedTime}}</span>
 
                                                 @if ($post->visibility == 'public')
                                                     <i id="visibilityDisplay" class="fa-solid fa-eye"></i>
@@ -221,7 +222,7 @@
 
                                                 <hr>
 
-                                                <a class="editPostBtn" class="flex gap-4 items-center">
+                                                <a class="editPostBtnFeed" class="flex gap-4 items-center">
                                                     <i class="fa-solid fa-pen w-5"></i>
                                                     <span>edit post</span>
                                                 </a>

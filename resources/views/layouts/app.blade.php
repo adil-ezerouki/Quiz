@@ -554,7 +554,7 @@
             </div>
 
 
-            <div class="editPostSlider createPost flex flex-col gap-10 p-10 pt-0 ">
+            <div class="EditPostSlider createPost flex flex-col gap-10 p-10 pt-0 ">
 
 
                 <p class="text-center text-2xl">Edit your post </p>
@@ -567,9 +567,9 @@
                                 class="w-14 h-14 object-cover rounded-full " alt="" srcset="">
 
                             <div class="flex flex-col gap-1 justify-center">
-                                <p class="text-center">Adil Ezerouki</p>
+                                <p class="text-center editPostData">Adil Ezerouki</p>
 
-                                <select id="visibilitySelect" name="visibility" id="" class="rounded">
+                                <select id="visibilitySelect" name="visibility" id="" class="rounded editPostData">
                                     <option selected value="public">public</option>
                                     <option value="friends">friends </option>
                                 </select>
@@ -610,7 +610,7 @@
                                         <p>supports JPG, JPEG200,PNG</p>
                                     </div>
 
-                                    <input type="file" name="mediaPostFile" id="inputMedia" class="w-56"
+                                    <input type="file" name="mediaPostFile" id="inputMedia" class="w-56 editPostData"
                                         accept="image/*">
 
                                     <span id="resetMediaBtn1"
@@ -626,7 +626,7 @@
 
                                 <div class="flex gap-3 items-center relative top-0 right-0">
                                     @isset($feelings)
-                                        <select name="feeling" id="feeling" class=" p-2 rounded-lg w-[94%]">
+                                        <select name="feeling" id="feeling" class=" p-2 rounded-lg w-[94%] editPostData">
                                             <option value="" selected>choose how you're feeling</option>
                                             <hr>
                                             @foreach ($feelings as $feeling)
@@ -645,7 +645,7 @@
 
                                 <div class="flex gap-3 items-center">
                                     @isset($activities)
-                                        <select name="activity" id="activity" class="p-2 rounded-lg w-[94%]">
+                                        <select name="activity" id="activity" class="p-2 rounded-lg w-[94%] editPostData">
                                             <option value="" selected>choose what are you doing</option>
                                             <hr>
                                             @foreach ($activities as $activity)
@@ -670,7 +670,7 @@
                                 <p>chosse a quiz of yours</p>
 
                                 <div class="flex gap-3 items-center">
-                                    <select name="quiz" id="quiz" class="p-2 rounded-lg w-[94%]">
+                                    <select name="quiz" id="quiz" class="p-2 rounded-lg w-[94%] editPostData">
                                         <option value="" selected>choose your quiz</option>
                                         <hr>
                                         <option value="quiz 1">quiz 1</option>
@@ -694,7 +694,7 @@
                                 <p>tag a friend of yours</p>
 
                                 <div class="flex gap-3 items-center">
-                                    <select name="tag" id="tag" class="p-2 rounded-lg w-[94%]">
+                                    <select name="tag" id="tag" class="p-2 rounded-lg w-[94%] editPostData">
                                         <option value="" selected>choose your friend</option>
                                         <hr>
                                         <option value="friend 1">friend 1</option>
@@ -716,7 +716,7 @@
                                 <p>include a location of yours</p>
 
                                 <div class="flex gap-3 items-center">
-                                    <select name="location" id="location" class="p-2 rounded-lg w-[94%]">
+                                    <select name="location" id="location" class="p-2 rounded-lg w-[94%] editPostData">
                                         <option value="" selected>choose your location</option>
                                         <hr>
                                         <option value="localion 1">localion 1</option>
@@ -742,7 +742,7 @@
 
             </div>
 
-            <div class="postSlider postReady p-10 pt-0 flex justify-center items-center h-[442px]">
+            <div class="EditPostSlider postReady p-10 pt-0 flex justify-center items-center h-[442px]">
                 <div class="  w-full flex flex-col gap-14">
 
                     <p class="text-center text-2xl">your post is ready !</p>
@@ -761,11 +761,11 @@
                                     <span class=" flex justify-center items-center ">Adil Ezerouki</span>
 
                                     <span id="feelingDisplay"
-                                        class="newPostDataDisplay flex justify-center items-center feelingSpan font-[100] text-slate-500 gap-1">
+                                        class="editPostDataDisplay flex justify-center items-center feelingSpan font-[100] text-slate-500 gap-1">
                                     </span>
 
                                     <span id="activityDisplay"
-                                        class=" newPostDataDisplay flex justify-center items-center  feelingSpan font-[100] text-slate-500 gap-1"></span>
+                                        class=" editPostDataDisplay flex justify-center items-center  feelingSpan font-[100] text-slate-500 gap-1"></span>
 
                                     <span id="tagDisplay"
                                         class=" flex justify-center items-center  feelingSpan font-[100] text-slate-500 gap-1">
@@ -773,7 +773,7 @@
                                             alt="" srcset=""
                                             class="tagANDlocalIcon cursor-pointer w-5 h-5">
                                         <span
-                                            class="newPostDataDisplay text-slate-500 flex justify-center items-center gap-1">
+                                            class="editPostDataDisplay text-slate-500 flex justify-center items-center gap-1">
 
 
                                         </span>
@@ -787,7 +787,7 @@
                                             alt="" srcset=""
                                             class="tagANDlocalIcon cursor-pointer w-5 h-5">
                                         <span
-                                            class="newPostDataDisplay text-slate-500 flex justify-center items-center gap-1">
+                                            class="editPostDataDisplay text-slate-500 flex justify-center items-center gap-1">
 
                                         </span>
                                     </span>
@@ -806,12 +806,12 @@
                             </div>
                         </div>
                         <div class="NewPostPreview w-full h-auto  flex flex-col gap-5">
-                            <p style="display: none" class="newPostDataDisplay">
+                            <p style="display: none" class="editPostDataDisplay">
 
                             </p>
 
 
-                            <img style="display: none" class="newPostDataDisplay" src="" id="storyReadyPic"
+                            <img style="display: none" class="editPostDataDisplay" src="" id="storyReadyPic"
                                 alt="" srcset="" class="  w-full h-72 rounded-lg object-cover" />
 
 
@@ -885,7 +885,7 @@
             <div class="flex justify-center items-center gap-10 p-10 pt-0 w-full">
 
                 <button type="button" id="previousPostBtn"
-                    class="postBTN hidden gap-3 justify-center slideBtn bg-[#05B2B0] text-white px-3 py-2 w-1/2 rounded ">
+                    class="editPostBTN hidden gap-3 justify-center slideBtn bg-[#05B2B0] text-white px-3 py-2 w-1/2 rounded ">
 
                     Back
                     <i class="fa-solid fa-arrow-left self-center"></i>
@@ -893,7 +893,7 @@
                 </button>
 
                 <button type="button" id='previewPostBtn'
-                    class="postBTN flex gap-3 justify-center bg-[#EF592E] text-white px-3 py-2 w-full rounded">
+                    class="editPostBTN flex gap-3 justify-center bg-[#EF592E] text-white px-3 py-2 w-full rounded">
 
                     Preview
                     <i class="fa-solid fa-arrow-right self-center"></i>
@@ -901,7 +901,7 @@
                 </button>
 
                 <button type="submit" id='submitPostBtn'
-                    class="postBTN hidden gap-3  justify-center bg-[#EF592E] text-white px-3 py-2 w-1/2 rounded">
+                    class="editPostBTN hidden gap-3  justify-center bg-[#EF592E] text-white px-3 py-2 w-1/2 rounded">
 
                     upload
                     <i class="fa-solid fa-arrow-right self-center"></i>
@@ -968,6 +968,25 @@
             {{ session('PostDeleted') }}
         </x-deleted-success-alert>
     @endif
+
+
+    {{-- <script>
+        let loadingDiv1 = document.querySelector(' .loadingDiv')
+
+        console.log('hh')
+
+
+        loadingDiv.style.display = 'flex';
+        loadingDiv1.style.animation = 'fadeIn 1s'
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadingDiv1.style.animation = 'fadeOut 1s'
+
+            loadingDiv.addEventListener('animationend', () => {
+                loadingDiv.style.display = 'none';
+            })
+        })
+    </script> --}}
 
     <script src="{{ asset('js/errAlert/errAlert.js') }}"></script>
 </body>
