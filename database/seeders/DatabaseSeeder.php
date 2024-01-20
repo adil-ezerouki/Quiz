@@ -18,7 +18,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             FeelingSeeder::class,
-            ActivitySeeder::class
+            ActivitySeeder::class,
+            PostSeeder::class,
+            CommentSeeder::class,
+            LikeSeeder::class,
         ]);
 
     }

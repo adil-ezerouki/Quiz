@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('likes', function (Blueprint $table) {
             $table->id();
-            $table->string('content');
+            $table->string('type');
             $table->foreignId('post_id')->constrained('posts');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
     }

@@ -22,25 +22,7 @@ class FeedController extends Controller
         $feelings = Feeling::all();
         $activities = Activity::all();
         $comments = Comment::all();
-        // $posts = Post::all()->sortByDesc(function ($post) {
-        //     return Carbon::parse($post->created_at);
-        // });
-
         $posts = Post::latest()->get();
-
-
-
-
-
-
-        $toTheViewData = [
-            'stories' => $stories,
-            'feelings' => $feelings,
-            'activities' => $activities,
-            'posts' => $posts,
-        ];
-
-        // $currentDateTime = Carbon::now();
 
         function customDiffForHumans(Carbon $date)
         {
@@ -71,16 +53,24 @@ class FeedController extends Controller
         foreach ($posts as $post) {
 
 
-            $post->comments = $post->comments()->select(['content','created_at'])->get();
+
+            $post->comments = $post->comments()->select(['content','created_at','user_id'])->get();
+
+            // $post->comments->commentOwner =
+
+
 
             foreach ($post->comments as $comment) {
                 $PostedTime = customDiffForHumans($post->created_at);
                 unset($comment->created_at);
                 $comment->PostedTime =  $PostedTime;
+
+                $comment->commentOwner = User::find($comment->user_id)->select(['firstName','lastName','profilePicPath'])->first();
+                unset($comment->user_id);
             }
 
 
-            $post->postOwner = User::find($post->user_id)->select(['firstName', 'lastName'])->first();
+            $post->postOwner = User::find($post->user_id)->select(['firstName','lastName','profilePicPath'])->first();
             unset($post->user_id);
 
 
@@ -90,7 +80,7 @@ class FeedController extends Controller
             $post->PostedTime =  $PostedTime;
 
 
-            return $post;
+            // return $post;
 
 
 
@@ -112,7 +102,11 @@ class FeedController extends Controller
                 unset($post->user_id);
                 $post->user = $targetedUser;
             }
+
+            return $post;
         }
+
+
 
         foreach ($stories as $story) {
             $PostedTime = customDiffForHumans($story->created_at);
@@ -123,6 +117,13 @@ class FeedController extends Controller
         // return $posts;
 
 
+
+        $toTheViewData = [
+            'stories' => $stories,
+            'feelings' => $feelings,
+            'activities' => $activities,
+            'posts' => $posts,
+        ];
 
         return view('feed', $toTheViewData);
     }

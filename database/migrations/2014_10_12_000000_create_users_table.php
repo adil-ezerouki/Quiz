@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('userName')->default('');
             $table->string('birthDay')->default('');
             $table->string('email')->unique()->default('');
+            $table->string('profilePicPath')->default('');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
