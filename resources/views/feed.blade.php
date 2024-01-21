@@ -280,7 +280,7 @@
                                                     <img src="{{ asset('images/react buttons/comments.png') }}"
                                                         id="storyReadyPic" alt="" srcset=""
                                                         class="  w-7 rounded-lg object-cover" />
-                                                    <span>100</span>
+                                                    <span>{{$post->comments->count()}}</span>
                                                 </div>
                                                 <div class="sahre flex gap-1 items-center">
 
@@ -320,7 +320,7 @@
                                             class="commentsDivDisplay text-white bg-black w-full h-[450px] mb-7">
                                             @if ($post->comments)
                                                 @foreach ($post->comments as $comment)
-                                                
+
                                                     <div>{{ $comment->content }}</div>
                                                 @endforeach
                                             @endif

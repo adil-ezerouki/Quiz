@@ -54,9 +54,8 @@ class FeedController extends Controller
 
 
 
-            $post->comments = $post->comments()->select(['content','created_at','user_id'])->get();
+            $post->comments = $post->comments()->select(['id', 'content', 'created_at', 'user_id'])->get();
 
-            // $post->comments->commentOwner =
 
 
 
@@ -65,23 +64,63 @@ class FeedController extends Controller
                 unset($comment->created_at);
                 $comment->PostedTime =  $PostedTime;
 
-                $comment->commentOwner = User::find($comment->user_id)->select(['firstName','lastName','profilePicPath'])->first();
+                $comment->commentOwner = User::find($comment->user_id)->select(['firstName', 'lastName', 'profilePicPath'])->first();
                 unset($comment->user_id);
+
+
+                $likeReact = $comment->likes->filter(function ($comment) {
+                    return $comment->type == 'like';
+                })->values();
+
+                $loveReact = $comment->likes->filter(function ($comment) {
+                    return $comment->type == 'love';
+                })->values();
+
+                $sadReact = $comment->likes->filter(function ($comment) {
+                    return $comment->type == 'sad';
+                })->values();
+
+                $funnyReact = $comment->likes->filter(function ($comment) {
+                    return $comment->type == 'funny';
+                })->values();
+
+                $angryReact = $comment->likes->filter(function ($comment) {
+                    return $comment->type == 'angry';
+                })->values();
+
+                $woowReact = $comment->likes->filter(function ($comment) {
+                    return $comment->type == 'angry';
+                })->values();
+
+                $comment->commentLikes = [
+                    'likeReact' => $likeReact,
+                    'loveReact' => $loveReact,
+                    'sadReact' => $sadReact,
+                    'funnyReact' => $funnyReact,
+                    'angryReact' => $angryReact,
+                    'woowReact' => $woowReact,
+                ];
+
+
+                unset($comment->likes);
+
+                foreach($comment->commentLikes as $key => $value){
+
+                    foreach($value as $like) {
+                        unset($like->id,$like->post_id,$like->comment_id,$like->post_id,$like->created_at, $like->updated_at);
+                        $like->likeOwner = User::find($like->user_id)->select(['firstName', 'lastName', 'profilePicPath'])->first();
+                        unset($like->user_id);
+                    }
+                }
             }
 
 
-            $post->postOwner = User::find($post->user_id)->select(['firstName','lastName','profilePicPath'])->first();
+            $post->postOwner = User::find($post->user_id)->select(['firstName', 'lastName', 'profilePicPath'])->first();
             unset($post->user_id);
-
-
 
             $PostedTime = customDiffForHumans($post->created_at);
             unset($post->created_at);
             $post->PostedTime =  $PostedTime;
-
-
-            // return $post;
-
 
 
 
@@ -102,10 +141,9 @@ class FeedController extends Controller
                 unset($post->user_id);
                 $post->user = $targetedUser;
             }
-
-            return $post;
         }
 
+        // return $posts;
 
 
         foreach ($stories as $story) {

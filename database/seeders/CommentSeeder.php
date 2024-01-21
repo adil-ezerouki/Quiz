@@ -21,31 +21,31 @@ class CommentSeeder extends Seeder
         ]);
 
         Comment::create([
-            'content'=> 'comment 1',
+            'content'=> 'comment 2',
             'user_id' => 1,
             'post_id' => 1,
         ]);
 
         Comment::create([
-            'content'=> 'comment 1',
+            'content'=> 'comment 3',
             'user_id' => 1,
             'post_id' => 1,
         ]);
 
         Comment::create([
-            'content'=> 'comment 1',
+            'content'=> 'comment 4',
             'user_id' => 1,
             'post_id' => 1,
         ]);
 
         Comment::create([
-            'content'=> 'comment 1',
+            'content'=> 'comment 5',
             'user_id' => 1,
             'post_id' => 1,
         ]);
 
         Comment::create([
-            'content'=> 'comment 1',
+            'content'=> 'comment 6',
             'user_id' => 1,
             'post_id' => 1,
         ]);

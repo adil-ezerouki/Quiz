@@ -23,7 +23,25 @@ class LikeSeeder extends Seeder
         Like::create([
             'type'=> 'love',
             'user_id' => 1,
-            'post_id' => 1,
+            'comment_id' => 1,
+        ]);
+
+        Like::create([
+            'type'=> 'like',
+            'user_id' => 1,
+            'comment_id' => 1,
+        ]);
+
+        Like::create([
+            'type'=> 'love',
+            'user_id' => 1,
+            'comment_id' => 1,
+        ]);
+
+        Like::create([
+            'type'=> 'like',
+            'user_id' => 1,
+            'comment_id' => 1,
         ]);
 
         Like::create([
@@ -35,7 +53,7 @@ class LikeSeeder extends Seeder
         Like::create([
             'type'=> 'love',
             'user_id' => 1,
-            'post_id' => 1,
+            'comment_id' => 2,
         ]);
 
         Like::create([
@@ -45,9 +63,9 @@ class LikeSeeder extends Seeder
         ]);
 
         Like::create([
-            'type'=> 'love',
+            'type'=> 'like',
             'user_id' => 1,
-            'post_id' => 1,
+            'comment_id' => 2,
         ]);
     }
 }
