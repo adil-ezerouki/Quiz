@@ -55,9 +55,69 @@ class FeedController extends Controller
 
 
             $post->comments = $post->comments()->select(['id', 'content', 'created_at', 'user_id'])->get();
+            $post->likes = $post->likes;
+
+            // likes of posts
+
+
+            foreach ($post->likes as $like) {
+
+                $like->likeOwner = User::find($like->user_id)->select(['firstName', 'lastName', 'profilePicPath'])->first();
+                unset($like->user_id);
+
+                // return $like;
 
 
 
+                $likeReact = $post->likes->filter(function ($like) {
+                    return $like->type == 'like';
+                })->values();
+
+                $loveReact = $post->likes->filter(function ($like) {
+                    return $like->type == 'love';
+                })->values();
+
+                $sadReact = $post->likes->filter(function ($like) {
+                    return $like->type == 'sad';
+                })->values();
+
+                $funnyReact = $post->likes->filter(function ($like) {
+                    return $like->type == 'funny';
+                })->values();
+
+                $angryReact = $post->likes->filter(function ($like) {
+                    return $like->type == 'angry';
+                })->values();
+
+                $woowReact = $post->likes->filter(function ($like) {
+                    return $like->type == 'woow';
+                })->values();
+
+                $post->postLikes = [
+                    'likeReact' => $likeReact,
+                    'loveReact' => $loveReact,
+                    'sadReact' => $sadReact,
+                    'funnyReact' => $funnyReact,
+                    'angryReact' => $angryReact,
+                    'woowReact' => $woowReact,
+                ];
+
+                // foreach($post->postLikes as $key => $value){
+
+                //     // return $value->user_id;
+                //     foreach($value as $like) {
+                //         unset($like->id,$like->post_id,$like->comment_id,$like->post_id,$like->created_at, $like->updated_at);
+                //         $like->likeOwner = User::find($like->user_id)->select(['firstName', 'lastName', 'profilePicPath'])->first();
+                //         unset($like->user_id);
+                //     }
+                // }
+
+
+                unset($post->likes);
+            }
+
+
+            // likes of omments
 
             foreach ($post->comments as $comment) {
                 $PostedTime = customDiffForHumans($post->created_at);
@@ -89,7 +149,7 @@ class FeedController extends Controller
                 })->values();
 
                 $woowReact = $comment->likes->filter(function ($comment) {
-                    return $comment->type == 'angry';
+                    return $comment->type == 'woow';
                 })->values();
 
                 $comment->commentLikes = [
