@@ -259,8 +259,8 @@
                                                 class="  w-full h-72 rounded-lg object-cover" />
                                         @endif
 
-                                        <div class="react flex gap-1 items-center justify-between text-slate-500">
-                                            <div class=" flex gap-3 items-center justify-center">
+                                        <div class="react flex gap-1 items-center justify-between text-slate-500 hover: ">
+                                            <div class="likesReact flex gap-3 items-center justify-center">
                                                 <div class="flex">
                                                     <img src="{{ asset('images/react buttons/likeReact.png') }}"
                                                         class="w-7" alt="" srcset="">
@@ -270,7 +270,7 @@
                                                         class="w-7" alt="" srcset="">
                                                 </div>
                                                 <span class="">
-                                                    {{$post->likes->count()}}
+                                                    {{ $post->likes->count() }}
                                                 </span>
                                             </div>
 
@@ -315,9 +315,9 @@
                                             </div>
                                         </div>
 
-
-                                        <div style="display: none" class="commentsDivDisplay flex flex-col gap-8 w-full h-[450px] mb-7 overflow-y-auto">
-                                            @if ($post->comments)
+                                        @if($post->comments)
+                                            <div style="display: none"
+                                                class="commentsDivDisplay flex flex-col gap-8 w-full h-[450px] mb-7 overflow-y-auto">
                                                 @foreach ($post->comments as $comment)
                                                     <div class="comment flex flex-col">
                                                         <div class="flex gap-2 items-center">
@@ -327,21 +327,22 @@
                                                                 srcset="">
 
                                                             <div class="bg-[#E2E8F0] w-full rounded-lg p-1">
-                                                                <span>{{ $comment->commentOwner->firstName . ' ' . $comment->commentOwner->lastName }}</span> <br>
+                                                                <span>{{ $comment->commentOwner->firstName . ' ' . $comment->commentOwner->lastName }}</span>
+                                                                <br>
                                                                 <span class="text-slate-500">{{ $comment->content }}</span>
                                                             </div>
                                                             <span>{{ $comment->PostedTime }}</span>
                                                         </div>
                                                     </div>
                                                 @endforeach
-                                            @endif
-
-                                        </div>
+                                            </div>
+                                        @endif
 
 
 
 
                                     </div>
+
 
 
                                 </div>

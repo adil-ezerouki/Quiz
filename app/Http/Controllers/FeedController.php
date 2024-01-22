@@ -60,13 +60,7 @@ class FeedController extends Controller
             // likes of posts
 
 
-            foreach ($post->likes as $like) {
-
-                $like->likeOwner = User::find($like->user_id)->select(['firstName', 'lastName', 'profilePicPath'])->first();
-                unset($like->user_id);
-
-                // return $like;
-
+            foreach ($post->likes as $postLike) {
 
 
                 $likeReact = $post->likes->filter(function ($like) {
@@ -102,19 +96,26 @@ class FeedController extends Controller
                     'woowReact' => $woowReact,
                 ];
 
-                // foreach($post->postLikes as $key => $value){
-
-                //     // return $value->user_id;
-                //     foreach($value as $like) {
-                //         unset($like->id,$like->post_id,$like->comment_id,$like->post_id,$like->created_at, $like->updated_at);
-                //         $like->likeOwner = User::find($like->user_id)->select(['firstName', 'lastName', 'profilePicPath'])->first();
-                //         unset($like->user_id);
-                //     }
-                // }
-
-
                 unset($post->likes);
+
+
+                foreach ($post->postLikes as $key => $value) {
+
+
+
+                    foreach ($value as $likeChild) {
+
+                        unset($likeChild->id, $likeChild->post_id, $likeChild->comment_id, $likeChild->created_at, $likeChild->updated_at);
+                        $likeChild->likeOwner = User::find($likeChild->user_id)->select(['firstName', 'lastName', 'profilePicPath'])->first();
+                        unset($likeChild->user_id);
+                    }
+                }
+
+
+
             }
+
+
 
 
             // likes of omments
@@ -125,8 +126,6 @@ class FeedController extends Controller
                 $comment->PostedTime =  $PostedTime;
 
                 $comment->commentOwner = User::find($comment->user_id)->select(['firstName', 'lastName', 'profilePicPath'])->first();
-                unset($comment->user_id);
-
 
                 $likeReact = $comment->likes->filter(function ($comment) {
                     return $comment->type == 'like';
@@ -161,15 +160,17 @@ class FeedController extends Controller
                     'woowReact' => $woowReact,
                 ];
 
+                unset($comment->user_id,$comment->likes,$comment->id);
 
-                unset($comment->likes);
 
-                foreach($comment->commentLikes as $key => $value){
+                // unset();
 
-                    foreach($value as $like) {
-                        unset($like->id,$like->post_id,$like->comment_id,$like->post_id,$like->created_at, $like->updated_at);
-                        $like->likeOwner = User::find($like->user_id)->select(['firstName', 'lastName', 'profilePicPath'])->first();
-                        unset($like->user_id);
+                foreach ($comment->commentLikes as $key => $valueComment) {
+
+                    foreach ($valueComment as $likeComment) {
+                        unset($likeComment->id, $likeComment->post_id, $likeComment->comment_id, $likeComment->post_id, $likeComment->created_at, $likeComment->updated_at);
+                        $likeComment->likeOwner = User::find($likeComment->user_id)->select(['firstName', 'lastName', 'profilePicPath'])->first();
+                        unset($likeComment->user_id);
                     }
                 }
             }
@@ -186,13 +187,13 @@ class FeedController extends Controller
 
             if ($post->feeling_id != null) {
                 $targetedFeeling = Feeling::find($post->feeling_id);
-                unset($post->feeling_id);
+                unset($post->feeling_id,$targetedFeeling->id,$targetedFeeling->created_at,$targetedFeeling->updated_at,$post->activity_id);
                 $post->feeling = $targetedFeeling;
             }
 
             if ($post->activity_id != null) {
                 $targetedActivity = Activity::find($post->activity_id);
-                unset($post->activity);
+                unset($post->activity_id,$targetedActivity->id,$targetedActivity->created_at,$targetedActivity->updated_at,$post->feeling_id);
                 $post->activity = $targetedActivity;
             }
 
@@ -212,7 +213,7 @@ class FeedController extends Controller
             $story->PostedTime =  $PostedTime;
         }
 
-        // return $posts;
+        return $posts;
 
 
 

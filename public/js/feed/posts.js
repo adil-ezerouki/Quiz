@@ -746,7 +746,44 @@ const commentBTNS = Array.from(document.querySelectorAll(' .commentBTNS'))
 const commentsDivDisplay = Array.from(document.querySelectorAll(' .commentsDivDisplay'))
 let iscommentsDivDisplayOpen = false;
 
-commentBTNS.forEach((btn) => {
+const likesReact = Array.from(document.querySelectorAll(' .likesReact'))
+const likesPopUpDiv = Array.from(document.querySelectorAll(' .likesPopUpDiv'))
+let isLikesOpen = false;
+
+console.log(likesPopUpDiv)
+
+likesReact.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+
+        isLikesOpen = !isLikesOpen;
+
+        console.log(isLikesOpen)
+
+
+        if(isLikesOpen) {
+            likesPopUpDiv[likesReact.indexOf(btn)].style.display = 'flex'
+            likesPopUpDiv[likesReact.indexOf(btn)].style.animation = 'fadeIn 1s';
+        }
+
+        if(!isLikesOpen){
+            likesPopUpDiv[likesReact.indexOf(btn)].style.animation = 'fadeOut 1s';
+            likesPopUpDiv[likesReact.indexOf(btn)].style.display = 'none'
+
+
+        }
+
+
+        // targetedpostReadyFather = postReadyFather[commentBTNS.indexOf(btn)];
+        // targetedpostReadyFather.scrollTo({
+        //     top: targetedpostReadyFather.scrollHeight,
+        //     behavior: 'smooth'
+
+        // })
+
+    })
+})
+
+likesReact.forEach((btn) => {
     btn.addEventListener('click', (e) => {
 
         iscommentsDivDisplayOpen = !iscommentsDivDisplayOpen;
@@ -762,10 +799,6 @@ commentBTNS.forEach((btn) => {
         if(!iscommentsDivDisplayOpen){
             commentsDivDisplay[commentBTNS.indexOf(btn)].style.animation = 'commentsDivShrink 1s';
             commentsDivDisplay[commentBTNS.indexOf(btn)].style.display = 'none'
-
-            // commentsDivDisplay[commentBTNS.indexOf(btn)].addEventListener('animationend',()=> {
-            //     commentsDivDisplay[commentBTNS.indexOf(btn)].style.display = 'none'
-            // })
 
 
         }

@@ -569,7 +569,8 @@
                             <div class="flex flex-col gap-1 justify-center">
                                 <p class="text-center editPostData">Adil Ezerouki</p>
 
-                                <select id="visibilitySelect" name="visibility" id="" class="rounded editPostData">
+                                <select id="visibilitySelect" name="visibility" id=""
+                                    class="rounded editPostData">
                                     <option selected value="public">public</option>
                                     <option value="friends">friends </option>
                                 </select>
@@ -610,8 +611,8 @@
                                         <p>supports JPG, JPEG200,PNG</p>
                                     </div>
 
-                                    <input type="file" name="mediaPostFile" id="inputMedia" class="w-56 editPostData"
-                                        accept="image/*">
+                                    <input type="file" name="mediaPostFile" id="inputMedia"
+                                        class="w-56 editPostData" accept="image/*">
 
                                     <span id="resetMediaBtn1"
                                         class="px-3 py-2 cursor-pointer  bg-[#05b2b0] text-white rounded">Reset
@@ -626,7 +627,8 @@
 
                                 <div class="flex gap-3 items-center relative top-0 right-0">
                                     @isset($feelings)
-                                        <select name="feeling" id="feeling" class=" p-2 rounded-lg w-[94%] editPostData">
+                                        <select name="feeling" id="feeling"
+                                            class=" p-2 rounded-lg w-[94%] editPostData">
                                             <option value="" selected>choose how you're feeling</option>
                                             <hr>
                                             @foreach ($feelings as $feeling)
@@ -645,7 +647,8 @@
 
                                 <div class="flex gap-3 items-center">
                                     @isset($activities)
-                                        <select name="activity" id="activity" class="p-2 rounded-lg w-[94%] editPostData">
+                                        <select name="activity" id="activity"
+                                            class="p-2 rounded-lg w-[94%] editPostData">
                                             <option value="" selected>choose what are you doing</option>
                                             <hr>
                                             @foreach ($activities as $activity)
@@ -670,7 +673,8 @@
                                 <p>chosse a quiz of yours</p>
 
                                 <div class="flex gap-3 items-center">
-                                    <select name="quiz" id="quiz" class="p-2 rounded-lg w-[94%] editPostData">
+                                    <select name="quiz" id="quiz"
+                                        class="p-2 rounded-lg w-[94%] editPostData">
                                         <option value="" selected>choose your quiz</option>
                                         <hr>
                                         <option value="quiz 1">quiz 1</option>
@@ -694,7 +698,8 @@
                                 <p>tag a friend of yours</p>
 
                                 <div class="flex gap-3 items-center">
-                                    <select name="tag" id="tag" class="p-2 rounded-lg w-[94%] editPostData">
+                                    <select name="tag" id="tag"
+                                        class="p-2 rounded-lg w-[94%] editPostData">
                                         <option value="" selected>choose your friend</option>
                                         <hr>
                                         <option value="friend 1">friend 1</option>
@@ -716,7 +721,8 @@
                                 <p>include a location of yours</p>
 
                                 <div class="flex gap-3 items-center">
-                                    <select name="location" id="location" class="p-2 rounded-lg w-[94%] editPostData">
+                                    <select name="location" id="location"
+                                        class="p-2 rounded-lg w-[94%] editPostData">
                                         <option value="" selected>choose your location</option>
                                         <hr>
                                         <option value="localion 1">localion 1</option>
@@ -915,6 +921,15 @@
 
     <x-loading-div>
     </x-loading-div>
+
+    <x-pop-up-div class="likesPopUpDiv">
+        @foreach ($posts as $post)
+            @foreach ($post->postLikes['likeReact'] as $like)
+                <p>{{ $like->id }} - {{ $like->type }} by {{ $like->likeOwner->firstName }}
+                   </p>
+            @endforeach
+        @endforeach
+    </x-pop-up-div>
 
     {{-- all app div holder  --}}
 
