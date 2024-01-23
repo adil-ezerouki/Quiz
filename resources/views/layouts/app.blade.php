@@ -922,14 +922,7 @@
     <x-loading-div>
     </x-loading-div>
 
-    <x-pop-up-div class="likesPopUpDiv">
-        @foreach ($posts as $post)
-            @foreach ($post->postLikes['likeReact'] as $like)
-                <p>{{ $like->id }} - {{ $like->type }} by {{ $like->likeOwner->firstName }}
-                   </p>
-            @endforeach
-        @endforeach
-    </x-pop-up-div>
+
 
     {{-- all app div holder  --}}
 

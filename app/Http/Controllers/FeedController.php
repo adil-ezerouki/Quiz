@@ -115,6 +115,8 @@ class FeedController extends Controller
 
             }
 
+            // return $post;
+
 
 
 
@@ -163,7 +165,7 @@ class FeedController extends Controller
                 unset($comment->user_id,$comment->likes,$comment->id);
 
 
-                // unset();
+
 
                 foreach ($comment->commentLikes as $key => $valueComment) {
 
@@ -213,7 +215,6 @@ class FeedController extends Controller
             $story->PostedTime =  $PostedTime;
         }
 
-        return $posts;
 
 
 
@@ -252,8 +253,6 @@ class FeedController extends Controller
                 'storyTxtContent' => 'required',
             ]);
 
-            // return $request;
-
 
             Story::create([
                 'story_txt_content' => $request->storyTxtContent,
@@ -265,9 +264,6 @@ class FeedController extends Controller
         return redirect()->back()->with('storySuccess', 'Your story is uploaded successfully');
     }
 
-    // public function viewStory() {
-
-    // }
 
     public function deleteStory($id)
     {

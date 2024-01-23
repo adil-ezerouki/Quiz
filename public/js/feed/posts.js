@@ -746,44 +746,7 @@ const commentBTNS = Array.from(document.querySelectorAll(' .commentBTNS'))
 const commentsDivDisplay = Array.from(document.querySelectorAll(' .commentsDivDisplay'))
 let iscommentsDivDisplayOpen = false;
 
-const likesReact = Array.from(document.querySelectorAll(' .likesReact'))
-const likesPopUpDiv = Array.from(document.querySelectorAll(' .likesPopUpDiv'))
-let isLikesOpen = false;
-
-console.log(likesPopUpDiv)
-
-likesReact.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-
-        isLikesOpen = !isLikesOpen;
-
-        console.log(isLikesOpen)
-
-
-        if(isLikesOpen) {
-            likesPopUpDiv[likesReact.indexOf(btn)].style.display = 'flex'
-            likesPopUpDiv[likesReact.indexOf(btn)].style.animation = 'fadeIn 1s';
-        }
-
-        if(!isLikesOpen){
-            likesPopUpDiv[likesReact.indexOf(btn)].style.animation = 'fadeOut 1s';
-            likesPopUpDiv[likesReact.indexOf(btn)].style.display = 'none'
-
-
-        }
-
-
-        // targetedpostReadyFather = postReadyFather[commentBTNS.indexOf(btn)];
-        // targetedpostReadyFather.scrollTo({
-        //     top: targetedpostReadyFather.scrollHeight,
-        //     behavior: 'smooth'
-
-        // })
-
-    })
-})
-
-likesReact.forEach((btn) => {
+commentBTNS.forEach((btn) => {
     btn.addEventListener('click', (e) => {
 
         iscommentsDivDisplayOpen = !iscommentsDivDisplayOpen;
@@ -813,6 +776,107 @@ likesReact.forEach((btn) => {
 
     })
 })
+
+
+// reacts
+
+const likesReact = Array.from(document.querySelectorAll(' .likesReact'))
+const likesPopUpDiv = Array.from(document.querySelectorAll(' .likesPopUpDiv'))
+const allReactBTN = Array.from(document.querySelectorAll(' .allReactBTN'))
+const ReactBtns = Array.from(document.querySelectorAll(' .React'))
+const closeReactDiv = Array.from(document.querySelectorAll(' .closeReactDiv'))
+const reactDisplayDiv = Array.from(document.querySelectorAll(' .reactDisplayDiv'))
+const reactStatsDisplay = Array.from(document.querySelectorAll(' .reactStatsDisplay div span'))
+let isLikesOpen = false;
+
+
+console.log(likesReact)
+
+likesReact.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+
+        isLikesOpen = !isLikesOpen;
+
+        // let targetedpostDivId = postReadyFather[likesReact.indexOf(btn)].id
+
+        // let dataFromBackEnd = fetch(`http://127.0.0.1:8000/posts/${targetedpostDivId}`)
+        //     .then(response => {
+        //         if (!response.ok) {
+        //             throw new Error(`HTTP error ! Status : ${response.status}`)
+        //         }
+
+        //         return response.json();
+        //     })
+        //     .then((data) => {
+        //         console.log(data)
+
+        //         // reactStatsDisplay[0].innerHTML = data.postLikes.likeReact.length;
+        //         // reactStatsDisplay[1].innerHTML = data.postLikes.loveReact.length;
+        //         // reactStatsDisplay[2].innerHTML = data.postLikes.sadReact.length;
+        //         // reactStatsDisplay[3].innerHTML = data.postLikes.woowReact.length;
+        //         // reactStatsDisplay[4].innerHTML = data.postLikes.angryReact.length;
+
+        //     })
+        //     .catch((error) => {
+        //         console.error('error is', error);
+        //     })
+
+        //     console.log(likesPopUpDiv)
+
+
+        if(isLikesOpen) {
+            likesPopUpDiv[likesReact.indexOf(btn)].style.display = 'flex'
+            likesPopUpDiv[likesReact.indexOf(btn)].style.animation = 'fadeIn 1s';
+        }
+
+        if(!isLikesOpen){
+            likesPopUpDiv[likesReact.indexOf(btn)].style.animation = 'fadeOut 1s';
+            likesPopUpDiv[likesReact.indexOf(btn)].style.display = 'none'
+
+        }
+
+
+        // targetedpostReadyFather = postReadyFather[commentBTNS.indexOf(btn)];
+        // targetedpostReadyFather.scrollTo({
+        //     top: targetedpostReadyFather.scrollHeight,
+        //     behavior: 'smooth'
+
+        // })
+
+    })
+})
+
+allReactBTN.forEach(btn=> {
+    btn.addEventListener('click',(e)=> {
+        reactDisplayDiv.forEach((div)=> {
+            div.style.display = 'none';
+        })
+
+
+        reactDisplayDiv[0].style.animation = 'fadeIn 1s';
+        reactDisplayDiv[0].style.display = 'block';
+    })
+})
+
+ReactBtns.forEach(btn=> {
+    btn.addEventListener('click',(e)=> {
+        reactDisplayDiv.forEach((div)=> {
+            div.style.display = 'none';
+        })
+
+        reactDisplayDiv[ReactBtns.indexOf(btn)+1].style.animation = 'fadeIn 1s';
+        reactDisplayDiv[ReactBtns.indexOf(btn)+1].style.display = 'block';
+    })
+})
+
+closeReactDiv.forEach(btn=> {
+    btn.addEventListener('click',(e)=> {
+        likesPopUpDiv[closeReactDiv.indexOf(btn)].style.display = 'none';
+    })
+})
+
+
+
 
 
 
