@@ -797,32 +797,6 @@ likesReact.forEach((btn) => {
 
         isLikesOpen = !isLikesOpen;
 
-        // let targetedpostDivId = postReadyFather[likesReact.indexOf(btn)].id
-
-        // let dataFromBackEnd = fetch(`http://127.0.0.1:8000/posts/${targetedpostDivId}`)
-        //     .then(response => {
-        //         if (!response.ok) {
-        //             throw new Error(`HTTP error ! Status : ${response.status}`)
-        //         }
-
-        //         return response.json();
-        //     })
-        //     .then((data) => {
-        //         console.log(data)
-
-        //         // reactStatsDisplay[0].innerHTML = data.postLikes.likeReact.length;
-        //         // reactStatsDisplay[1].innerHTML = data.postLikes.loveReact.length;
-        //         // reactStatsDisplay[2].innerHTML = data.postLikes.sadReact.length;
-        //         // reactStatsDisplay[3].innerHTML = data.postLikes.woowReact.length;
-        //         // reactStatsDisplay[4].innerHTML = data.postLikes.angryReact.length;
-
-        //     })
-        //     .catch((error) => {
-        //         console.error('error is', error);
-        //     })
-
-        //     console.log(likesPopUpDiv)
-
 
         if(isLikesOpen) {
             likesPopUpDiv[likesReact.indexOf(btn)].style.display = 'flex'
@@ -864,8 +838,36 @@ ReactBtns.forEach(btn=> {
             div.style.display = 'none';
         })
 
-        reactDisplayDiv[ReactBtns.indexOf(btn)+1].style.animation = 'fadeIn 1s';
-        reactDisplayDiv[ReactBtns.indexOf(btn)+1].style.display = 'block';
+
+        if(btn.id == 'likeReact') {
+            reactDisplayDiv[1].style.animation = 'fadeIn 1s';
+            reactDisplayDiv[1].style.display = 'flex';
+        }
+
+        if(btn.id == 'loveReact') {
+            reactDisplayDiv[2].style.animation = 'fadeIn 1s';
+            reactDisplayDiv[2].style.display = 'flex';
+        }
+
+        if(btn.id == 'sadReact') {
+            reactDisplayDiv[3].style.animation = 'fadeIn 1s';
+            reactDisplayDiv[3].style.display = 'flex';
+        }
+
+        if(btn.id == 'funnyReact') {
+            reactDisplayDiv[4].style.animation = 'fadeIn 1s';
+            reactDisplayDiv[4].style.display = 'flex';
+        }
+
+        if(btn.id == 'angryReact') {
+            reactDisplayDiv[5].style.animation = 'fadeIn 1s';
+            reactDisplayDiv[5].style.display = 'flex';
+        }
+
+        if(btn.id == 'woowReact') {
+            reactDisplayDiv[6].style.animation = 'fadeIn 1s';
+            reactDisplayDiv[6].style.display = 'flex';
+        }
     })
 })
 
