@@ -245,376 +245,382 @@
 
                                         </div>
 
-                                        <div
+                                        <div style="display: none"
                                             class="likesPopUpDiv absolute top-0 left-0 bg-[#0000007E] w-full h-full z-[9] p-7 flex justify-center items-center">
 
-                                                <div class=" w-full rounded p-5 flex flex-col gap-6 bg-white">
-                                                    <div class="reactIcons flex justify-between">
-                                                        <div class="flex gap-2">
-                                                            <span
-                                                                class="allReactBTN self-center text-lg  w-10 h-10 flex justify-center items-center bg-slate-200  rounded-full cursor-pointer">All</span>
-                                                            <span class="self-center">
-                                                                @if ($post->totalLikes)
-                                                                    {{ $post->totalLikes }}
-                                                                @endif
-
-                                                                @if (empty($post->totalLikes))
-                                                                    0
-                                                                @endif
-
-                                                            </span>
-                                                        </div>
-
-                                                        <div class="reactStatsDisplay flex gap-5">
-
-
-
-
-                                                            @if (count($post->postLikes['likeReact']) > 0)
-                                                                <div class="flex gap-2">
-                                                                    <img id="likeReact"
-                                                                        src="{{ asset('images/react buttons/likeReact.png') }}"
-                                                                        alt="" srcset="" class="w-10 React">
-                                                                    <span class="self-center">
-                                                                        <span class="self-center">
-                                                                            {{ $post->postLikes['likeReact']->count() }}
-                                                                        </span>
-                                                                    </span>
-                                                                </div>
+                                            <div class=" w-full rounded p-5 flex flex-col gap-6 bg-white">
+                                                <div class="reactIcons flex justify-between">
+                                                    <div class="flex gap-2">
+                                                        <span
+                                                            class="allReactBTN self-center text-lg  w-10 h-10 flex justify-center items-center bg-slate-200  rounded-full cursor-pointer">All</span>
+                                                        <span class="self-center">
+                                                            @if ($post->totalLikes)
+                                                                {{ $post->totalLikes }}
                                                             @endif
 
-                                                            @if (count($post->postLikes['loveReact']) > 0)
-                                                                <div class="flex gap-2">
-                                                                    <img id="loveReact"
-                                                                        src="{{ asset('images/react buttons/loveReact.png') }}"
-                                                                        alt="" srcset="" class="w-10 React">
-                                                                    <span class="self-center">
-                                                                        {{ $post->postLikes['loveReact']->count() }}
-                                                                    </span>
-                                                                </div>
+                                                            @if (empty($post->totalLikes))
+                                                                0
                                                             @endif
 
-                                                            @if (count($post->postLikes['sadReact']) > 0)
-                                                                <div class="flex gap-2">
-                                                                    <img id="sadReact"
-                                                                        src="{{ asset('images/react buttons/sadReact.png') }}"
-                                                                        alt="" srcset="" class="w-10 React">
-                                                                    <span class="self-center">
-                                                                        {{ $post->postLikes['sadReact']->count() }}
-                                                                    </span>
-                                                                </div>
-                                                            @endif
-
-                                                            @if (count($post->postLikes['woowReact']) > 0)
-                                                                <div class="flex gap-2">
-                                                                    <img id="woowReact"
-                                                                        src="{{ asset('images/react buttons/woowReact.png') }}"
-                                                                        alt="" srcset="" class="w-10 React">
-                                                                    <span class="self-center">
-                                                                        {{ $post->postLikes['woowReact']->count() }}
-                                                                    </span>
-                                                                </div>
-                                                            @endif
-
-
-                                                            @if (count($post->postLikes['angryReact']) > 0)
-                                                                <div class="flex gap-2">
-                                                                    <img id="angryReact"
-                                                                        src="{{ asset('images/react buttons/angryReact.png') }}"
-                                                                        alt="" srcset="" class="w-10 React">
-                                                                    <span class="self-center">
-                                                                        {{ $post->postLikes['angryReact']->count() }}
-                                                                    </span>
-                                                                </div>
-                                                            @endif
-                                                        </div>
-                                                        <div class="flex gap-2">
-                                                            <i
-                                                                class="closeReactDiv flex justify-center items-center fa-solid fa-x w-10 h-10 bg-slate-200  rounded-full cursor-pointer"></i>
-                                                        </div>
+                                                        </span>
                                                     </div>
 
+                                                    <div class="reactStatsDisplay flex gap-5">
 
 
 
-                                                    <div class="overflow-y-auto">
-                                                        <div class="allReact reactDisplayDiv w-full flex flex-col gap-4">
-                                                            @foreach ($post->postLikes as $key => $value)
-                                                                @foreach ($value as $like)
-                                                                    <div class="flex justify-between">
-                                                                        <div class="relative flex gap-4 items-center">
-                                                                            <img src="{{ asset('images/profilePic.png') }}"
-                                                                                class="w-12 h-12 object-cover rounded-full"
-                                                                                alt="" srcset="">
-                                                                            <span
-                                                                                class="text-lg">{{ $like->likeOwner->firstName . ' ' . $like->likeOwner->lastName }}</span>
-                                                                            <img src="{{ asset('images/react buttons/' . $like->type . 'React.png') }}"
-                                                                                alt="" srcset=""
-                                                                                class="w-6 absolute bottom-0 left-8">
-                                                                        </div>
-                                                                        <div class="flex items-center">
-                                                                            <button>Add Friend</button>
-                                                                        </div>
-                                                                    </div>
-                                                                @endforeach
-                                                            @endforeach
 
-                                                            @if(empty($post->totalLikes))
-                                                            <img src="{{ asset('images/react buttons/ZeroLikes.png')}}"
-                                                            alt="" srcset=""
-                                                            class="w-20">
-                                                            @endif
-                                                        </div>
+                                                        @if (count($post->postLikes['likeReact']) > 0)
+                                                            <div class="flex gap-2">
+                                                                <img id="likeReact"
+                                                                    src="{{ asset('images/react buttons/likeReact.png') }}"
+                                                                    alt="" srcset="" class="w-10 React">
+                                                                <span class="self-center">
+                                                                    <span class="self-center">
+                                                                        {{ $post->postLikes['likeReact']->count() }}
+                                                                    </span>
+                                                                </span>
+                                                            </div>
+                                                        @endif
 
+                                                        @if (count($post->postLikes['loveReact']) > 0)
+                                                            <div class="flex gap-2">
+                                                                <img id="loveReact"
+                                                                    src="{{ asset('images/react buttons/loveReact.png') }}"
+                                                                    alt="" srcset="" class="w-10 React">
+                                                                <span class="self-center">
+                                                                    {{ $post->postLikes['loveReact']->count() }}
+                                                                </span>
+                                                            </div>
+                                                        @endif
 
-                                                        <div style="display: none" id="likeReact"
-                                                            class=" w-full reactDisplayDiv flex flex-col gap-4 ">
-                                                            @foreach ($post->postLikes['likeReact'] as $like)
-                                                                <div class="flex justify-between">
-                                                                    <div class="relative flex gap-4 items-center">
-                                                                        <img src="{{ asset('images/profilePic.png') }}"
-                                                                            class="w-12 h-12 object-cover rounded-full"
-                                                                            alt="" srcset="">
-                                                                        <span
-                                                                            class="text-lg">{{ $like->likeOwner->firstName . ' ' . $like->likeOwner->lastName }}</span>
-                                                                        <img src="{{ asset('images/react buttons/' . $like->type . 'React.png') }}"
-                                                                            alt="" srcset=""
-                                                                            class="w-6 absolute bottom-0 left-8">
-                                                                    </div>
-                                                                    <div class="flex items-center">
-                                                                        <button>Add Friend</button>
-                                                                    </div>
-                                                                </div>
-                                                            @endforeach
-                                                        </div>
+                                                        @if (count($post->postLikes['sadReact']) > 0)
+                                                            <div class="flex gap-2">
+                                                                <img id="sadReact"
+                                                                    src="{{ asset('images/react buttons/sadReact.png') }}"
+                                                                    alt="" srcset="" class="w-10 React">
+                                                                <span class="self-center">
+                                                                    {{ $post->postLikes['sadReact']->count() }}
+                                                                </span>
+                                                            </div>
+                                                        @endif
+
+                                                        @if (count($post->postLikes['woowReact']) > 0)
+                                                            <div class="flex gap-2">
+                                                                <img id="woowReact"
+                                                                    src="{{ asset('images/react buttons/woowReact.png') }}"
+                                                                    alt="" srcset="" class="w-10 React">
+                                                                <span class="self-center">
+                                                                    {{ $post->postLikes['woowReact']->count() }}
+                                                                </span>
+                                                            </div>
+                                                        @endif
 
 
-
-                                                        <div style="display: none" id="loveReact"
-                                                            class=" w-full reactDisplayDiv flex flex-col gap-4">
-                                                            @foreach ($post->postLikes['loveReact'] as $like)
-                                                                <div class="flex justify-between">
-                                                                    <div class="relative flex gap-4 items-center">
-                                                                        <img src="{{ asset('images/profilePic.png') }}"
-                                                                            class="w-12 h-12 object-cover rounded-full"
-                                                                            alt="" srcset="">
-                                                                        <span
-                                                                            class="text-lg">{{ $like->likeOwner->firstName . ' ' . $like->likeOwner->lastName }}</span>
-                                                                        <img src="{{ asset('images/react buttons/' . $like->type . 'React.png') }}"
-                                                                            alt="" srcset=""
-                                                                            class="w-6 absolute bottom-0 left-8">
-                                                                    </div>
-                                                                    <div class="flex items-center">
-                                                                        <button>Add Friend</button>
-                                                                    </div>
-                                                                </div>
-                                                            @endforeach
-                                                        </div>
-
-
-
-                                                        <div style="display: none" id="sadReact"
-                                                            class=" w-full reactDisplayDiv flex flex-col gap-4">
-                                                            @foreach ($post->postLikes['sadReact'] as $like)
-                                                                <div class="flex justify-between">
-                                                                    <div class="relative flex gap-4 items-center">
-                                                                        <img src="{{ asset('images/profilePic.png') }}"
-                                                                            class="w-12 h-12 object-cover rounded-full"
-                                                                            alt="" srcset="">
-                                                                        <span
-                                                                            class="text-lg">{{ $like->likeOwner->firstName . ' ' . $like->likeOwner->lastName }}</span>
-                                                                        <img src="{{ asset('images/react buttons/' . $like->type . 'React.png') }}"
-                                                                            alt="" srcset=""
-                                                                            class="w-6 absolute bottom-0 left-8">
-                                                                    </div>
-                                                                    <div class="flex items-center">
-                                                                        <button>Add Friend</button>
-                                                                    </div>
-                                                                </div>
-                                                            @endforeach
-                                                        </div>
-
-
-
-                                                        <div style="display: none" id="funnyReact"
-                                                            class=" w-full reactDisplayDiv flex flex-col gap-4">
-                                                            @foreach ($post->postLikes['funnyReact'] as $like)
-                                                                <div class="flex justify-between">
-                                                                    <div class="relative flex gap-4 items-center">
-                                                                        <img src="{{ asset('images/profilePic.png') }}"
-                                                                            class="w-12 h-12 object-cover rounded-full"
-                                                                            alt="" srcset="">
-                                                                        <span
-                                                                            class="text-lg">{{ $like->likeOwner->firstName . ' ' . $like->likeOwner->lastName }}</span>
-                                                                        <img src="{{ asset('images/react buttons/' . $like->type . 'React.png') }}"
-                                                                            alt="" srcset=""
-                                                                            class="w-6 absolute bottom-0 left-8">
-                                                                    </div>
-                                                                    <div class="flex items-center">
-                                                                        <button>Add Friend</button>
-                                                                    </div>
-                                                                </div>
-                                                            @endforeach
-                                                        </div>
-
-
-
-                                                        <div style="display: none" id="angryReact"
-                                                            class=" w-full reactDisplayDiv flex flex-col gap-4">
-                                                            @foreach ($post->postLikes['angryReact'] as $like)
-                                                                <div class="flex justify-between">
-                                                                    <div class="relative flex gap-4 items-center">
-                                                                        <img src="{{ asset('images/profilePic.png') }}"
-                                                                            class="w-12 h-12 object-cover rounded-full"
-                                                                            alt="" srcset="">
-                                                                        <span
-                                                                            class="text-lg">{{ $like->likeOwner->firstName . ' ' . $like->likeOwner->lastName }}</span>
-                                                                        <img src="{{ asset('images/react buttons/' . $like->type . 'React.png') }}"
-                                                                            alt="" srcset=""
-                                                                            class="w-6 absolute bottom-0 left-8">
-                                                                    </div>
-                                                                    <div class="flex items-center">
-                                                                        <button>Add Friend</button>
-                                                                    </div>
-                                                                </div>
-                                                            @endforeach
-                                                        </div>
-
-
-
-                                                        <div style="display: none" id="woowReact"
-                                                            class="woowReact w-full reactDisplayDiv flex flex-col gap-4">
-                                                            @foreach ($post->postLikes['woowReact'] as $like)
-                                                                <div class="flex justify-between">
-                                                                    <div class="relative flex gap-4 items-center">
-                                                                        <img src="{{ asset('images/profilePic.png') }}"
-                                                                            class="w-12 h-12 object-cover rounded-full"
-                                                                            alt="" srcset="">
-                                                                        <span
-                                                                            class="text-lg">{{ $like->likeOwner->firstName . ' ' . $like->likeOwner->lastName }}</span>
-                                                                        <img src="{{ asset('images/react buttons/' . $like->type . 'React.png') }}"
-                                                                            alt="" srcset=""
-                                                                            class="w-6 absolute bottom-0 left-8">
-                                                                    </div>
-                                                                    <div class="flex items-center">
-                                                                        <button>Add Friend</button>
-                                                                    </div>
-                                                                </div>
-                                                            @endforeach
-                                                        </div>
+                                                        @if (count($post->postLikes['angryReact']) > 0)
+                                                            <div class="flex gap-2">
+                                                                <img id="angryReact"
+                                                                    src="{{ asset('images/react buttons/angryReact.png') }}"
+                                                                    alt="" srcset="" class="w-10 React">
+                                                                <span class="self-center">
+                                                                    {{ $post->postLikes['angryReact']->count() }}
+                                                                </span>
+                                                            </div>
+                                                        @endif
                                                     </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="PostDiv w-full h-auto  flex flex-col gap-5">
-
-                                    @if ($post->postContent)
-                                        <p class="newPostDataDisplay">
-                                            {{ $post->postContent }}
-                                        </p>
-                                    @endif
-
-                                    @if ($post->postMeidaPath)
-                                        <img class="newPostDataDisplay" src={{ asset('storage/' . $post->postMeidaPath) }}
-                                            id="storyReadyPic" alt="" srcset=""
-                                            class="  w-full h-72 rounded-lg object-cover" />
-                                    @endif
-
-                                    <div class="react flex gap-1 items-center justify-between text-slate-500 hover: ">
-                                        <div class="likesReact flex gap-3 items-center justify-center">
-                                            <div class="flex">
-                                                <img src="{{ asset('images/react buttons/likeReact.png') }}" class="w-7"
-                                                    alt="" srcset="">
-                                                <img src="{{ asset('images/react buttons/loveReact.png') }}" class="w-7"
-                                                    alt="" srcset="">
-                                                <img src="{{ asset('images/react buttons/funnyReact.png') }}" class="w-7"
-                                                    alt="" srcset="">
-                                            </div>
-                                            <span class="">
-                                                {{ $post->likes->count() }}
-                                            </span>
-                                        </div>
-
-                                        <div class="flex gap-2 statistics">
-                                            <div class="comments flex gap-1 items-center">
-
-                                                <img src="{{ asset('images/react buttons/comments.png') }}"
-                                                    id="storyReadyPic" alt="" srcset=""
-                                                    class="  w-7 rounded-lg object-cover" />
-                                                <span>{{ $post->comments->count() }}</span>
-                                            </div>
-                                            <div class="sahre flex gap-1 items-center">
-
-                                                <img src="{{ asset('images/react buttons/share.png') }}" id="storyReadyPic"
-                                                    alt="" srcset="" class="  w-7 rounded-lg object-cover" />
-                                                <span>200</span>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <hr class="bg-slate-400 h-[2px]">
-
-                                    <div class="ReactBtns flex justify-between pb-7 text-slate-500">
-                                        <div class="likeBtn flex gap-2 items-center">
-                                            <img src="{{ asset('images/react buttons/likeReact.png') }}" id="storyReadyPic"
-                                                alt="" srcset="" class="  w-8 rounded-lg object-cover" />
-                                            <span>Like</span>
-                                        </div>
-                                        <div class="commentBTNS flex gap-2 items-center cursor-pointer">
-                                            <img src="{{ asset('images/react buttons/comments.png') }}" id="storyReadyPic"
-                                                alt="" srcset="" class="  w-8 rounded-lg object-cover" />
-                                            <span>Comment</span>
-                                        </div>
-                                        <div class="shareBtn flex gap-2 items-center">
-                                            <img src="{{ asset('images/react buttons/share.png') }}" id="storyReadyPic"
-                                                alt="" srcset="" class="  w-8 rounded-lg object-cover" />
-                                            <span>Share</span>
-                                        </div>
-                                    </div>
-
-                                    @if ($post->comments)
-                                        <div style="display: none"
-                                            class="commentsDivDisplay flex flex-col gap-8 w-full h-[450px] mb-7 overflow-y-auto">
-                                            @foreach ($post->comments as $comment)
-                                                <div class="comment flex flex-col">
-                                                    <div class="flex gap-2 items-center">
-                                                        {{-- <img src={{$comment->commentOwner->profilePicPath}} alt="" srcset=""> --}}
-                                                        <img src={{ asset('images/profilePic.png') }}
-                                                            class="w-10 h-10 rounded-full object-cover " alt=""
-                                                            srcset="">
-
-                                                        <div class="bg-[#E2E8F0] w-full rounded-lg p-1">
-                                                            <span>{{ $comment->commentOwner->firstName . ' ' . $comment->commentOwner->lastName }}</span>
-                                                            <br>
-                                                            <span class="text-slate-500">{{ $comment->content }}</span>
-                                                        </div>
-                                                        <span>{{ $comment->PostedTime }}</span>
+                                                    <div class="flex gap-2">
+                                                        <i
+                                                            class="closeReactDiv flex justify-center items-center fa-solid fa-x w-10 h-10 bg-slate-200  rounded-full cursor-pointer"></i>
                                                     </div>
                                                 </div>
-                                            @endforeach
-                                        </div>
-                                    @endif
 
+
+
+
+                                                <div class="overflow-y-auto">
+                                                    <div class="allReact reactDisplayDiv w-full flex flex-col gap-4">
+                                                        @foreach ($post->postLikes as $key => $value)
+                                                            @foreach ($value as $like)
+                                                                <div class="flex justify-between">
+                                                                    <div class="relative flex gap-4 items-center">
+                                                                        <img src="{{ asset('images/profilePic.png') }}"
+                                                                            class="w-12 h-12 object-cover rounded-full"
+                                                                            alt="" srcset="">
+                                                                        <span
+                                                                            class="text-lg">{{ $like->likeOwner->firstName . ' ' . $like->likeOwner->lastName }}</span>
+                                                                        <img src="{{ asset('images/react buttons/' . $like->type . 'React.png') }}"
+                                                                            alt="" srcset=""
+                                                                            class="w-6 absolute bottom-0 left-8">
+                                                                    </div>
+                                                                    <div class="flex items-center">
+                                                                        <button>Add Friend</button>
+                                                                    </div>
+                                                                </div>
+                                                            @endforeach
+                                                        @endforeach
+
+                                                        @if (empty($post->totalLikes))
+                                                            <div class="flex flex-col gap-3 justify-center items-center">
+                                                                <img src="{{ asset('images/react buttons/ZeroLikes.png') }}"
+                                                                    alt="" srcset="" class="w-32">
+
+                                                                    <span class="text-2xl text-[#425885]">No Likes Yet !</span>
+                                                            </div>
+                                                        @endif
+                                                    </div>
+
+
+                                                    <div style="display: none" id="likeReact"
+                                                        class=" w-full reactDisplayDiv flex flex-col gap-4 ">
+                                                        @foreach ($post->postLikes['likeReact'] as $like)
+                                                            <div class="flex justify-between">
+                                                                <div class="relative flex gap-4 items-center">
+                                                                    <img src="{{ asset('images/profilePic.png') }}"
+                                                                        class="w-12 h-12 object-cover rounded-full"
+                                                                        alt="" srcset="">
+                                                                    <span
+                                                                        class="text-lg">{{ $like->likeOwner->firstName . ' ' . $like->likeOwner->lastName }}</span>
+                                                                    <img src="{{ asset('images/react buttons/' . $like->type . 'React.png') }}"
+                                                                        alt="" srcset=""
+                                                                        class="w-6 absolute bottom-0 left-8">
+                                                                </div>
+                                                                <div class="flex items-center">
+                                                                    <button>Add Friend</button>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+
+
+
+                                                    <div style="display: none" id="loveReact"
+                                                        class=" w-full reactDisplayDiv flex flex-col gap-4">
+                                                        @foreach ($post->postLikes['loveReact'] as $like)
+                                                            <div class="flex justify-between">
+                                                                <div class="relative flex gap-4 items-center">
+                                                                    <img src="{{ asset('images/profilePic.png') }}"
+                                                                        class="w-12 h-12 object-cover rounded-full"
+                                                                        alt="" srcset="">
+                                                                    <span
+                                                                        class="text-lg">{{ $like->likeOwner->firstName . ' ' . $like->likeOwner->lastName }}</span>
+                                                                    <img src="{{ asset('images/react buttons/' . $like->type . 'React.png') }}"
+                                                                        alt="" srcset=""
+                                                                        class="w-6 absolute bottom-0 left-8">
+                                                                </div>
+                                                                <div class="flex items-center">
+                                                                    <button>Add Friend</button>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+
+
+
+                                                    <div style="display: none" id="sadReact"
+                                                        class=" w-full reactDisplayDiv flex flex-col gap-4">
+                                                        @foreach ($post->postLikes['sadReact'] as $like)
+                                                            <div class="flex justify-between">
+                                                                <div class="relative flex gap-4 items-center">
+                                                                    <img src="{{ asset('images/profilePic.png') }}"
+                                                                        class="w-12 h-12 object-cover rounded-full"
+                                                                        alt="" srcset="">
+                                                                    <span
+                                                                        class="text-lg">{{ $like->likeOwner->firstName . ' ' . $like->likeOwner->lastName }}</span>
+                                                                    <img src="{{ asset('images/react buttons/' . $like->type . 'React.png') }}"
+                                                                        alt="" srcset=""
+                                                                        class="w-6 absolute bottom-0 left-8">
+                                                                </div>
+                                                                <div class="flex items-center">
+                                                                    <button>Add Friend</button>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+
+
+
+                                                    <div style="display: none" id="funnyReact"
+                                                        class=" w-full reactDisplayDiv flex flex-col gap-4">
+                                                        @foreach ($post->postLikes['funnyReact'] as $like)
+                                                            <div class="flex justify-between">
+                                                                <div class="relative flex gap-4 items-center">
+                                                                    <img src="{{ asset('images/profilePic.png') }}"
+                                                                        class="w-12 h-12 object-cover rounded-full"
+                                                                        alt="" srcset="">
+                                                                    <span
+                                                                        class="text-lg">{{ $like->likeOwner->firstName . ' ' . $like->likeOwner->lastName }}</span>
+                                                                    <img src="{{ asset('images/react buttons/' . $like->type . 'React.png') }}"
+                                                                        alt="" srcset=""
+                                                                        class="w-6 absolute bottom-0 left-8">
+                                                                </div>
+                                                                <div class="flex items-center">
+                                                                    <button>Add Friend</button>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+
+
+
+                                                    <div style="display: none" id="angryReact"
+                                                        class=" w-full reactDisplayDiv flex flex-col gap-4">
+                                                        @foreach ($post->postLikes['angryReact'] as $like)
+                                                            <div class="flex justify-between">
+                                                                <div class="relative flex gap-4 items-center">
+                                                                    <img src="{{ asset('images/profilePic.png') }}"
+                                                                        class="w-12 h-12 object-cover rounded-full"
+                                                                        alt="" srcset="">
+                                                                    <span
+                                                                        class="text-lg">{{ $like->likeOwner->firstName . ' ' . $like->likeOwner->lastName }}</span>
+                                                                    <img src="{{ asset('images/react buttons/' . $like->type . 'React.png') }}"
+                                                                        alt="" srcset=""
+                                                                        class="w-6 absolute bottom-0 left-8">
+                                                                </div>
+                                                                <div class="flex items-center">
+                                                                    <button>Add Friend</button>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+
+
+
+                                                    <div style="display: none" id="woowReact"
+                                                        class="woowReact w-full reactDisplayDiv flex flex-col gap-4">
+                                                        @foreach ($post->postLikes['woowReact'] as $like)
+                                                            <div class="flex justify-between">
+                                                                <div class="relative flex gap-4 items-center">
+                                                                    <img src="{{ asset('images/profilePic.png') }}"
+                                                                        class="w-12 h-12 object-cover rounded-full"
+                                                                        alt="" srcset="">
+                                                                    <span
+                                                                        class="text-lg">{{ $like->likeOwner->firstName . ' ' . $like->likeOwner->lastName }}</span>
+                                                                    <img src="{{ asset('images/react buttons/' . $like->type . 'React.png') }}"
+                                                                        alt="" srcset=""
+                                                                        class="w-6 absolute bottom-0 left-8">
+                                                                </div>
+                                                                <div class="flex items-center">
+                                                                    <button>Add Friend</button>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="PostDiv w-full h-auto  flex flex-col gap-5">
+
+                                        @if ($post->postContent)
+                                            <p class="newPostDataDisplay">
+                                                {{ $post->postContent }}
+                                            </p>
+                                        @endif
+
+                                        @if ($post->postMeidaPath)
+                                            <img class="newPostDataDisplay" src={{ asset('storage/' . $post->postMeidaPath) }}
+                                                id="storyReadyPic" alt="" srcset=""
+                                                class="  w-full h-72 rounded-lg object-cover" />
+                                        @endif
+
+                                        <div class="react flex gap-1 items-center justify-between text-slate-500 hover: ">
+                                            <div class="likesReact flex gap-3 items-center justify-center">
+                                                <div class="flex">
+                                                    <img src="{{ asset('images/react buttons/likeReact.png') }}"
+                                                        class="w-7" alt="" srcset="">
+                                                    <img src="{{ asset('images/react buttons/loveReact.png') }}"
+                                                        class="w-7" alt="" srcset="">
+                                                    <img src="{{ asset('images/react buttons/funnyReact.png') }}"
+                                                        class="w-7" alt="" srcset="">
+                                                </div>
+                                                <span class="">
+                                                    {{ $post->likes->count() }}
+                                                </span>
+                                            </div>
+
+                                            <div class="flex gap-2 statistics">
+                                                <div class="comments flex gap-1 items-center">
+
+                                                    <img src="{{ asset('images/react buttons/comments.png') }}"
+                                                        id="storyReadyPic" alt="" srcset=""
+                                                        class="  w-7 rounded-lg object-cover" />
+                                                    <span>{{ $post->comments->count() }}</span>
+                                                </div>
+                                                <div class="sahre flex gap-1 items-center">
+
+                                                    <img src="{{ asset('images/react buttons/share.png') }}"
+                                                        id="storyReadyPic" alt="" srcset=""
+                                                        class="  w-7 rounded-lg object-cover" />
+                                                    <span>200</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <hr class="bg-slate-400 h-[2px]">
+
+                                        <div class="ReactBtns flex justify-between pb-7 text-slate-500">
+                                            <div class="likeBtn flex gap-2 items-center">
+                                                <img src="{{ asset('images/react buttons/likeReact.png') }}"
+                                                    id="storyReadyPic" alt="" srcset=""
+                                                    class="  w-8 rounded-lg object-cover" />
+                                                <span>Like</span>
+                                            </div>
+                                            <div class="commentBTNS flex gap-2 items-center cursor-pointer">
+                                                <img src="{{ asset('images/react buttons/comments.png') }}"
+                                                    id="storyReadyPic" alt="" srcset=""
+                                                    class="  w-8 rounded-lg object-cover" />
+                                                <span>Comment</span>
+                                            </div>
+                                            <div class="shareBtn flex gap-2 items-center">
+                                                <img src="{{ asset('images/react buttons/share.png') }}" id="storyReadyPic"
+                                                    alt="" srcset="" class="  w-8 rounded-lg object-cover" />
+                                                <span>Share</span>
+                                            </div>
+                                        </div>
+
+                                        @if ($post->comments)
+                                            <div style="display: none"
+                                                class="commentsDivDisplay flex flex-col gap-8 w-full h-[450px] mb-7 overflow-y-auto">
+                                                @foreach ($post->comments as $comment)
+                                                    <div class="comment flex flex-col">
+                                                        <div class="flex gap-2 items-center">
+                                                            {{-- <img src={{$comment->commentOwner->profilePicPath}} alt="" srcset=""> --}}
+                                                            <img src={{ asset('images/profilePic.png') }}
+                                                                class="w-10 h-10 rounded-full object-cover " alt=""
+                                                                srcset="">
+
+                                                            <div class="bg-[#E2E8F0] w-full rounded-lg p-1">
+                                                                <span>{{ $comment->commentOwner->firstName . ' ' . $comment->commentOwner->lastName }}</span>
+                                                                <br>
+                                                                <span class="text-slate-500">{{ $comment->content }}</span>
+                                                            </div>
+                                                            <span>{{ $comment->PostedTime }}</span>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        @endif
+
+
+
+
+                                    </div>
 
 
 
                                 </div>
-
-
-
-                        </div>
-                        @endforeach
-                    @endisset
+                            @endforeach
+                        @endisset
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class=" bg-yellow-500 w-[25%] md:flex hidden">
-            k
+            <div class=" bg-yellow-500 w-[25%] md:flex hidden">
+                k
+            </div>
         </div>
-    </div>
 
     </div>
 
