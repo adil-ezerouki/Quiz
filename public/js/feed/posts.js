@@ -854,7 +854,7 @@ allReactBTN.forEach(btn=> {
 
 
         reactDisplayDiv[0].style.animation = 'fadeIn 1s';
-        reactDisplayDiv[0].style.display = 'block';
+        reactDisplayDiv[0].style.display = 'flex';
     })
 })
 

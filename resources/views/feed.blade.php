@@ -14,7 +14,7 @@
             </div>
 
 
-            <div class="w-[50%] h-[479px] overflow-y-scroll">
+            <div class="md:w-[50%] w-full h-[479px] overflow-y-scroll">
                 <div id="stories" class=" flex overflow-x-auto py-7">
                     <div class="flex justify-center  gap-[28px] w-fit">
                         <div class="createStory flex relative rounded-full w-20 h-20 active:scale-[1.01] transition-all">
@@ -246,7 +246,7 @@
                                         </div>
 
                                         <div
-                                            class="likesPopUpDiv absolute top-0 left-0 bg-[#0000007E] w-full h-full z-[9] flex justify-center items-center">
+                                            class="likesPopUpDiv absolute top-0 left-0 bg-[#0000007E] w-full h-full z-[9] p-7 flex justify-center items-center">
                                             {{-- @if ($posts)
                                                 @foreach ($posts as $post)
                                                     @if (!empty($post->postLikes))
@@ -264,16 +264,28 @@
 
                                             @if ($posts)
                                                 <div class=" w-full rounded p-5 flex flex-col gap-6 bg-white">
-                                                    <div class="reactIcons flex gap-20">
+                                                    <div class="reactIcons flex justify-between">
                                                         <div class="flex gap-2">
                                                             <span
                                                                 class="allReactBTN self-center text-lg  w-10 h-10 flex justify-center items-center bg-slate-200  rounded-full cursor-pointer">All</span>
-                                                            <span class="self-center">0</span>
+                                                            <span class="self-center">
+                                                                @if($post->totalLikes)
+                                                                    {{$post->totalLikes}}
+                                                                @endif
+
+                                                                @if(empty($post->totalLikes))
+                                                                0
+                                                                @endif
+
+                                                            </span>
                                                         </div>
 
                                                         <div class="reactStatsDisplay flex gap-5">
 
-                                                            @if (!empty($post->postLikes['likeReact']))
+
+
+
+                                                            @if (count($post->postLikes['likeReact']) > 0)
                                                                 <div class="flex gap-2">
                                                                     <img id="likeReact"
                                                                         src="{{ asset('images/react buttons/likeReact.png') }}"
@@ -286,7 +298,7 @@
                                                                 </div>
                                                             @endif
 
-                                                            @if (!empty($post->postLikes['loveReact']))
+                                                            @if (count($post->postLikes['loveReact']) > 0)
                                                                 <div class="flex gap-2">
                                                                     <img id="loveReact"
                                                                         src="{{ asset('images/react buttons/loveReact.png') }}"
@@ -297,7 +309,7 @@
                                                                 </div>
                                                             @endif
 
-                                                            @if (!empty($post->postLikes['sadReact']))
+                                                            @if (count($post->postLikes['sadReact']) > 0)
                                                                 <div class="flex gap-2">
                                                                     <img id="sadReact"
                                                                         src="{{ asset('images/react buttons/sadReact.png') }}"
@@ -308,7 +320,7 @@
                                                                 </div>
                                                             @endif
 
-                                                            @if (!empty($post->postLikes['woowReact']))
+                                                            @if (count($post->postLikes['woowReact']) > 0)
                                                                 <div class="flex gap-2">
                                                                     <img id="woowReact"
                                                                         src="{{ asset('images/react buttons/woowReact.png') }}"
@@ -320,7 +332,7 @@
                                                             @endif
 
 
-                                                            @if (!empty($post->postLikes['angryReact']))
+                                                            @if (count($post->postLikes['angryReact']) > 0)
                                                                 <div class="flex gap-2">
                                                                     <img id="angryReact"
                                                                         src="{{ asset('images/react buttons/angryReact.png') }}"
@@ -341,14 +353,16 @@
 
                                                     {{-- @foreach ($post->postLikes as $key => $value) --}}
                                                     <div class="overflow-y-auto">
-                                                        <div class="allReact reactDisplayDiv w-full">
+                                                        <div class="allReact reactDisplayDiv w-full flex flex-col gap-4">
+                                                            @foreach ($post->postLikes as $key => $value )
+                                                                @foreach ($value as $like)
                                                             <div class="flex justify-between">
                                                                 <div class="relative flex gap-4 items-center">
                                                                     <img src="{{ asset('images/profilePic.png') }}"
                                                                         class="w-12 h-12 object-cover rounded-full"
                                                                         alt="" srcset="">
-                                                                    <span class="text-lg">Adil Ezerouki</span>
-                                                                    <img src="{{ asset('images/react buttons/likeReact.png') }}"
+                                                                    <span class="text-lg">{{$like->likeOwner->firstName . ' ' . $like->likeOwner->lastName}}</span>
+                                                                    <img src="{{ asset('images/react buttons/'. $like->type .'React.png') }}"
                                                                         alt="" srcset=""
                                                                         class="w-6 absolute bottom-0 left-8">
                                                                 </div>
@@ -356,6 +370,8 @@
                                                                     <button>Add Friend</button>
                                                                 </div>
                                                             </div>
+                                                            @endforeach
+                                                            @endforeach
                                                         </div>
 
 

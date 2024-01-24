@@ -60,7 +60,7 @@ class FeedController extends Controller
             // likes of posts
 
 
-            foreach ($post->likes as $postLike) {
+            // foreach($post->likes as $postLike) {
 
 
                 $likeReact = $post->likes->filter(function ($like) {
@@ -98,11 +98,11 @@ class FeedController extends Controller
 
                 unset($post->likes);
 
+                $totalLikes = 0;
 
                 foreach ($post->postLikes as $key => $value) {
 
-
-
+                    $totalLikes+=count($value);
                     foreach ($value as $likeChild) {
 
                         unset($likeChild->id, $likeChild->post_id, $likeChild->comment_id, $likeChild->created_at, $likeChild->updated_at);
@@ -113,9 +113,9 @@ class FeedController extends Controller
 
 
 
-            }
+            // }
 
-            // return $post;
+            $post->totalLikes =$totalLikes;
 
 
 
